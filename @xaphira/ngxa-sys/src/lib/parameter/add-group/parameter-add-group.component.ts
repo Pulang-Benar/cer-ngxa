@@ -1,16 +1,5 @@
 import { Component, OnInit, Injector, OnDestroy, Inject } from '@angular/core';
-import { Validators, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, HttpBaseModel, IndexedDBFactoryService, PROFILE_INDEXED_DB } from '@xaphira/shared';
-import {
-  ResponseCode,
-  USER_INFO,
-  User,
-  UserInfo, } from '@xaphira/shared';
-import { Pattern } from '@xaphira/utils';
-import { BaseFormComponent, SelectParamModel, CheckboxModel } from '@xaphira/ngxa-common';
-import { HttpErrorResponse } from '@angular/common/http';
+import { BaseFormComponent, CheckboxModel } from '@xaphira/ngxa-common';
 import { Router } from '@angular/router';
 
 @Component({

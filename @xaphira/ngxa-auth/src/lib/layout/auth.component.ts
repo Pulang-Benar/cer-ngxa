@@ -15,7 +15,7 @@ export class AuthComponent implements OnDestroy {
 
     constructor(private location: Location) {}
 
-    back(): boolean {
+    public back(): boolean {
         this.location.back();
         return false;
     }

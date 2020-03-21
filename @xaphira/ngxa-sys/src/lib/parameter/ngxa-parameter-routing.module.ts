@@ -4,7 +4,8 @@ import { AuthGuardChildService } from '@xaphira/ngxa-auth';
 import { ParameterComponent } from './ngxa-parameter.component';
 import { ParameterListGroupPageComponent } from './list-group/parameter-list-group-page.component';
 import { ParameterAddGroupPageComponent } from './add-group/parameter-add-group.component';
-import { ParameterListDetailPageComponent } from './list-detail/parameter-list-detail-page.component';
+import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
+import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,15 +20,29 @@ const routes: Routes = [{
       },
     },
     {
-      path: 'add-group',
+      path: 'group',
+      component: ParameterListGroupPageComponent,
+      data: {
+        code: '#SYSCONF-PARAMETER-PAGE',
+      },
+    },
+    {
+      path: 'group/:action',
       component: ParameterAddGroupPageComponent,
       data: {
         code: '#SYSCONF-PARAMETER-PAGE',
       },
     },
     {
-      path: 'list-detail',
+      path: 'detail',
       component: ParameterListDetailPageComponent,
+      data: {
+        code: '#SYSCONF-PARAMETER-PAGE',
+      },
+    },
+    {
+      path: 'detail/:action',
+      component: ParameterDoDetailPageComponent,
       data: {
         code: '#SYSCONF-PARAMETER-PAGE',
       },

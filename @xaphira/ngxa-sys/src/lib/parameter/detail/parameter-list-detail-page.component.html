@@ -1,0 +1,70 @@
+<xa-page-outlet [header]="'Edit Parameter Group'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <form [formGroup]="formGroup">
+        <xa-input-text
+          [name]="'parameterGroupName'"
+          [label]="'Parameter Group Name'"
+          [required]="true"
+          formControlName="parameterGroupName">
+        </xa-input-text>
+        <xa-checkbox
+          [name]="'checkbox'"
+          [label]="'Parameter Multilingual'"
+          [data]="dataI18n"
+          formControlName="i18n">
+        </xa-checkbox>
+        <div class="form-group row">
+          <div class="offset-sm-3 col-sm-9">
+            <button
+              type="reset"
+              status="danger"
+              (click)="onReset()"
+              class="reset-left"
+              nbButton>
+              {{ 'Cancel' | translate}}
+            </button>
+            <button
+              type="submit"
+              status="primary"
+              (click)="onSubmit()"
+              [disabled]="formGroup.invalid || formGroup.pristine || disabled"
+              class="submit-right"
+              nbButton>
+              {{ 'Edit' | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</xa-page-outlet>
+
+<xa-page-outlet [url]="'/app/sysconf/parameter'" [header]="'Parameter '+parameterGroup.parameterGroupName">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        (onFilter)="doFilterAdvanced($event)"
+        (onAdd)="onAddGroup($event)"
+        (onEdit)="onViewDetail($event)"
+        [filterFn]="keyword"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <xa-input-text
+            [name]="'parameterCode'"
+            [label]="'Parameter Code'"
+            formControlName="parameterCode">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'parameterValue'"
+            [label]="'Parameter Value'"
+            formControlName="parameterValue">
+          </xa-input-text>
+        </form>
+      </xa-datatable>
+    </div>
+  </div>
+</xa-page-outlet>

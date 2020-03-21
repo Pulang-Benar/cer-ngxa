@@ -58,20 +58,27 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Input() filter: boolean = true;
   @Input() api: HttpBaseModel;
   @Input() startWithOpenData: boolean = true;
-  @Input() filterAdvanced: boolean = false;
+  @Input() filterEvent: boolean = false;
   @Input() formGroupFilter: FormGroup;
   @Output() onAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
-  @Input() keywordParam: Keyword;
-  @Input() set filterAdvancedFn(keyword: Keyword) {
+  @Input() set filterFn(keyword: Keyword) {
     this.keywordParam = keyword;
+    this._keyword = keyword;
+    this.count = 0;
+    this.offset = 0;
+  }
+  @Input() set filterDoFetchFn(keyword: Keyword) {
+    this.keywordParam = keyword;
+    this._keyword = keyword;
     this.count = 0;
     this.offset = 0;
     this.fetch();
   }
+  public keywordParam: Keyword;
   public _keyword: Keyword;
   protected http: HttpFactoryService;
   private destroy$: Subject<any> = new Subject<any>();
@@ -119,7 +126,7 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   }
 
   doFilter(search: any): void {
-    if (this.filterAdvanced) {
+    if (this.filterEvent) {
       this.onFilter.emit(search);
     } else {
       if (this.keywordParam) {

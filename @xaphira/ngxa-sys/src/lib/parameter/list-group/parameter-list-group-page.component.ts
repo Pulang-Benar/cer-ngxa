@@ -4,7 +4,6 @@ import { BaseFilterComponent } from '@xaphira/ngxa-common';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { ParameterService } from '../services/parameter.service';
-import { ParameterGroupModel } from '../models/parameter-group.model';
 
 @Component({
   selector: 'xa-parameter-list-group-page',
@@ -15,8 +14,8 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
 
   public apiPath: HttpBaseModel;
   public columns: TableColumn[] = [
-    { name: 'Paramter Group Code', prop: 'parameterGroupCode', width: 220, frozenLeft: true },
-    { name: 'Paramter Group Name', prop: 'parameterGroupName', width: 200, frozenLeft: true },
+    { name: 'Parameter Group Code', prop: 'parameterGroupCode', width: 220, frozenLeft: true },
+    { name: 'Parameter Group Name', prop: 'parameterGroupName', width: 200, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
@@ -41,7 +40,7 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
   ngOnDestroy(): void {}
 
   onAddGroup(event): void {
-    this.router.navigate(['/app/sysconf/parameter/add-group']);
+    this.router.navigate(['/app/sysconf/parameter/group', 'add']);
   }
 
   onViewDetail(data): void {
@@ -50,7 +49,7 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
       parameterGroupName: data['parameterGroupName'],
       i18n: data['i18n'],
     });
-    this.router.navigate(['/app/sysconf/parameter/list-detail']);
+    this.router.navigate(['/app/sysconf/parameter/detail']);
   }
 
 }

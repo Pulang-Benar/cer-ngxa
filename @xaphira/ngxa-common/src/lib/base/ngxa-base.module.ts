@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { NgxaErrorMessageComponent } from './error-message/ngxa-error-message.component';
 import { NgxaPageOutletComponent } from './page-outlet/ngxa-page-outlet.component';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule } from '@nebular/theme';
 import { NgxaContainerOutletComponent } from './container-outlet/ngxa-container-outlet.component';
 import { CurrencyMaskDirective } from './directive/currency.directive';
 import { EqualValidator } from './directive/equal-validator.directive';
@@ -31,6 +31,7 @@ export const directives = [
     FormsModule,
     TranslateModule,
     NbCardModule,
+    NbIconModule,
     NgxaToastrModule.forRoot(),
   ],
   declarations: [

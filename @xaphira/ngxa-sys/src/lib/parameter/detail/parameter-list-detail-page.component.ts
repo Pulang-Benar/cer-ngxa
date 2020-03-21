@@ -4,7 +4,7 @@ import { BaseFilterComponent } from '@xaphira/ngxa-common';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { ParameterService } from '../services/parameter.service';
-import { ParameterGroupModel } from '../models/parameter-group.model';
+import { ParameterGroupModel } from '../models/parameter.model';
 
 @Component({
   selector: 'xa-parameter-list-detail-page',
@@ -15,8 +15,8 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   public apiPath: HttpBaseModel;
   public columns: TableColumn[] = [
-    { name: 'Paramter Code', prop: 'parameterCode', width: 200, frozenLeft: true },
-    { name: 'Paramter Value', prop: 'parameterValue', width: 200, frozenLeft: true },
+    { name: 'Parameter Code', prop: 'parameterCode', width: 200, frozenLeft: true },
+    { name: 'Parameter Value', prop: 'parameterValue', width: 200, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
@@ -29,15 +29,29 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
     super(injector, {
       'parameterCode': [],
       'parameterValue': [],
+    }, {
+      'parameterGroupName': [],
+      'i18n': [],
     });
-    this.parameterGroup = this.parameterService.getParameterGroup();
     this.apiPath = this.api['master']['datatable-parameter'];
     this.filters = [
       { controlName: 'parameterCode', type: 'input' },
       { controlName: 'parameterValue', type: 'input' }];
-    this.keyword = {
-      parameterGroupCode: this.parameterGroup.parameterGroupCode,
-    };
+    if (this.parameterService.getParameterGroup()) {
+      this.parameterGroup = this.parameterService.getParameterGroup();
+      this.keyword = {
+        parameterGroupCode: this.parameterGroup.parameterGroupCode,
+      };
+      this.formGroup.get('parameterGroupName').setValue(this.parameterGroup.parameterGroupName);
+      this.formGroup.get('i18n').setValue([{
+        selected: this.parameterGroup.i18n,
+      }]);
+    } else {
+      this.keyword = {
+        parameterGroupCode: null,
+      };
+      this.router.navigate(['/app/sysconf/parameter']);
+    }
   }
 
   ngOnInit(): void {
@@ -46,11 +60,19 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
   ngOnDestroy(): void {}
 
   onAddGroup(event): void {
-    this.router.navigate(['/app/sysconf/parameter/add-detail']);
+    this.parameterService.setParameter(null);
+    this.router.navigate(['/app/sysconf/parameter/detail', 'add']);
   }
 
-  onViewDetail(event): void {
-    console.log(event);
+  onViewDetail(data): void {
+    this.parameterService.setParameter({
+      parameterCode: data['parameterCode'],
+      parameterValue: data['parameterValue'],
+    });
+    this.router.navigate(['/app/sysconf/parameter/detail', 'edit']);
+  }
+  onReset(): void {
+    this.router.navigate(['/app/sysconf/parameter']);
   }
 
 }

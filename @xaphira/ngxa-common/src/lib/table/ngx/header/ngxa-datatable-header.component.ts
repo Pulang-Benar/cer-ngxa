@@ -32,6 +32,7 @@ export class NgxaDatatableHeaderComponent implements OnDestroy {
 
   public _search: string;
   public showFilter: boolean = false;
+  public disabledButtonFilter: boolean = true;
 
   ngOnDestroy(): void {}
 
@@ -46,6 +47,10 @@ export class NgxaDatatableHeaderComponent implements OnDestroy {
     this.showFilter = !this.showFilter;
     if (!this.showFilter) {
       this.formGroupFilter.reset();
+    } else {
+      this.formGroupFilter.valueChanges.subscribe(val => {
+        this.disabledButtonFilter = false;
+      });
     }
   }
 

@@ -1,7 +1,14 @@
 <div class="row">
   <div class="col-lg-{{width}}">
     <nb-card>
-      <nb-card-header>{{header | translate}}</nb-card-header>
+      <nb-card-header>
+        <nav class="navigation">
+            <a href="#" (click)="back()" class="link back-link" aria-label="Back" *ngIf="url">
+                <nb-icon icon="arrow-back"></nb-icon>
+            </a>
+            {{header | translate}}
+        </nav>
+        </nb-card-header>
       <nb-card-body>
         <ng-content #pagecontent></ng-content>        
       </nb-card-body>

@@ -1,3 +1,5 @@
+@import '~@nebular/theme/styles/global/breakpoints';
+
 .skeleton {
     animation: loading 1.7s infinite linear;
     border-radius: 0.25rem;
@@ -14,6 +16,17 @@
     100% {
         background-position: 380px;
     }
+}
+
+.navigation .link {
+  display: inline-block;
+
+  nb-icon {
+    color: #3366ff;
+    font-size: 1.25rem;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+  }
 }
 
 .label-skeleton {

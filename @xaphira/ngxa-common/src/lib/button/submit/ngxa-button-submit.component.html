@@ -4,7 +4,7 @@
       type="{{type}}"
       status="{{status}}"
       (click)="click($event)"
-      [disabled]="formGroup.invalid || formGroup.pristine || disabled"
+      [disabled]="formGroupButton.invalid || formGroupButton.pristine || disabledButton"
       nbButton>
       {{ name | translate}}
     </button>

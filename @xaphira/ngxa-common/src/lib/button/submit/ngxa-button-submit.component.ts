@@ -8,9 +8,9 @@ import { NgControl, FormGroup } from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
 })
 export class NgxaButtonSubmitComponent {
-    @Input() formGroup: FormGroup = new FormGroup({});
+    @Input() formGroupButton: FormGroup = new FormGroup({});
     @Input() name: string;
-    @Input() disabled: boolean = false;
+    @Input() disabledButton: boolean = false;
     @Input() colLabel: number = 3;
     @Input() colButton: number = 9;
     @Input() type: 'button' | 'submit' | 'reset' = 'submit';
