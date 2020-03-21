@@ -35,6 +35,9 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
     this.filters = [
       { controlName: 'parameterCode', type: 'input' },
       { controlName: 'parameterValue', type: 'input' }];
+    this.keyword = {
+      parameterGroupCode: this.parameterGroup.parameterGroupCode,
+    };
   }
 
   ngOnInit(): void {
@@ -43,7 +46,7 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
   ngOnDestroy(): void {}
 
   onAddGroup(event): void {
-    this.router.navigate(['/app/sysconf/parameter/add-group']);
+    this.router.navigate(['/app/sysconf/parameter/add-detail']);
   }
 
   onViewDetail(event): void {

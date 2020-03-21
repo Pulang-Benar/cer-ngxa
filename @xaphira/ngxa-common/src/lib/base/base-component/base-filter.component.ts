@@ -5,10 +5,10 @@ import { DatatableFilter, Keyword } from '../../table/models/datatable.model';
 
 export abstract class BaseFilterComponent<T> extends BaseFormComponent<T> {
 
-    protected formGroupFilter: FormGroup;
-    protected filters: DatatableFilter[];
-    protected keyword: Keyword;
-    protected rows: any[] = [];
+    public formGroupFilter: FormGroup;
+    public filters: DatatableFilter[];
+    public keyword: Keyword;
+    public rows: any[] = [];
 
     constructor(
         public injector: Injector,

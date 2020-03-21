@@ -8,8 +8,7 @@
         (onFilter)="doFilterAdvanced($event)"
         (onAdd)="onAddGroup($event)"
         (onEdit)="onViewDetail($event)"
-        [filterAdvanced]="true"
-        [filterAdvancedFn]="keyword"
+        [keywordParam]="keyword"
         [columns]="columns">
         <form [formGroup]="formGroupFilter">
           <xa-input-text

@@ -37,6 +37,7 @@ import { CustomPreloadingStrategy } from './services/preloading-strategy.service
 import { AnalyticsService } from './services/analytics.service';
 import { LayoutService } from './services/layout.service';
 import { StateService } from './services/state.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 export const PROVIDERS = [
   { provide: ErrorHandler, useClass: ErrorHandlerService},
@@ -47,6 +48,7 @@ export const PROVIDERS = [
 ];
 
 export const NB_MODULES = [
+  TranslateModule,
   NbLayoutModule,
   NbMenuModule,
   NbUserModule,

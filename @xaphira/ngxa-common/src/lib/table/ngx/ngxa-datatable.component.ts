@@ -65,8 +65,9 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
+  @Input() keywordParam: Keyword;
   @Input() set filterAdvancedFn(keyword: Keyword) {
-    this._keyword = keyword;
+    this.keywordParam = keyword;
     this.count = 0;
     this.offset = 0;
     this.fetch();
@@ -104,9 +105,14 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   }
 
   doSearch(search: string): void {
-    this._keyword = {
-      '_all': search,
-    };
+    if (this.keywordParam) {
+      this._keyword = this.keywordParam;
+      this._keyword['_all'] = search;
+    } else {
+      this._keyword = {
+        '_all': search,
+      };
+    }
     this.count = 0;
     this.offset = 0;
     this.fetch();
@@ -116,7 +122,11 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
     if (this.filterAdvanced) {
       this.onFilter.emit(search);
     } else {
-      this._keyword = {};
+      if (this.keywordParam) {
+        this._keyword = this.keywordParam;
+      } else {
+        this._keyword = {};
+      }
       this.filters.forEach(filter => {
         switch (filter.type) {
           case 'input':
