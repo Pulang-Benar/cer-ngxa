@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { NbMenuModule } from '@nebular/theme';
 
-import { DashboardModule } from '@xaphira/ngxa-mock';
-import { ECommerceModule } from '@xaphira/ngxa-mock';
 import { MiscellaneousModule } from '@xaphira/ngxa-auth';
 import { NgxaThemeModule } from '@xaphira/ngxa-theme';
 import { NgxaExtraModule } from '@xaphira/ngxa-extra';
+import { NgxaSysModule } from '@xaphira/ngxa-sys';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 
@@ -14,10 +13,9 @@ import { PagesRoutingModule } from './pages-routing.module';
     PagesRoutingModule,
     NgxaThemeModule,
     NbMenuModule,
-    DashboardModule,
-    ECommerceModule,
     MiscellaneousModule,
     NgxaExtraModule,
+    NgxaSysModule,
   ],
   declarations: [
     PagesComponent,

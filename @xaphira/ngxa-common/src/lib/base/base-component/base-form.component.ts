@@ -22,7 +22,8 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
         }) {
         super(injector);
         this.formBuilder = injector.get(FormBuilder);
-        this.formGroup = this.formBuilder.group(controlsConfig);
+        if (controlsConfig)
+            this.formGroup = this.formBuilder.group(controlsConfig);
         this.toastr = injector.get(NgxaToastrService);
     }
 

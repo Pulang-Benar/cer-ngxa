@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () => import('./pages/main/pages.module').then(m => m.PagesModule),
+    // loadChildren: () => import('./mock/main/mock.module').then(m => m.MockModule),
     canActivate: [AuthGuardService],
   },
   {

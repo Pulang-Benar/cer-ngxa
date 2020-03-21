@@ -89,6 +89,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/master/vw/post/datatable/city/v.1',
         },
+        'datatable-parameter-group': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/vw/post/datatable/parameter-group/v.1',
+        },
+        'datatable-parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/vw/post/datatable/parameter/v.1',
+        },
     },
     file: {
         'photo-profile': {

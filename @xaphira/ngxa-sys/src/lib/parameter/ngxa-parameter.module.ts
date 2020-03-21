@@ -11,11 +11,18 @@ import {
   NgxaSelectModule,
   NgxaTableModule,
 } from '@xaphira/ngxa-common';
-import { SysComponent } from './ngxa-sys.component';
-import { NgxaSysRoutingModule } from './ngxa-sys-routing.module';
+import { ParameterComponent } from './ngxa-parameter.component';
+import { NgxaParameterRoutingModule } from './ngxa-parameter-routing.module';
+import { ParameterListGroupPageComponent } from './list-group/parameter-list-group-page.component';
+import { ParameterAddGroupPageComponent } from './add-group/parameter-add-group.component';
+import { ParameterListDetailPageComponent } from './list-detail/parameter-list-detail-page.component';
+import { ParameterService } from './services/parameter.service';
 
 const components = [
-  SysComponent,
+  ParameterComponent,
+  ParameterListGroupPageComponent,
+  ParameterAddGroupPageComponent,
+  ParameterListDetailPageComponent,
 ];
 
 const modules = [
@@ -30,10 +37,13 @@ const modules = [
   NgxaCheckBoxModule,
   NgxaButtonModule,
   NgxaBaseModule,
-  NgxaEditorModule,
   NgxaSelectModule,
   NgxaTableModule,
-  NgxaSysRoutingModule,
+  NgxaParameterRoutingModule,
+];
+
+const providers = [
+  ParameterService,
 ];
 
 @NgModule({
@@ -43,5 +53,8 @@ const modules = [
   declarations: [
     ...components,
   ],
+  providers: [
+    ...providers,
+  ],
 })
-export class NgxaSysModule { }
+export class NgxaParameterModule { }

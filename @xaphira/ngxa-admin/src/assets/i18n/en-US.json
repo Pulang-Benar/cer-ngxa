@@ -32,6 +32,12 @@
 	"Mobile Phone": "Mobile Phone",
 	"Welcome": "Welcome",
 	"Hi": "Hi",
+	"Add": "Add",
+	"Edit": "Edit",
+	"Delete": "Delete",
+	"Cancel": "Cancel",
+	"Parameter Group": "Parameter Group",
+	"Add Parameter Group": "Add Parameter Group",
 	"message": {
 		"danger-zone": "Danger Zone",
 		"deactivated-account": "Once you deactivated account, there is no going back. Please be certain.",
@@ -66,7 +72,8 @@
 		"401": "Unauthorized",
 		"403": "Access Denied",
 		"404": "Not Found",
-		"500": "Internal Server Error"
+		"500": "Internal Server Error",
+		"504": "Timeout Server"
 	},
 	"Bad credentials": "Incorrect Username or Password",
 	"User account is locked": "Account has been locked",

@@ -1,0 +1,47 @@
+<xa-page-outlet [header]="'Add Parameter Group'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <form [formGroup]="formGroup">
+        <xa-input-text
+          [name]="'parameterGroupCode'"
+          [label]="'Parameter Group Code'"
+          [required]="true"
+          formControlName="parameterGroupCode">
+        </xa-input-text>
+        <xa-input-text
+          [name]="'parameterGroupName'"
+          [label]="'Parameter Group Name'"
+          [required]="true"
+          formControlName="parameterGroupName">
+        </xa-input-text>
+        <xa-checkbox
+          [name]="'checkbox'"
+          [label]="'Parameter Multilingual'"
+          [data]="dataI18n"
+          formControlName="i18n">
+        </xa-checkbox>
+        <div class="form-group row">
+          <div class="offset-sm-3 col-sm-9">
+            <button
+              type="reset"
+              status="danger"
+              (click)="onReset()"
+              class="reset-left"
+              nbButton>
+              {{ 'Cancel' | translate}}
+            </button>
+            <button
+              type="submit"
+              status="primary"
+              (click)="onSubmit()"
+              [disabled]="formGroup.invalid || formGroup.pristine || disabled"
+              class="submit-right"
+              nbButton>
+              {{ 'Add' | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</xa-page-outlet>

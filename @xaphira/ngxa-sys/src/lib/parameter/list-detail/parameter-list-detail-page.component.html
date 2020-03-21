@@ -1,0 +1,29 @@
+<xa-page-outlet [header]="'Parameter '+parameterGroup.parameterGroupName">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        (onFilter)="doFilterAdvanced($event)"
+        (onAdd)="onAddGroup($event)"
+        (onEdit)="onViewDetail($event)"
+        [filterAdvanced]="true"
+        [filterAdvancedFn]="keyword"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <xa-input-text
+            [name]="'parameterCode'"
+            [label]="'Parameter Code'"
+            formControlName="parameterCode">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'parameterValue'"
+            [label]="'Parameter Value'"
+            formControlName="parameterValue">
+          </xa-input-text>
+        </form>
+      </xa-datatable>
+    </div>
+  </div>
+</xa-page-outlet>

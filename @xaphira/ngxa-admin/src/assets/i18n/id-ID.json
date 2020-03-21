@@ -32,6 +32,12 @@
 	"Mobile Phone": "Telepon Genggam",
 	"Welcome": "Selamat Datang",
 	"Hi": "Halo",
+	"Add": "Tambah",
+	"Edit": "Ubah",
+	"Delete": "Hapus",
+	"Cancel": "Batal",
+	"Parameter Group": "Grup Parameter",
+	"Add Parameter Group": "Tambah Grup Parameter",
 	"message": {
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
@@ -66,7 +72,8 @@
 		"401": "Akses tidak diizinkan",
 		"403": "Akses ditolak",
 		"404": "Data tidak ditemukan",
-		"500": "Server gagal diakses"
+		"500": "Server gagal diakses",
+		"504": "Server timeout"
 	},
 	"Bad credentials": "Nama Pengguna atau Kata Sandi salah",
 	"User account is locked": "Akun telah dikunci",
