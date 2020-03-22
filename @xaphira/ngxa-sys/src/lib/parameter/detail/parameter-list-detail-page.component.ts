@@ -15,8 +15,7 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   public apiPath: HttpBaseModel;
   public columns: TableColumn[] = [
-    { name: 'Parameter Code', prop: 'parameterCode', width: 200, frozenLeft: true },
-    { name: 'Parameter Value', prop: 'parameterValue', width: 200, frozenLeft: true },
+    { name: 'Parameter Code', prop: 'parameterCode', width: 350, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
@@ -28,24 +27,17 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
   constructor(public injector: Injector, private router: Router, private parameterService: ParameterService) {
     super(injector, {
       'parameterCode': [],
-      'parameterValue': [],
     }, {
       'parameterGroupName': [],
-      'i18n': [],
     });
     this.apiPath = this.api['master']['datatable-parameter'];
-    this.filters = [
-      { controlName: 'parameterCode', type: 'input' },
-      { controlName: 'parameterValue', type: 'input' }];
+    this.filters = [{ controlName: 'parameterCode', type: 'input' }];
     if (this.parameterService.getParameterGroup()) {
       this.parameterGroup = this.parameterService.getParameterGroup();
       this.keyword = {
         parameterGroupCode: this.parameterGroup.parameterGroupCode,
       };
       this.formGroup.get('parameterGroupName').setValue(this.parameterGroup.parameterGroupName);
-      this.formGroup.get('i18n').setValue([{
-        selected: this.parameterGroup.i18n,
-      }]);
     } else {
       this.keyword = {
         parameterGroupCode: null,
@@ -66,11 +58,13 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   onViewDetail(data): void {
     this.parameterService.setParameter({
+      parameterGroupCode: data['parameterGroupCode'],
+      parameterGroupName: data['parameterGroupName'],
       parameterCode: data['parameterCode'],
-      parameterValue: data['parameterValue'],
     });
     this.router.navigate(['/app/sysconf/parameter/detail', 'edit']);
   }
+
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter']);
   }

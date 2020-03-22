@@ -13,6 +13,7 @@ import { ParameterService } from '../services/parameter.service';
 export class ParameterListGroupPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
 
   public apiPath: HttpBaseModel;
+  public apiPathLocale: HttpBaseModel;
   public columns: TableColumn[] = [
     { name: 'Parameter Group Code', prop: 'parameterGroupCode', width: 220, frozenLeft: true },
     { name: 'Parameter Group Name', prop: 'parameterGroupName', width: 200, frozenLeft: true },
@@ -32,14 +33,18 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
     this.filters = [
       { controlName: 'parameterGroupCode', type: 'input' },
       { controlName: 'parameterGroupName', type: 'input' }];
+    this.apiPathLocale = this.api['master']['all-locale'];
   }
 
   ngOnInit(): void {
+    this.http.HTTP_AUTH(this.apiPathLocale).subscribe(value => {
+      this.parameterService.setLocales(value);
+    });
   }
 
   ngOnDestroy(): void {}
 
-  onAddGroup(event): void {
+  onAddGroup(): void {
     this.router.navigate(['/app/sysconf/parameter/group', 'add']);
   }
 
@@ -47,7 +52,6 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
     this.parameterService.setParameterGroup({
       parameterGroupCode: data['parameterGroupCode'],
       parameterGroupName: data['parameterGroupName'],
-      i18n: data['i18n'],
     });
     this.router.navigate(['/app/sysconf/parameter/detail']);
   }

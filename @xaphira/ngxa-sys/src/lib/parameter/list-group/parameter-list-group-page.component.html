@@ -5,8 +5,7 @@
         [api]="apiPath"
         [formGroupFilter]="formGroupFilter"
         [filters]="filters"
-        (onFilter)="doFilterAdvanced($event)"
-        (onAdd)="onAddGroup($event)"
+        (onAdd)="onAddGroup()"
         (onEdit)="onViewDetail($event)"
         [columns]="columns">
         <form [formGroup]="formGroupFilter">

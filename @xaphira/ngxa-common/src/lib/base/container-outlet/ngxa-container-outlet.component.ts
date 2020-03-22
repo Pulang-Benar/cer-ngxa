@@ -11,6 +11,7 @@ export class NgxaContainerOutletComponent {
     @Input() label: string = '';
     @Input() colLabel: number = 3;
     @Input() colContent: number = 9;
+    @Input() nolabel: boolean = false;
     @Input() required: boolean = false;
     @Input() hasErrors: boolean = false;
     @Input() errorMessages: string[] = [];

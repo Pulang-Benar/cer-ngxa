@@ -8,12 +8,6 @@
           [required]="true"
           formControlName="parameterGroupName">
         </xa-input-text>
-        <xa-checkbox
-          [name]="'checkbox'"
-          [label]="'Parameter Multilingual'"
-          [data]="dataI18n"
-          formControlName="i18n">
-        </xa-checkbox>
         <div class="form-group row">
           <div class="offset-sm-3 col-sm-9">
             <button
@@ -57,11 +51,6 @@
             [name]="'parameterCode'"
             [label]="'Parameter Code'"
             formControlName="parameterCode">
-          </xa-input-text>
-          <xa-input-text
-            [name]="'parameterValue'"
-            [label]="'Parameter Value'"
-            formControlName="parameterValue">
           </xa-input-text>
         </form>
       </xa-datatable>

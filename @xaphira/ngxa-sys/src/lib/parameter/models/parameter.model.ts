@@ -1,10 +1,13 @@
-export class ParameterModel {
-    public parameterCode: string;
-    public parameterValue: string;
-}
-
 export class ParameterGroupModel {
     public parameterGroupCode: string;
     public parameterGroupName: string;
-    public i18n: boolean;
+}
+
+export class ParameterModel extends ParameterGroupModel {
+    public parameterCode: string;
+}
+
+export class ParameterI18nModel extends ParameterModel {
+    public parameterValue: string;
+    public locale: string;
 }

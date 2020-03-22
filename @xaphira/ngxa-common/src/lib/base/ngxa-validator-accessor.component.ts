@@ -14,6 +14,7 @@ export abstract class NgxaValidatorAccessor implements ControlValueAccessor, Val
     @Input() name: string;
     @Input() pattern: string;
     @Input() label: string = '';
+    @Input() nolabel: boolean = false;
     @Input() disabled: boolean = false;
     @Input() required: boolean = false;
     @Input() paramError: any;

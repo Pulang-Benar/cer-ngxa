@@ -9,18 +9,11 @@ import { Router } from '@angular/router';
 })
 export class ParameterAddGroupPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
-  public dataI18n: CheckboxModel[] = [
-    {
-      selected: false,
-    },
-  ];
-
   constructor(public injector: Injector, private router: Router) {
     super(injector,
       {
         'parameterGroupCode': [],
         'parameterGroupName': [],
-        'i18n': [],
       });
   }
 

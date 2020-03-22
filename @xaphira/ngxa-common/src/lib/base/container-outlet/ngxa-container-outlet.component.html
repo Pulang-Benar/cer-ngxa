@@ -1,12 +1,12 @@
 <div class="form-group row">
   <label
-    *ngIf="!skeleton;else labelskeleton"
+    *ngIf="(!skeleton || nolabel);else labelskeleton"
     for="{{name}}"
     class="label col-sm-{{colLabel}} col-form-label">
-    {{label | translate}}{{ required ? ' *' : '' }}
+    {{label | translate}}{{ (!nolabel) ? ((required) ? ' *' : '') : '' }}
   </label>
   <ng-template #labelskeleton>
-    <div class="col-sm-{{colLabel}} ">
+    <div class="col-sm-{{colLabel}}">
       <label
         class="label col-form-label"
         [ngClass]="{

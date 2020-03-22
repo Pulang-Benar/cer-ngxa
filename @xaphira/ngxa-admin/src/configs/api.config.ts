@@ -84,6 +84,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/xa/api/master/vw/get/select/all/locale/v.1',
         },
+        'all-locale': {
+            server: environment.host.master,
+            method: HttpMethod.GET,
+            path: '/xa/api/master/vw/get/all/locale/v.1',
+        },
         'datatable-city': {
             server: environment.host.master,
             method: HttpMethod.POST,
@@ -98,6 +103,21 @@ export const apiPath: APIModel = {
             server: environment.host.master,
             method: HttpMethod.POST,
             path: '/xa/api/master/vw/post/datatable/parameter/v.1',
+        },
+        'parameter-i18n': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/vw/post/parameter-i18n/v.1',
+        },
+        'post-parameter-i18n': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/trx/post/parameter-i18n/v.1',
+        },
+        'post-parameter-group': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/trx/post/parameter-group/v.1',
         },
     },
     file: {
