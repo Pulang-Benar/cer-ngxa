@@ -9,8 +9,7 @@ const routes: Routes = [{
   children: [
     {
       path: 'parameter',
-      loadChildren: () => import('./parameter/ngxa-parameter.module')
-        .then(m => m.NgxaParameterModule),
+      loadChildren: './parameter/ngxa-parameter.module#NgxaParameterModule',
     },
     {
       path: 'language',
