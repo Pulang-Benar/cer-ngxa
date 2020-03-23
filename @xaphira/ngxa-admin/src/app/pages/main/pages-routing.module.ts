@@ -22,9 +22,9 @@ const routes: Routes = [{
         .then(m => m.ExtraWrapperModule),
     },
     {
-      path: 'sysconf',
-      loadChildren: () => import('../sys/sys-wrapper.module')
-        .then(m => m.SysWrapperModule),
+      path: 'sysconf/parameter',
+      loadChildren: () => import('../sys/sys-parameter.module')
+        .then(m => m.SysParameterModule),
     },
     {
       path: '',

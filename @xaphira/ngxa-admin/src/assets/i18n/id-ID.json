@@ -38,7 +38,18 @@
 	"Delete": "Hapus",
 	"Cancel": "Batal",
 	"Parameter Group": "Grup Parameter",
+	"Parameter Code": "Kode Parameter",
+	"Parameter Value": "Nilai Parameter",
 	"Add Parameter Group": "Tambah Grup Parameter",
+	"Edit Parameter Group": "Ubah Group Parameter",
+	"Add Parameter": "Tambah Parameter",
+	"Edit Parameter": "Ubah Parameter",
+	"Parameter Group Name": "Nama Grup Parameter",
+	"Parameter Group Code": "Kode Grup Parameter",
+	"Created": "Dibuat",
+	"Created Date": "Dibuat Tanggal",
+	"Modified": "Diubah",
+	"Modified Date": "Diubah Tanggal",
 	"message": {
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
@@ -93,6 +104,7 @@
 	"alert": {
 		"title": {
 			"login" : "Gagal Masuk!"
-		}
+		},
+		"delete": "Apakah anda yakin ingin menghapus data ini?"
 	}
 }

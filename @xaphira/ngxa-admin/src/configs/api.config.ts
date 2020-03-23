@@ -119,6 +119,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/master/trx/post/parameter-group/v.1',
         },
+        'delete-parameter-group': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/trx/delete/parameter-group/v.1',
+        },
     },
     file: {
         'photo-profile': {
