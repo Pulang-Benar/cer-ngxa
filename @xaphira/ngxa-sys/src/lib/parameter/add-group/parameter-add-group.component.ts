@@ -1,6 +1,9 @@
 import { Component, OnInit, Injector, OnDestroy, Inject } from '@angular/core';
 import { BaseFormComponent, CheckboxModel } from '@xaphira/ngxa-common';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ApiBaseResponse, ResponseCode } from '@xaphira/shared';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'xa-parameter-add-group-page',
@@ -23,6 +26,16 @@ export class ParameterAddGroupPageComponent extends BaseFormComponent<any> imple
 
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter']);
+  }
+
+  onSubmit(): void {
+    (super.onSubmit(this.formGroup.value, 'master', 'post-parameter-group')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_SCR009.toString()) {
+          this.router.navigate(['/app/sysconf/parameter']);
+        }
+      });
   }
 
 }

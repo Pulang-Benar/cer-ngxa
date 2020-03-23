@@ -1,10 +1,11 @@
-import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
+import { Component, OnInit, Injector, OnDestroy, ViewChild } from '@angular/core';
+import { TableColumn, SelectionType } from '@swimlane/ngx-datatable';
+import { Router } from '@angular/router';
 import { HttpBaseModel } from '@xaphira/shared';
 import { BaseFilterComponent } from '@xaphira/ngxa-common';
-import { TableColumn } from '@swimlane/ngx-datatable';
-import { Router } from '@angular/router';
 import { ParameterService } from '../services/parameter.service';
 import { ParameterGroupModel } from '../models/parameter.model';
+import { ParameterEditGroupCollapseComponent } from '../edit-group/parameter-edit-group-collapse.component';
 
 @Component({
   selector: 'xa-parameter-list-detail-page',
@@ -14,6 +15,7 @@ import { ParameterGroupModel } from '../models/parameter.model';
 export class ParameterListDetailPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
 
   public apiPath: HttpBaseModel;
+  public selectionType: SelectionType = SelectionType.single;
   public columns: TableColumn[] = [
     { name: 'Parameter Code', prop: 'parameterCode', width: 350, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
@@ -23,6 +25,8 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
     { name: 'Active', prop: 'active' },
   ];
   public parameterGroup: ParameterGroupModel = new ParameterGroupModel();
+  public expanded: boolean = false;
+  @ViewChild('collapseparameter', {static: false}) collapse: ParameterEditGroupCollapseComponent;
 
   constructor(public injector: Injector, private router: Router, private parameterService: ParameterService) {
     super(injector, {
@@ -67,6 +71,16 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter']);
+  }
+
+  back(): boolean {
+    this.router.navigate(['/app/sysconf/parameter']);
+    return false;
+  }
+
+  doExpanded(): void {
+    this.collapse.toggle();
+    this.expanded = !this.expanded;
   }
 
 }

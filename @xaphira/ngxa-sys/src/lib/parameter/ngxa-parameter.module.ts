@@ -18,11 +18,13 @@ import { ParameterAddGroupPageComponent } from './add-group/parameter-add-group.
 import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
 import { ParameterService } from './services/parameter.service';
 import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail.component';
+import { ParameterEditGroupCollapseComponent } from './edit-group/parameter-edit-group-collapse.component';
 
 const components = [
   ParameterComponent,
   ParameterListGroupPageComponent,
   ParameterAddGroupPageComponent,
+  ParameterEditGroupCollapseComponent,
   ParameterListDetailPageComponent,
   ParameterDoDetailPageComponent,
 ];

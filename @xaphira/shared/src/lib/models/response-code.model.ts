@@ -25,4 +25,8 @@ export enum ResponseCode {
     OK_SCR003 = 'OK_SCR003',
     OK_SCR004 = 'OK_SCR004',
     OK_SCR005 = 'OK_SCR005',
+    OK_SCR006 = 'OK_SCR006',
+    OK_SCR007 = 'OK_SCR007',
+    OK_SCR008 = 'OK_SCR008',
+    OK_SCR009 = 'OK_SCR009',
 }

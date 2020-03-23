@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ngxa-sys.module';
+export * from './lib/parameter/ngxa-parameter.module';

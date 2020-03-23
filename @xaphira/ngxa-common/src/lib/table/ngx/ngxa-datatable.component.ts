@@ -54,7 +54,7 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Input() footer: boolean = true;
   @Input() add: boolean = true;
   @Input() edit: boolean = true;
-  @Input() delete: boolean = false;
+  @Input() delete: boolean = true;
   @Input() filter: boolean = true;
   @Input() api: HttpBaseModel;
   @Input() startWithOpenData: boolean = true;
@@ -81,6 +81,7 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   }
   public keywordParam: Keyword;
   public _keyword: Keyword;
+  public isDelete: boolean = false;
   protected http: HttpFactoryService;
   private destroy$: Subject<any> = new Subject<any>();
   private cdref: ChangeDetectorRef;
@@ -210,13 +211,14 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
 
   onSelect({ selected }): void {
     if (Array.isArray(selected)) {
-      if (selected.length > 0)
-        this.delete = true;
-      else
-        this.delete = false;
+      if (selected.length > 0) {
+        if (this.delete) this.isDelete = true;
+      } else {
+        this.isDelete = false;
+      }
       this.selected = selected;
     } else {
-      this.delete = false;
+      this.isDelete = false;
     }
   }
 
