@@ -3,7 +3,7 @@ import { HttpBaseModel } from '@xaphira/shared';
 import { BaseFilterComponent } from '@xaphira/ngxa-common';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
-import { ParameterService } from '../services/parameter.service';
+import { ParameterService } from '../../services/parameter.service';
 
 @Component({
   selector: 'xa-parameter-list-group-page',

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@xaphira/ngxa-auth';
 import { ParameterComponent } from './ngxa-parameter.component';
-import { ParameterListGroupPageComponent } from './list-group/parameter-list-group-page.component';
-import { ParameterAddGroupPageComponent } from './add-group/parameter-add-group.component';
+import { ParameterListGroupPageComponent } from './group/list-group/parameter-list-group-page.component';
+import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group.component';
 import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
 import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail.component';
 

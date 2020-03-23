@@ -2,10 +2,12 @@ import { Component, OnInit, Injector, OnDestroy, Inject } from '@angular/core';
 import { BaseFormComponent } from '@xaphira/ngxa-common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ParameterService } from '../../services/parameter.service';
-import { ParameterModel, ParameterI18nModel } from '../../models/parameter.model';
-import { HttpBaseModel } from '@xaphira/shared';
+import { ParameterModel, ParameterI18nModel, ParameterGroupModel } from '../../models/parameter.model';
+import { HttpBaseModel, ApiBaseResponse, ResponseCode } from '@xaphira/shared';
 import { LocaleModel } from '../../../language/models/locale.model';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'xa-parameter-do-detail-page',
@@ -16,6 +18,8 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
 
   public action: 'Add' | 'Edit' = 'Add';
   public parameter: ParameterModel = new ParameterModel();
+  public parameterGroup: ParameterGroupModel = new ParameterGroupModel();
+  public allLocales: LocaleModel[] = [];
   public locales: LocaleModel[] = [];
   public localeDefault: LocaleModel = new LocaleModel();
   public isEdit: boolean = false;
@@ -31,6 +35,11 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
       'en-US': [],
       'id-ID': [],
     });
+    if (this.parameterService.getParameterGroup()) {
+      this.parameterGroup = this.parameterService.getParameterGroup();
+    } else {
+      this.router.navigate(['/app/sysconf/parameter']);
+    }
     if ((this.route.snapshot.params['action'] === 'edit')) {
       if (this.parameterService.getParameter()) {
         this.action = 'Edit';
@@ -66,6 +75,7 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
   }
 
   splitLocale(values: LocaleModel[]): void {
+    this.allLocales = values;
     values.forEach(data => {
       if (data.localeDefault) {
         this.localeDefault = data;
@@ -86,7 +96,20 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
+    const data: any = this.formGroup.value;
+    if (this.isEdit) data.parameterCode = this.parameter.parameterCode;
+    data.parameterGroupCode = this.parameterGroup.parameterGroupCode;
+    data.parameterValues = {};
+    this.allLocales.forEach(value => {
+      data.parameterValues[value.localeCode] = this.formGroup.get(value.localeCode).value;
+    });
+    (super.onSubmit(data, 'master', 'post-parameter-i18n')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_SCR009.toString()) {
+          this.router.navigate(['/app/sysconf/parameter/detail']);
+        }
+      });
   }
 
 }

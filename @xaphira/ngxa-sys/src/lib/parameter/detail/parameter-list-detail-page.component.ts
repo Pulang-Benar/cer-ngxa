@@ -1,11 +1,12 @@
 import { Component, OnInit, Injector, OnDestroy, ViewChild } from '@angular/core';
 import { TableColumn, SelectionType } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
-import { HttpBaseModel } from '@xaphira/shared';
+import { HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
 import { BaseFilterComponent } from '@xaphira/ngxa-common';
 import { ParameterService } from '../services/parameter.service';
 import { ParameterGroupModel } from '../models/parameter.model';
-import { ParameterEditGroupCollapseComponent } from '../edit-group/parameter-edit-group-collapse.component';
+import { ParameterEditGroupCollapseComponent } from '../group/edit-group/parameter-edit-group-collapse.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'xa-parameter-list-detail-page',
@@ -32,6 +33,7 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
     super(injector, {
       'parameterCode': [],
     }, {
+      'parameterGroupCode': [],
       'parameterGroupName': [],
     });
     this.apiPath = this.api['master']['datatable-parameter'];
@@ -41,6 +43,7 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
       this.keyword = {
         parameterGroupCode: this.parameterGroup.parameterGroupCode,
       };
+      this.formGroup.get('parameterGroupCode').setValue(this.parameterGroup.parameterGroupCode);
       this.formGroup.get('parameterGroupName').setValue(this.parameterGroup.parameterGroupName);
     } else {
       this.keyword = {
@@ -81,6 +84,10 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
   doExpanded(): void {
     this.collapse.toggle();
     this.expanded = !this.expanded;
+  }
+
+  onSubmit(): void {
+    (super.onSubmit(this.formGroup.value, 'master', 'post-parameter-group')  as Observable<ApiBaseResponse>);
   }
 
 }

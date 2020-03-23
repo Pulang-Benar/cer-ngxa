@@ -33,7 +33,7 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
             .subscribe(
                 (success: ApiBaseResponse) => {
                     this.submitSubject$.next(success);
-                    this.disabled = false;
+                    this.disabled = true;
                     if (!disableToastr)
                         this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
                 },

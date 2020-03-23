@@ -13,12 +13,12 @@ import {
 } from '@xaphira/ngxa-common';
 import { ParameterComponent } from './ngxa-parameter.component';
 import { NgxaParameterRoutingModule } from './ngxa-parameter-routing.module';
-import { ParameterListGroupPageComponent } from './list-group/parameter-list-group-page.component';
-import { ParameterAddGroupPageComponent } from './add-group/parameter-add-group.component';
+import { ParameterListGroupPageComponent } from './group/list-group/parameter-list-group-page.component';
+import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group.component';
 import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
 import { ParameterService } from './services/parameter.service';
 import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail.component';
-import { ParameterEditGroupCollapseComponent } from './edit-group/parameter-edit-group-collapse.component';
+import { ParameterEditGroupCollapseComponent } from './group/edit-group/parameter-edit-group-collapse.component';
 
 const components = [
   ParameterComponent,
