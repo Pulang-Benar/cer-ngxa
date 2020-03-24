@@ -6,6 +6,8 @@ import { ApiBaseResponse, ResponseCode, HttpBaseModel } from '@xaphira/shared';
 import { takeUntil } from 'rxjs/operators';
 import { LocaleModel } from '../models/locale.model';
 import { LanguageService } from '../services/language.service';
+import { NbDialogService } from '@nebular/theme';
+import { DialogFlagComponent } from './dialog-flag/dialog-flag.component';
 
 @Component({
   selector: 'xa-language-add-edit-page',
@@ -21,10 +23,13 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
       selected: false,
     },
   ];
+  public startPrefixIcon: string = '<span class="flag-icon flag-icon-';
+  public endPrefixIcon: string = '"></span>';
   constructor(public injector: Injector,
     private router: Router,
     private route: ActivatedRoute,
-    private languageService: LanguageService) {
+    private languageService: LanguageService,
+    private dialogService: NbDialogService) {
     super(injector,
       {
         'language': [],
@@ -45,7 +50,9 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
           selected: false,
         }]);
       }
-      this.formGroup.get('icon').setValue(this.languageService.getLocale().icon);
+      const iconFlag: string = this.languageService.getLocale()
+        .icon.replace(this.startPrefixIcon, '').replace(this.endPrefixIcon, '');
+      this.formGroup.get('icon').setValue(iconFlag);
       this.formGroup.get('language').setValue(this.languageService.getLocale().identifier);
       this.formGroup.get('language').disable();
     }
@@ -55,6 +62,14 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
 
   ngOnDestroy(): void {}
 
+  onSearchFlag(): void {
+    this.dialogService.open(DialogFlagComponent)
+      .onClose.subscribe((flagIcon: string) => {
+        this.formGroup.get('icon').setValue(flagIcon);
+        this.formGroup.get('icon').markAsDirty();
+      });
+  }
+
   onReset(): void {
     this.router.navigate(['/app/sysconf/language']);
   }
@@ -62,7 +77,7 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
   onSubmit(): void {
     const localeDefault: CheckboxModel[] = this.formGroup.get('default').value;
     const data: LocaleModel = {
-      icon: this.formGroup.get('icon').value,
+      icon: this.startPrefixIcon + this.formGroup.get('icon').value + this.endPrefixIcon,
       localeDefault: (localeDefault ? true : false),
       localeCode: this.formGroup.get('language').value['value'] ?
                   this.formGroup.get('language').value['value'] : this.languageService.getLocale().localeCode,

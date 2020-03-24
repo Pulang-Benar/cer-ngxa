@@ -15,11 +15,13 @@ import { LanguageListPageComponent } from './list/language-list-page.component';
 import { NgxaLanguageRoutingModule } from './ngxa-language-routing.module';
 import { LanguageAddEditPageComponent } from './add-edit/language-add-edit-page.component';
 import { LanguageService } from './services/language.service';
+import { DialogFlagComponent } from './add-edit/dialog-flag/dialog-flag.component';
 
 const components = [
   LanguageComponent,
   LanguageListPageComponent,
   LanguageAddEditPageComponent,
+  DialogFlagComponent,
 ];
 
 const modules = [
@@ -43,6 +45,10 @@ const providers = [
   LanguageService,
 ];
 
+const entry_components = [
+  DialogFlagComponent,
+];
+
 @NgModule({
   imports: [
     ...modules,
@@ -52,6 +58,9 @@ const providers = [
   ],
   providers: [
     ...providers,
+  ],
+  entryComponents: [
+    ...entry_components,
   ],
 })
 export class NgxaLanguageModule { }

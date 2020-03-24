@@ -9,12 +9,16 @@
           [api]="apiSelectLanguage"
           formControlName="language">
         </xa-select>
-        <xa-input-text
+        <xa-input-icon
           [name]="'icon'"
           [label]="'Icon'"
           [required]="true"
+          [icon]="'search-outline'"
+          [iconcursor]="true"
+          [eva]="true"
+          (clickIcon)="onSearchFlag()"
           formControlName="icon">
-        </xa-input-text>
+        </xa-input-icon>
         <xa-checkbox
           [name]="'checkbox'"
           [label]="'System Default Language'"

@@ -25,11 +25,12 @@
       [(ngModel)]="value"
       #input nbInput fullWidth>
       <div
-        class="input-icon"
+        class="xinput-icon"
         [ngStyle]="{
           'cursor': iconcursor ? 'pointer' : 'unset'
         }">
-        <span class="{{icon}}"></span>
+        <span class="{{icon}}" *ngIf="!eva"></span>
+        <nb-icon class="xinput-icon-hover" icon="{{icon}}" (click)="onClickIcon()" *ngIf="eva"></nb-icon>
       </div>
   </div>
   <ng-template #contentskeleton>

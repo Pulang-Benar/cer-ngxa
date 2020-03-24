@@ -16,6 +16,7 @@ export class NgxaInputIconComponent extends NgxaValueAccessor<string> {
     @Input() maxLength: number = 100;
     @Input() type: 'text' | 'password' | 'number' = 'text';
     @Input() iconcursor: boolean = false;
+    @Input() eva: boolean = false;
     @Input() icon: string = 'search-outline';
     @Output() clickIcon: EventEmitter<string> = new EventEmitter<string>();
     @Output() focus: EventEmitter<any> = new EventEmitter<any>();
