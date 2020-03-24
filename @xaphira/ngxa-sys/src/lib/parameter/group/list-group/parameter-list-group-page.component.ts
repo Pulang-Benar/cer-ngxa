@@ -25,6 +25,7 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
     { name: 'Modified Date', prop: 'modifiedDate' },
     { name: 'Active', prop: 'active' },
   ];
+  public reload: boolean = false;
   private parameterGroupCodes: any[];
 
   constructor(public injector: Injector,
@@ -79,6 +80,7 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
       (success: ApiBaseResponse) => {
         ref.close();
         this.disabled = false;
+        this.reload = true;
         this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
       },
       (error: ApiBaseResponse) => {

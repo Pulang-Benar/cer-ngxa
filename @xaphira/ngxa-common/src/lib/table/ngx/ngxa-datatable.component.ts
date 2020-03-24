@@ -73,11 +73,20 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
     this.offset = 0;
   }
   @Input() set filterDoFetchFn(keyword: Keyword) {
-    this.keywordParam = keyword;
-    this._keyword = keyword;
+    if (keyword) {
+      this.keywordParam = keyword;
+      this._keyword = keyword;
+    }
     this.count = 0;
     this.offset = 0;
     this.fetch();
+  }
+  @Input() set reloadFn(reload: boolean) {
+    if (reload) {
+      this.count = 0;
+      this.offset = 0;
+      this.fetch();
+    }
   }
   public keywordParam: Keyword;
   public _keyword: Keyword;
