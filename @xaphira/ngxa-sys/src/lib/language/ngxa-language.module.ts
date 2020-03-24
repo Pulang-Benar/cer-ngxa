@@ -1,0 +1,53 @@
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule } from '@nebular/theme';
+import { NgxaThemeModule } from '@xaphira/ngxa-theme';
+import {
+  NgxaInputModule,
+  NgxaCheckBoxModule,
+  NgxaButtonModule,
+  NgxaBaseModule,
+  NgxaSelectModule,
+  NgxaTableModule,
+} from '@xaphira/ngxa-common';
+import { LanguageComponent } from './ngxa-language.component';
+import { LanguageListPageComponent } from './list/language-list-page.component';
+import { NgxaLanguageRoutingModule } from './ngxa-language-routing.module';
+
+const components = [
+  LanguageComponent,
+  LanguageListPageComponent,
+];
+
+const modules = [
+  FormsModule,
+  ReactiveFormsModule,
+  NbCardModule,
+  NbAlertModule,
+  NbIconModule,
+  NbDialogModule.forChild(),
+  NgxaThemeModule,
+  NgxaInputModule,
+  NgxaCheckBoxModule,
+  NgxaButtonModule,
+  NgxaBaseModule,
+  NgxaSelectModule,
+  NgxaTableModule,
+  NgxaLanguageRoutingModule,
+];
+
+const providers = [
+];
+
+@NgModule({
+  imports: [
+    ...modules,
+  ],
+  declarations: [
+    ...components,
+  ],
+  providers: [
+    ...providers,
+  ],
+})
+export class NgxaLanguageModule { }

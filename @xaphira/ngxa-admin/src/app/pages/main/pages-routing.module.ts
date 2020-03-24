@@ -27,6 +27,11 @@ const routes: Routes = [{
         .then(m => m.SysParameterModule),
     },
     {
+      path: 'sysconf/language',
+      loadChildren: () => import('../sys/sys-language.module')
+        .then(m => m.SysLanguageModule),
+    },
+    {
       path: '',
       redirectTo: 'home',
       pathMatch: 'full',

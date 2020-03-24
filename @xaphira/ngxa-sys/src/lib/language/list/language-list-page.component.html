@@ -1,0 +1,30 @@
+<xa-page-outlet [header]="'Language'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        [delete]="false"
+        [selectionType]="selectionType"
+        (onFilter)="doFilterAdvanced($event)"
+        (onAdd)="onAddGroup($event)"
+        (onEdit)="onViewDetail($event)"
+        [filterFn]="keyword"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <xa-input-text
+            [name]="'localeCode'"
+            [label]="'Locale Code'"
+            formControlName="localeCode">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'identifier'"
+            [label]="'Identifier'"
+            formControlName="identifier">
+          </xa-input-text>
+        </form>
+      </xa-datatable>
+    </div>
+  </div>
+</xa-page-outlet>
