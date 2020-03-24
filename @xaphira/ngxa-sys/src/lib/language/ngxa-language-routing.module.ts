@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@xaphira/ngxa-auth';
 import { LanguageComponent } from './ngxa-language.component';
 import { LanguageListPageComponent } from './list/language-list-page.component';
+import { LanguageAddEditPageComponent } from './add-edit/language-add-edit-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,7 +19,7 @@ const routes: Routes = [{
     },
     {
       path: ':action',
-      component: LanguageListPageComponent,
+      component: LanguageAddEditPageComponent,
       data: {
         code: '#SYSCONF-LANGUAGE-PAGE',
       },

@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@xaphira/ngxa-auth';
 import { ParameterComponent } from './ngxa-parameter.component';
 import { ParameterListGroupPageComponent } from './group/list-group/parameter-list-group-page.component';
-import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group.component';
+import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group-page.component';
 import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
-import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail.component';
+import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail-page.component';
 
 const routes: Routes = [{
   path: '',

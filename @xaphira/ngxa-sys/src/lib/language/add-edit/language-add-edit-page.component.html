@@ -1,0 +1,48 @@
+<xa-page-outlet [header]="action+' Language'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <form [formGroup]="formGroup">
+        <xa-select
+          [name]="'language'"
+          [label]="'Language'"
+          [required]="true"
+          [api]="apiSelectLanguage"
+          formControlName="language">
+        </xa-select>
+        <xa-input-text
+          [name]="'icon'"
+          [label]="'Icon'"
+          [required]="true"
+          formControlName="icon">
+        </xa-input-text>
+        <xa-checkbox
+          [name]="'checkbox'"
+          [label]="'System Default Language'"
+          [data]="dataDefault"
+          formControlName="default">
+        </xa-checkbox>
+        <div class="form-group row">
+          <div class="offset-sm-3 col-sm-9">
+            <button
+              type="reset"
+              status="danger"
+              (click)="onReset()"
+              class="reset-left"
+              nbButton>
+              {{ 'Cancel' | translate}}
+            </button>
+            <button
+              type="submit"
+              status="primary"
+              (click)="onSubmit()"
+              [disabled]="formGroup.invalid || formGroup.pristine || disabled"
+              class="submit-right"
+              nbButton>
+              {{ 'Add' | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</xa-page-outlet>

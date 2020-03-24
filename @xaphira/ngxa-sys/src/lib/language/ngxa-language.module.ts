@@ -13,10 +13,13 @@ import {
 import { LanguageComponent } from './ngxa-language.component';
 import { LanguageListPageComponent } from './list/language-list-page.component';
 import { NgxaLanguageRoutingModule } from './ngxa-language-routing.module';
+import { LanguageAddEditPageComponent } from './add-edit/language-add-edit-page.component';
+import { LanguageService } from './services/language.service';
 
 const components = [
   LanguageComponent,
   LanguageListPageComponent,
+  LanguageAddEditPageComponent,
 ];
 
 const modules = [
@@ -37,6 +40,7 @@ const modules = [
 ];
 
 const providers = [
+  LanguageService,
 ];
 
 @NgModule({

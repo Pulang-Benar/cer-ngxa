@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
 import { BaseFilterComponent } from '@xaphira/ngxa-common';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'xa-language-list-page',
@@ -27,7 +28,7 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
   ];
   public expanded: boolean = false;
 
-  constructor(public injector: Injector, private router: Router) {
+  constructor(public injector: Injector, private router: Router, private languageService: LanguageService) {
     super(injector, {
       'localeCode': [],
       'identifier': [],
@@ -43,11 +44,12 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
 
   ngOnDestroy(): void {}
 
-  onAddGroup(event): void {
+  onAddGroup(): void {
     this.router.navigate(['/app/sysconf/language', 'add']);
   }
 
   onViewDetail(data): void {
+    this.languageService.setLocale(data);
     this.router.navigate(['/app/sysconf/language', 'edit']);
   }
 

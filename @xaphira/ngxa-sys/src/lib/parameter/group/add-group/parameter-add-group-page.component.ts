@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector, OnDestroy, Inject } from '@angular/core';
-import { BaseFormComponent, CheckboxModel } from '@xaphira/ngxa-common';
+import { BaseFormComponent } from '@xaphira/ngxa-common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiBaseResponse, ResponseCode } from '@xaphira/shared';
@@ -7,8 +7,8 @@ import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'xa-parameter-add-group-page',
-  styleUrls: ['./parameter-add-group.component.scss'],
-  templateUrl: './parameter-add-group.component.html',
+  styleUrls: ['./parameter-add-group-page.component.scss'],
+  templateUrl: './parameter-add-group-page.component.html',
 })
 export class ParameterAddGroupPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 

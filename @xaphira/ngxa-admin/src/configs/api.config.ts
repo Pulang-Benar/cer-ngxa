@@ -74,6 +74,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/master/vw/post/select/subdistrict/v.1',
         },
+        'select-language': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/vw/post/select/language/v.1',
+        },
         'select-locale': {
             server: environment.host.master,
             method: HttpMethod.POST,
@@ -88,6 +93,11 @@ export const apiPath: APIModel = {
             server: environment.host.master,
             method: HttpMethod.GET,
             path: '/xa/api/master/vw/get/all/locale/v.1',
+        },
+        'post-locale': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/trx/post/locale/v.1',
         },
         'datatable-city': {
             server: environment.host.master,

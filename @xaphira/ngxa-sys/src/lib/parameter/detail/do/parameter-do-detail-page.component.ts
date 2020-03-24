@@ -11,8 +11,8 @@ import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'xa-parameter-do-detail-page',
-  styleUrls: ['./parameter-do-detail.component.scss'],
-  templateUrl: './parameter-do-detail.component.html',
+  styleUrls: ['./parameter-do-detail-page.component.scss'],
+  templateUrl: './parameter-do-detail-page.component.html',
 })
 export class ParameterDoDetailPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
