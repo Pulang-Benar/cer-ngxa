@@ -1,3 +1,5 @@
+import { TableColumn } from '@swimlane/ngx-datatable';
+
 export class Page {
     count: number;
     pageSize: number;
@@ -11,6 +13,10 @@ export interface Sort {
 
 export interface Keyword {
     [name: string]: string;
+}
+
+export interface DatatableColumn extends TableColumn {
+    type?: 'text' | 'html' | 'icon';
 }
 
 export class DatatableParamModel {

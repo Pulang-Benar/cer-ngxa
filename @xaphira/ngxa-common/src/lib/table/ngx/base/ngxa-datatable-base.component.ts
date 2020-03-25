@@ -8,8 +8,8 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { ColumnMode, SelectionType, SortType, TableColumn } from '@swimlane/ngx-datatable';
-import { Page } from '../../models/datatable.model';
+import { ColumnMode, SelectionType, SortType } from '@swimlane/ngx-datatable';
+import { Page, DatatableColumn } from '../../models/datatable.model';
 
 @Component({
   selector: 'xa-datatable-base',
@@ -19,7 +19,7 @@ import { Page } from '../../models/datatable.model';
 })
 export class NgxaDatatableBaseComponent {
   @Input() rows: any[] = [];
-  @Input() columns: TableColumn[] = [];
+  @Input() columns: DatatableColumn[] = [];
   @Input() selected: any[] = [];
   @Input() limit: number | undefined = 10;
   @Input() count: number = 0;
@@ -76,6 +76,17 @@ export class NgxaDatatableBaseComponent {
         this.activate.emit(event.row);
       }
     }
+  }
+
+  sanitizedValue(value: any): any {
+    return value !== null && value !== undefined ? this.stripHtml(value) : value;
+  }
+
+  stripHtml(html: string): string {
+    if (!html.replace) {
+      return html;
+    }
+    return html.replace(/<\/?[^>]+(>|$)/g, '');
   }
 
 }

@@ -16,10 +16,10 @@ import {
 import { FormGroup } from '@angular/forms';
 import { Subject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ColumnMode, SelectionType, SortType, TableColumn, DatatableComponent } from '@swimlane/ngx-datatable';
+import { ColumnMode, SelectionType, SortType, DatatableComponent } from '@swimlane/ngx-datatable';
 import { HTTP_SERVICE, HttpFactoryService, HttpBaseModel } from '@xaphira/shared';
 import { LayoutService } from '@xaphira/ngxa-theme';
-import { Page, Sort, Keyword, DatatableFilter } from '../models/datatable.model';
+import { Page, Sort, Keyword, DatatableFilter, DatatableColumn } from '../models/datatable.model';
 
 @Component({
   selector: 'xa-datatable',
@@ -30,7 +30,7 @@ import { Page, Sort, Keyword, DatatableFilter } from '../models/datatable.model'
 })
 export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Input() rows: any[] = [];
-  @Input() columns: TableColumn[] = [];
+  @Input() columns: DatatableColumn[] = [];
   @Input() filters: DatatableFilter[] = [];
   @Input() selected: any[] = [];
   @Input() limit: number | undefined = 10;

@@ -37,6 +37,6 @@ export class DialogFlagComponent {
   }
 
   choose(flag: string): void {
-    this.ref.close(flag);
+    this.ref.close('flag-icon flag-icon-' + flag);
   }
 }

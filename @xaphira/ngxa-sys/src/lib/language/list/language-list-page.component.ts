@@ -1,10 +1,11 @@
 import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
-import { TableColumn, SelectionType } from '@swimlane/ngx-datatable';
+import { SelectionType } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
 import { BaseFilterComponent } from '@xaphira/ngxa-common';
 import { LanguageService } from '../services/language.service';
+import { DatatableColumn } from '@xaphira/ngxa-common';
 
 @Component({
   selector: 'xa-language-list-page',
@@ -15,10 +16,10 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
-  public columns: TableColumn[] = [
+  public columns: DatatableColumn[] = [
     { name: 'Language Code', prop: 'localeCode', width: 125, frozenLeft: true },
     { name: 'Language', prop: 'identifier', width: 275, frozenLeft: true },
-    { name: 'Icon', prop: 'icon', width: 75, frozenLeft: true },
+    { name: 'Icon', prop: 'icon', width: 75, frozenLeft: true, type: 'icon' },
     { name: 'System Default Language', prop: 'localeDefault', width: 175, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },

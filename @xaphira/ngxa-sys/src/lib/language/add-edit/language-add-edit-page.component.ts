@@ -23,8 +23,6 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
       selected: false,
     },
   ];
-  public startPrefixIcon: string = '<span class="flag-icon flag-icon-';
-  public endPrefixIcon: string = '"></span>';
   constructor(public injector: Injector,
     private router: Router,
     private route: ActivatedRoute,
@@ -50,9 +48,7 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
           selected: false,
         }]);
       }
-      const iconFlag: string = this.languageService.getLocale()
-        .icon.replace(this.startPrefixIcon, '').replace(this.endPrefixIcon, '');
-      this.formGroup.get('icon').setValue(iconFlag);
+      this.formGroup.get('icon').setValue(this.languageService.getLocale().icon);
       this.formGroup.get('language').setValue(this.languageService.getLocale().identifier);
       this.formGroup.get('language').disable();
     }
@@ -77,7 +73,7 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
   onSubmit(): void {
     const localeDefault: CheckboxModel[] = this.formGroup.get('default').value;
     const data: LocaleModel = {
-      icon: this.startPrefixIcon + this.formGroup.get('icon').value + this.endPrefixIcon,
+      icon: this.formGroup.get('icon').value,
       localeDefault: (localeDefault ? true : false),
       localeCode: this.formGroup.get('language').value['value'] ?
                   this.formGroup.get('language').value['value'] : this.languageService.getLocale().localeCode,
