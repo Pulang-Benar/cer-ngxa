@@ -22,6 +22,11 @@ const routes: Routes = [{
         .then(m => m.ExtraWrapperModule),
     },
     {
+      path: 'mgmt/user',
+      loadChildren: () => import('../sys/sys-mgmt-user.module')
+        .then(m => m.SysMgmtUserModule),
+    },
+    {
       path: 'sysconf/parameter',
       loadChildren: () => import('../sys/sys-parameter.module')
         .then(m => m.SysParameterModule),

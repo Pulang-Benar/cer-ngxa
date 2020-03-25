@@ -1,4 +1,4 @@
-import { Component, Input, Optional, Self, Inject, LOCALE_ID } from '@angular/core';
+import { Component, Input, Optional, Self, Inject, LOCALE_ID, EventEmitter, Output } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { NgxaValueAccessor } from '../base/ngxa-value-accessor.component';
 import { CheckboxModel } from './checkbox.model';
@@ -12,6 +12,7 @@ export class NgxaCheckboxComponent extends NgxaValueAccessor<CheckboxModel[]> {
     @Input() colLabel: number = 3;
     @Input() colInput: number = 9;
     @Input() data: CheckboxModel[];
+    @Output() onChecked: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(@Optional() @Self() ngControl: NgControl,
       @Inject(LOCALE_ID) public locale: string) {
@@ -41,5 +42,6 @@ export class NgxaCheckboxComponent extends NgxaValueAccessor<CheckboxModel[]> {
         this.ngControl.control.markAsTouched();
         this.ngControl.control.markAsDirty();
       }
+      this.onChecked.emit(this.value);
     }
 }

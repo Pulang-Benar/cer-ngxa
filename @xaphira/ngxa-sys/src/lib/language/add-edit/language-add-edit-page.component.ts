@@ -43,6 +43,7 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
         this.formGroup.get('default').setValue([{
           selected: true,
         }]);
+        this.formGroup.get('default').disable();
       } else {
         this.formGroup.get('default').setValue([{
           selected: false,
