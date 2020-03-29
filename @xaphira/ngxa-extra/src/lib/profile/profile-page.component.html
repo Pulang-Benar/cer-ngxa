@@ -29,13 +29,31 @@
           [skeleton]="loadingForm"
           formControlName="email">
         </xa-input-text>
+        <xa-input-text
+          [name]="'phoneNumber'"
+          [label]="'Telephone'"
+          [required]="true"
+          [pattern]="patternPhoneNumber"
+          [skeleton]="loadingForm"
+          formControlName="phoneNumber">
+        </xa-input-text>
         <xa-textarea
           [name]="'address'"
           [label]="'Address'"
+          [required]="true"
           [minLength]="minLength"
           [skeleton]="loadingForm"
           formControlName="address">
         </xa-textarea>
+        <xa-select
+          [name]="'country'"
+          [label]="'Country'"
+          [api]="apiSelectCountry"
+          [skeleton]="loadingForm"
+          (onSelect)="onSelectCountry($event)"
+          (onClear)="onClearCountry()"
+          formControlName="country">
+        </xa-select>
         <xa-select
           [name]="'province'"
           [label]="'Province'"
@@ -74,20 +92,6 @@
           [skeleton]="loadingForm"
           formControlName="subDistrict">
         </xa-select>
-        <xa-input-text
-          [name]="'phoneNumber'"
-          [label]="'Telephone'"
-          [pattern]="patternPhoneNumber"
-          [skeleton]="loadingForm"
-          formControlName="phoneNumber">
-        </xa-input-text>
-        <xa-input-text
-          [name]="'mobileNumber'"
-          [label]="'Mobile Phone'"
-          [pattern]="patternPhoneNumber"
-          [skeleton]="loadingForm"
-          formControlName="mobileNumber">
-        </xa-input-text>
         <xa-button-submit
           (onSubmit)="onSubmit()"
           [name]="'Update Profile'"

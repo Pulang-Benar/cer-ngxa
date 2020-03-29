@@ -27,6 +27,8 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   public minLength: number = 5;
   public disabledUpload: boolean = false;
 
+  public apiSelectCountry: HttpBaseModel;
+
   public apiSelectProvince: HttpBaseModel;
   public paramSelectProvince: SelectParamModel[];
 
@@ -47,17 +49,18 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       {
         'name': [],
         'email': [],
+        'phoneNumber': [],
         'address': [null, [Validators.minLength(5)]],
+        'country': [],
         'province': [],
         'city': [],
         'district': [],
         'subDistrict': [],
-        'phoneNumber': [],
-        'mobileNumber': [],
       });
     this.formGroupImage = this.formBuilder.group({
       'image': [],
     });
+    this.apiSelectCountry = this.api['master']['select-country'];
     this.apiSelectProvince = this.api['master']['select-province'];
     this.apiSelectCity = this.api['master']['select-city'];
     this.apiSelectDistrict = this.api['master']['select-district'];
@@ -71,7 +74,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     });
     this.paramSelectProvince = [{
       key: 'country',
-      value: 'IDN',
+      value: 'undefined',
     }];
     this.paramSelectCity = [{
       key: 'province',
@@ -118,6 +121,15 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       );
   }
 
+  onSelectCountry(select: any): void {
+    this.paramSelectProvince = [
+      {
+        key: 'country',
+        value: select ? select.value : 'undefined',
+      },
+    ];
+    this.onClearProvince();
+  }
   onSelectProvince(select: any): void {
     this.paramSelectCity = [
       {
@@ -146,6 +158,14 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     this.onClearDistrict();
   }
 
+  onClearCountry(): void {
+    this.formGroup.patchValue({
+      'province': [],
+      'city': [],
+      'district': [],
+      'subDistrict': [],
+    });
+  }
   onClearProvince(): void {
     this.formGroup.patchValue({
       'city': [],
@@ -197,9 +217,9 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     const data: any = {
       name: this.formGroup.get('name').value,
       email: this.formGroup.get('email').value,
-      address: this.formGroup.get('address').value,
       phoneNumber: this.formGroup.get('phoneNumber').value,
-      mobileNumber: this.formGroup.get('mobileNumber').value,
+      address: this.formGroup.get('address').value,
+      country: this.valueSelect('country'),
       province: this.valueSelect('province'),
       city: this.valueSelect('city'),
       district: this.valueSelect('district'),
@@ -218,11 +238,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
                   case ResponseCode.ERR_SCR0007A.toString():
                     this.formGroup.controls['phoneNumber'].setErrors({
                       'error.pattern.phoneNumber': true,
-                    });
-                    break;
-                  case ResponseCode.ERR_SCR0007B.toString():
-                    this.formGroup.controls['mobileNumber'].setErrors({
-                      'error.pattern.mobileNumber': true,
                     });
                     break;
                   default:
