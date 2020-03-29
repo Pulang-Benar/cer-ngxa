@@ -19,6 +19,7 @@ export { NgxaTableModule } from './lib/table/ngxa-table.module';
 export { NgxaToastrModule } from './lib/toastr/ngxa-toastr.module';
 export { NgxaImageModule } from './lib/image/ngxa-image.module';
 export { NgxaTreeModule } from './lib/tree/ngxa-tree.module';
+export { NgxaLabelModule } from './lib/label/ngxa-label.module';
 
 export { CheckboxModel } from './lib/checkbox/checkbox.model';
 export { RadioModel } from './lib/radio/radio.model';

@@ -35,6 +35,21 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/xa/api/security/vw/get/menus/v.1',
         },
+        'datatable-user': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/security/vw/post/datatable/user/v.1',
+        },
+        'get-profile-base': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/security/trx/auth/profile/v.1',
+        },
+        'get-profile-personal': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/security/trx/auth/profile-personal/v.1',
+        },
     },
     profile: {
         'change-profile': {

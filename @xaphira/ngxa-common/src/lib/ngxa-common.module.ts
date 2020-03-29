@@ -16,6 +16,7 @@ import { NgxaDatePickerModule } from './datepicker/ngxa-datepicker.module';
 import { NgxaButtonModule } from './button/ngxa-button.module';
 import { NgxaImageModule } from './image/ngxa-image.module';
 import { NgxaTreeModule } from './tree/ngxa-tree.module';
+import { NgxaLabelModule } from './label/ngxa-label.module';
 
 const modules = [
   NgxaInputModule,
@@ -34,6 +35,7 @@ const modules = [
   NgxaBaseModule,
   NgxaImageModule,
   NgxaTreeModule,
+  NgxaLabelModule,
 ];
 
 @NgModule({

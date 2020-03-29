@@ -4,19 +4,25 @@ import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule } from '@nebu
 import { NgxaThemeModule } from '@xaphira/ngxa-theme';
 import {
   NgxaInputModule,
-  NgxaCheckBoxModule,
   NgxaButtonModule,
   NgxaBaseModule,
-  NgxaSelectModule,
   NgxaTableModule,
+  NgxaLabelModule,
 } from '@xaphira/ngxa-common';
 import { NgxaMgmtUserRoutingModule } from './ngxa-mgmt-user-routing.module';
 import { MgmtUserComponent } from './ngxa-mgmt-user.component';
-import { MgmtUserListPageComponent } from './list/mgmt-user-list-page.component';
+import { MgmtCiviliansListPageComponent } from './civilians/list/mgmt-civilians-list-page.component';
+import { ManagementUserService } from './services/mgmt-user.service';
+import { MgmtCiviliansDetailPageComponent } from './civilians/detail/mgmt-civilians-detail-page.component';
+import { MgmtAdminListPageComponent } from './admin-regional/list/mgmt-admin-list-page.component';
+import { MgmtAdminDetailPageComponent } from './admin-regional/detail/mgmt-admin-detail-page.component';
 
 const components = [
   MgmtUserComponent,
-  MgmtUserListPageComponent,
+  MgmtCiviliansListPageComponent,
+  MgmtCiviliansDetailPageComponent,
+  MgmtAdminListPageComponent,
+  MgmtAdminDetailPageComponent,
 ];
 
 const modules = [
@@ -28,15 +34,15 @@ const modules = [
   NbDialogModule.forChild(),
   NgxaThemeModule,
   NgxaInputModule,
-  NgxaCheckBoxModule,
   NgxaButtonModule,
   NgxaBaseModule,
-  NgxaSelectModule,
   NgxaTableModule,
+  NgxaLabelModule,
   NgxaMgmtUserRoutingModule,
 ];
 
 const providers = [
+  ManagementUserService,
 ];
 
 const entry_components = [

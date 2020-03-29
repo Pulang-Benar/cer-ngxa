@@ -1,0 +1,35 @@
+<xa-page-outlet [header]="'Admin Regional'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        [add]="false"
+        [delete]="false"
+        [selectionType]="selectionType"
+        (onFilter)="doFilterAdvanced($event)"
+        (onEdit)="onViewDetail($event)"
+        [filterFn]="keyword"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <xa-input-text
+            [name]="'username'"
+            [label]="'Username'"
+            formControlName="username">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'name'"
+            [label]="'Name'"
+            formControlName="name">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'phoneNumber'"
+            [label]="'Phone Number'"
+            formControlName="phoneNumber">
+          </xa-input-text>
+        </form>
+      </xa-datatable>
+    </div>
+  </div>
+</xa-page-outlet>
