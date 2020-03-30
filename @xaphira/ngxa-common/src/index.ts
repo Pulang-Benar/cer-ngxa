@@ -31,3 +31,4 @@ export { NgxaToastrService } from './lib/toastr/services/ngxa-toastr.service';
 export * from './lib/base/animations';
 export * from './lib/select/select.model';
 export * from './lib/table/models/datatable.model';
+export * from './lib/maps/models/leaflet.model';

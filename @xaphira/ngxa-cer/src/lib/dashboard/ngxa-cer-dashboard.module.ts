@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule } from '@nebular/theme';
+import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule, NbWindowModule } from '@nebular/theme';
 import { NgxaThemeModule } from '@xaphira/ngxa-theme';
 import {
   NgxaInputModule,
@@ -12,9 +12,11 @@ import {
 } from '@xaphira/ngxa-common';
 import { NgxaCerDashboardRoutingModule } from './ngxa-cer-dashboard-routing.module';
 import { CerMonitoringComponent } from './monitoring/ngxa-cer-monitoring.component';
+import { CerMonitoringDetailComponent } from './monitoring/detail/ngxa-cer-monitoring-detail.component';
 
 const components = [
   CerMonitoringComponent,
+  CerMonitoringDetailComponent,
 ];
 
 const modules = [
@@ -24,6 +26,7 @@ const modules = [
   NbAlertModule,
   NbIconModule,
   NbDialogModule.forChild(),
+  NbWindowModule.forChild(),
   NgxaThemeModule,
   NgxaInputModule,
   NgxaCheckBoxModule,
@@ -37,6 +40,10 @@ const modules = [
 const providers = [
 ];
 
+const entryComponents = [
+  CerMonitoringDetailComponent,
+];
+
 @NgModule({
   imports: [
     ...modules,
@@ -47,5 +54,8 @@ const providers = [
   providers: [
     ...providers,
   ],
+  entryComponents: [
+    ...entryComponents,
+  ]
 })
 export class NgxaCerDashboardModule { }
