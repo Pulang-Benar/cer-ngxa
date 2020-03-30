@@ -332,6 +332,41 @@
         }
       }
     },
+    "@xaphira/ngxa-cer": {
+      "projectType": "library",
+      "root": "@xaphira/ngxa-cer",
+      "sourceRoot": "@xaphira/ngxa-cer/src",
+      "prefix": "xa",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "@xaphira/ngxa-cer/tsconfig.lib.json",
+            "project": "@xaphira/ngxa-cer/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@xaphira/ngxa-cer/src/test.ts",
+            "tsConfig": "@xaphira/ngxa-cer/tsconfig.spec.json",
+            "karmaConfig": "@xaphira/ngxa-cer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@xaphira/ngxa-cer/tsconfig.lib.json",
+              "@xaphira/ngxa-cer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "@xaphira/ngxa-mock": {
       "projectType": "library",
       "root": "@xaphira/ngxa-mock",

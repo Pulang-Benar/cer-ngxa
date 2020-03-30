@@ -108,6 +108,14 @@
         "../../node_modules/@xaphira/ngxa-sys/src/*",
         "../../@xaphira/ngxa-sys/src/*"
       ],
+      "@xaphira/ngxa-cer": [
+        "../../node_modules/@xaphira/ngxa-cer/src",
+        "../../@xaphira/ngxa-cer/src"
+      ],
+      "@xaphira/ngxa-cer/*": [
+        "../../node_modules/@xaphira/ngxa-cer/src/*",
+        "../../@xaphira/ngxa-cer/src/*"
+      ],
       "@xaphira/ngxa-mock": [
         "../../node_modules/@xaphira/ngxa-mock/src",
         "../../@xaphira/ngxa-mock/src"

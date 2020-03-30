@@ -4,4 +4,4 @@ import { NgxaParameterModule } from '@xaphira/ngxa-sys';
 @NgModule({
   imports: [ NgxaParameterModule ],
 })
-export class SysParameterModule {}
+export class SysParameterWrapperModule {}

@@ -14,27 +14,43 @@ const routes: Routes = [{
     },
     {
       path: 'dashboard',
-      component: PagesComponent,
+      loadChildren: () => import('../cer/cer-dashboard-wrapper.module')
+        .then(m => m.CerDashboardWrapperModule),
+    },
+    {
+      path: 'statistics',
+      loadChildren: () => import('../cer/cer-statistics-wrapper.module')
+        .then(m => m.CerStatisticsWrapperModule),
+    },
+    {
+      path: 'report',
+      loadChildren: () => import('../cer/cer-reports-wrapper.module')
+        .then(m => m.CerReportsWrapperModule),
+    },
+    {
+      path: 'fake-reports',
+      loadChildren: () => import('../cer/cer-fake-wrapper.module')
+        .then(m => m.CerFakeWrapperModule),
+    },
+    {
+      path: 'mgmt/user',
+      loadChildren: () => import('../sys/sys-mgmt-user-wrapper.module')
+        .then(m => m.SysMgmtUserWrapperModule),
+    },
+    {
+      path: 'sysconf/parameter',
+      loadChildren: () => import('../sys/sys-parameter-wrapper.module')
+        .then(m => m.SysParameterWrapperModule),
+    },
+    {
+      path: 'sysconf/language',
+      loadChildren: () => import('../sys/sys-language-wrapper.module')
+        .then(m => m.SysLanguageWrapperModule),
     },
     {
       path: 'user',
       loadChildren: () => import('../extra/extra-wrapper.module')
         .then(m => m.ExtraWrapperModule),
-    },
-    {
-      path: 'mgmt/user',
-      loadChildren: () => import('../sys/sys-mgmt-user.module')
-        .then(m => m.SysMgmtUserModule),
-    },
-    {
-      path: 'sysconf/parameter',
-      loadChildren: () => import('../sys/sys-parameter.module')
-        .then(m => m.SysParameterModule),
-    },
-    {
-      path: 'sysconf/language',
-      loadChildren: () => import('../sys/sys-language.module')
-        .then(m => m.SysLanguageModule),
     },
     {
       path: '',

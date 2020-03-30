@@ -4,4 +4,4 @@ import { NgxaLanguageModule } from '@xaphira/ngxa-sys';
 @NgModule({
   imports: [ NgxaLanguageModule ],
 })
-export class SysLanguageModule {}
+export class SysLanguageWrapperModule {}

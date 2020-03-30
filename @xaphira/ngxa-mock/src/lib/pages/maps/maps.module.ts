@@ -11,7 +11,7 @@ import { NgxaThemeModule } from '@xaphira/ngxa-theme';
   imports: [
     NgxaThemeModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
+      apiKey: 'AIzaSyB3ctAGo_z3FNOVWquijMGBgesM1XlRa-Y',
       libraries: ['places'],
     }),
     LeafletModule.forRoot(),

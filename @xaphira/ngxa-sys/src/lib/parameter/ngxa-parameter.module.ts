@@ -7,7 +7,6 @@ import {
   NgxaCheckBoxModule,
   NgxaButtonModule,
   NgxaBaseModule,
-  NgxaEditorModule,
   NgxaSelectModule,
   NgxaTableModule,
 } from '@xaphira/ngxa-common';

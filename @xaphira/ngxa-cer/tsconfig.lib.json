@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "../../out-tsc/ngxa-common",
+    "outDir": "../../out-tsc/ngxa-cer",
     "baseUrl": "./",
     "sourceMap": true,
     "declaration": false,
@@ -23,6 +23,12 @@
       "es2018"
     ],
     "paths": {
+      "@angular/*": [
+        "../../node_modules/@angular/*"
+      ],
+      "@nebular/*": [
+        "../../node_modules/@nebular/*"
+      ],
       "@xaphira/core": [
         "../../node_modules/@xaphira/core"
       ],
@@ -58,6 +64,12 @@
       ],
       "@xaphira/ngxa-theme/styles/*": [
         "../../node_modules/@xaphira/ngxa-theme/src/lib/styles/*"
+      ],
+      "@xaphira/ngxa-common": [
+        "../../node_modules/@xaphira/ngxa-common"
+      ],
+      "@xaphira/ngxa-common/*": [
+        "../../node_modules/@xaphira/ngxa-common/*"
       ]
     }
   },
@@ -73,5 +85,9 @@
     "src/test.ts",
     "**/*.spec.ts",
     "../../dist/**"
+  ],
+  "include": [
+    "src/**/*",
+    "**/src/**/*"
   ]
 }
