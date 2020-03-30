@@ -21,14 +21,14 @@ export class NgxaMapsLeafletComponent implements OnInit {
   @Input() public layers: any[] = [];
   @Input() public set markersFn(markers: L.LatLngExpression[]) {
     markers.forEach(marker => {
-      this.layers.push(L.marker(marker).on('click', this.markerClick));
+      this.layers.push(L.marker(marker).on('click', this.markerClick.bind(this)));
     });
   }
   @Output() public onMarkerClick: EventEmitter<L.LatLng> = new EventEmitter<L.LatLng>();
 
   ngOnInit(): void {
     this.markersFn = [
-      [ -6.3401758, 106.6426797 ]
+      [ -6.3401758, 106.6426797 ],
     ];
   }
 
