@@ -1,0 +1,12 @@
+<nb-icon *ngIf="showDetail" [icon]="'arrow-forward-outline'"
+         pack="eva"
+         class="show-hide-toggle"
+         (click)="toggleDetail()">
+</nb-icon>
+<div class="slide-out-container"
+     [class.expanded]="showDetail"
+     [class.collapsed]="!showDetail">
+  <div class="content-wrapper">
+    <ng-content></ng-content>
+  </div>
+</div>

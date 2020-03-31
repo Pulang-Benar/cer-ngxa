@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@xaphira/ngxa-auth';
-import { CerMonitoringComponent } from './monitoring/ngxa-cer-monitoring.component';
+import { NgxaCerMonitoringPageComponent } from './monitoring/ngxa-cer-monitoring-page.component';
 
 const routes: Routes = [{
   path: '',
-  component: CerMonitoringComponent,
+  component: NgxaCerMonitoringPageComponent,
   canActivateChild: [AuthGuardChildService],
 }];
 

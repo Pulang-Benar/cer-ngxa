@@ -1,0 +1,10 @@
+<xa-page-outlet [header]="'Dashboard of Emergency Report'">
+    <xa-maps-leaflet
+        [markersFn]="markers"
+        (onMarkerClick)="onMarker($event)">
+    </xa-maps-leaflet>
+</xa-page-outlet>
+<xa-cer-slide-out [showDetail]="showDetail" (onToggle)="onToggleDetail($event)">
+    <xa-cer-monitoring-detail [marker]="markerSelected">
+    </xa-cer-monitoring-detail>
+</xa-cer-slide-out>

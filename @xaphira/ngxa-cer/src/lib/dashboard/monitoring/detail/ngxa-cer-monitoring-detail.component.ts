@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
-import { NbWindowRef } from '@nebular/theme';
+import { Component, Input } from '@angular/core';
+import { LeafletModel } from '@xaphira/ngxa-common';
 
 @Component({
+  selector: 'xa-cer-monitoring-detail',
   templateUrl: './ngxa-cer-monitoring-detail.component.html',
   styleUrls: ['ngxa-cer-monitoring-detail.component.scss'],
 })
-export class CerMonitoringDetailComponent {
-  constructor(public windowRef: NbWindowRef) {}
+export class NgxaCerMonitoringDetailComponent {
 
-  close() {
-    this.windowRef.close();
-  }
+  @Input() public marker: LeafletModel;
+
 }

@@ -33,6 +33,7 @@ export class NgxaMapsLeafletComponent implements OnInit {
           iconSize: [27.5, 40],
           iconAnchor: [20, 40],
           popupAnchor: [0, -40],
+          className: mark.className,
         }),
         title: mark.title,
         alt: mark.alt,
@@ -42,13 +43,6 @@ export class NgxaMapsLeafletComponent implements OnInit {
   @Output() public onMarkerClick: EventEmitter<LeafletModel> = new EventEmitter<LeafletModel>();
 
   ngOnInit(): void {
-    this.markersFn = {
-      markers: [
-        [ -6.342498, 106.639859 ],
-      ],
-      title: 'Test',
-      alt: 'test',
-    };
   }
 
   public markerClick(event): void {
