@@ -97,6 +97,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         });
         this.swPush.messages.subscribe((message) => {
           console.log(message);
+          console.log(JSON.parse(message['data']));
         });
         this.swPush.notificationClicks.subscribe(({action, notification}) => {
           console.log("click");
