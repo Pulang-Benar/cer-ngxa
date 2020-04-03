@@ -20,13 +20,13 @@ import {
 } from '@nebular/theme';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { NgxaCerModule } from '@xaphira/ngxa-cer';
 import { CoreModule } from '@xaphira/core';
 import { OAUTH_INFO, SharedModule, ENVIRONMENT, API } from '@xaphira/shared';
 import { UtilsModule } from '@xaphira/utils';
 import { NgxaStorageModule } from '@xaphira/ngxa-storage';
 import { NgxaAuthModule } from '@xaphira/ngxa-auth';
 import { NgxaThemeModule } from '@xaphira/ngxa-theme';
+import { NgxaCerModule } from '@xaphira/ngxa-cer';
 import { MockCoreModule } from '@xaphira/ngxa-mock';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

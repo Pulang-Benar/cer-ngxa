@@ -4,9 +4,11 @@ import { PANIC_INDEXED_DB, PANIC } from '@xaphira/shared';
 import { PanicIndexedDBService } from './storage/panic-indexeddb.service';
 import { PanicService } from './services/panic.service';
 
-const providers = [
+const CER_PROVIDERS = [
   { provide: PANIC_INDEXED_DB, useClass: PanicIndexedDBService },
   { provide: PANIC, useClass: PanicService },
+  PanicIndexedDBService,
+  PanicService,
 ];
 
 @NgModule({
@@ -22,7 +24,7 @@ export class NgxaCerModule {
     return <ModuleWithProviders>{
       ngModule: NgxaCerModule,
       providers: [
-        ...providers,
+        ...CER_PROVIDERS,
       ],
     };
   }

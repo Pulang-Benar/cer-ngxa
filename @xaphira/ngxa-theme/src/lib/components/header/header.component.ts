@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { NbMediaBreakpointsService, NbSidebarService, NbThemeService, NbMenuItem } from '@nebular/theme';
+import { SwPush } from '@angular/service-worker';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { NbMediaBreakpointsService, NbSidebarService, NbThemeService, NbMenuItem } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import {
   IndexedDBFactoryService,
@@ -23,7 +24,6 @@ import {
   SecurityResourceModel,
 } from '@xaphira/shared';
 import { LayoutService } from '../../services/layout.service';
-import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'xa-header',
@@ -99,8 +99,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
           }
         });
         this.swPush.messages.subscribe((message: {notification: NotificationOptions}) => {
-          if (message.notification.tag === 'panic') {
-            const data: any = JSON.parse(message.notification.data);
+          const data: any = JSON.parse(message.notification.data);
+          if (data['panicCode'] || message.notification.tag === 'panic') {
             this.panicService.notifyPanic(data);
           }
         });

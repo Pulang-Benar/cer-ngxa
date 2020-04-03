@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { PanicFactoryService } from '@xaphira/shared';
-import { PanicIndexedDBService } from '../storage/panic-indexeddb.service';
+import { PanicFactoryService, PANIC_INDEXED_DB, IndexedDBFactoryService } from '@xaphira/shared';
 
-@Injectable({providedIn : 'root'})
+@Injectable()
 export class PanicService implements PanicFactoryService {
 
     private loaderPanicSubject$ = new Subject<string>();
 
-    constructor(private panicIndexedDB: PanicIndexedDBService) {
+    constructor(@Inject(PANIC_INDEXED_DB) private panicIndexedDB: IndexedDBFactoryService) {
     }
 
     public notifyPanic(data: any): void {

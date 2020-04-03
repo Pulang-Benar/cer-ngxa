@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LeafletModel } from '@xaphira/ngxa-common';
+import { PANIC, PanicFactoryService } from '@xaphira/shared';
 import { PanicService } from '../../services/panic.service';
 
 @Component({
@@ -16,11 +17,10 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
   public markerSelected: LeafletModel = new LeafletModel();
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private panicService: PanicService) {
+  constructor(@Inject(PANIC) private panicService: PanicFactoryService) {
     this.panicService.onCheckPanic()
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        console.log('test');
         this.getAllPanicStorage();
     });
   }
@@ -42,7 +42,7 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
             [ data['latestLatitude'], data['latestLongitude'] ],
           ],
           title: data['name'],
-          alt: data['phoneNumber'],
+          alt: data['panicCode'],
           className: 'pulse',
         };
       });
