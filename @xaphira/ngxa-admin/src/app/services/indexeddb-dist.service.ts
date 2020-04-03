@@ -17,6 +17,11 @@ export class IndexedDBDistributionService {
         db.createObjectStore('#xa-settings');
       },
     });
+    await idb.openDB<any>('cer', 1, {
+      async upgrade(db: IDBPDatabase<any>, oldVersion: number, newVersion: number, transaction: IDBPTransaction<any>) {
+        db.createObjectStore('#cer-panic');
+      },
+    });
   }
 
 }

@@ -12,9 +12,12 @@ export {
     AUTH_INDEXED_DB,
     PROFILE_INDEXED_DB,
     SETTINGS_INDEXED_DB,
+    PANIC_INDEXED_DB,
 } from './lib/providers/storage.provider';
+export { PANIC } from './lib/providers/cer/panic.provider';
 
 export { HttpCommonService } from './lib/services/http-common.service';
 export { HttpFactoryService } from './lib/services/http-factory.service';
 export { IndexedDBFactoryService } from './lib/services/indexeddb-factory.service';
 export { IndexedDBEncFactoryService } from './lib/services/indexeddb-enc-factory.service';
+export { PanicFactoryService } from './lib/services/cer/panic-factory.service';

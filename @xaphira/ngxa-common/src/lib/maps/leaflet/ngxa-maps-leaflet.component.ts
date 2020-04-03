@@ -25,20 +25,23 @@ export class NgxaMapsLeafletComponent implements OnInit {
   };
   @Input() public layers: any[] = [];
   @Input() public set markersFn(mark: LeafletModel) {
-    mark.markers.forEach(marker => {
-      this.layers.push(L.marker(marker, {
-        icon: L.icon({
-          iconUrl: '/assets/map/marker-icon.png',
-          shadowUrl: '/assets/map/marker-shadow.png',
-          iconSize: [27.5, 40],
-          iconAnchor: [20, 40],
-          popupAnchor: [0, -40],
-          className: mark.className,
-        }),
-        title: mark.title,
-        alt: mark.alt,
-      }).on('click', this.markerClick.bind(this)));
-    });
+    if (mark) {
+      this.layers = [];
+      mark.markers.forEach(marker => {
+        this.layers.push(L.marker(marker, {
+          icon: L.icon({
+            iconUrl: '/assets/map/marker-icon.png',
+            shadowUrl: '/assets/map/marker-shadow.png',
+            iconSize: [27.5, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40],
+            className: mark.className,
+          }),
+          title: mark.title,
+          alt: mark.alt,
+        }).on('click', this.markerClick.bind(this)));
+      });
+    }
   }
   @Output() public onMarkerClick: EventEmitter<LeafletModel> = new EventEmitter<LeafletModel>();
 

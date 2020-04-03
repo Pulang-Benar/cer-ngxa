@@ -20,57 +20,70 @@ export class IndexedDBService<T> {
     return this.$dbPromise = idb.openDB<T>(dbname, version);
   }
 
+  public getAllOf(): Observable<any> {
+    const result$: Subject<any> = new Subject<any>();
+    this.getAllVal(this.storeName).then((value: any) => {
+      result$.next(value);
+    });
+    return result$.asObservable();
+  }
   public getOf(key): Observable<any> {
     const result$: Subject<any> = new Subject<any>();
-    this.getKeyval(key, this.storeName).then((value: any) => {
+    this.getKeyVal(key, this.storeName).then((value: any) => {
       result$.next(value);
     });
     return result$.asObservable();
   }
   public putOf(key, val): Observable<any> {
     const result$: Subject<any> = new Subject<any>();
-    this.putKeyval(key, val, this.storeName).then((value: any) => {
+    this.putKeyVal(key, val, this.storeName).then((value: any) => {
       result$.next(value);
     });
     return result$.asObservable();
   }
   public removeOf(key): Observable<void> {
     const result$: Subject<any> = new Subject<any>();
-    this.removeKeyval(key, this.storeName).then((value: any) => {
+    this.removeKeyVal(key, this.storeName).then((value: any) => {
       result$.next(value);
     });
     return result$.asObservable();
   }
 
+  public getAll(): Promise<StoreValue<T, any>[]> {
+    return this.getAllVal(this.storeName);
+  }
   public get(key): Promise<StoreValue<T, any>> {
-    return this.getKeyval(this.storeName, key);
+    return this.getKeyVal(this.storeName, key);
   }
   public put(key, val): Promise<StoreKey<T, any>> {
-    return this.putKeyval(this.storeName, key, val);
+    return this.putKeyVal(this.storeName, key, val);
   }
   public remove(key): Promise<void> {
-    return this.removeKeyval(this.storeName, key);
+    return this.removeKeyVal(this.storeName, key);
   }
   public clearAll(): Promise<void> {
-    return this.clearAllKeyval(this.storeName);
+    return this.clearAllKeyVal(this.storeName);
   }
   public keys(): Promise<StoreKey<T, any>[]> {
-    return this.keysKeyval(this.storeName);
+    return this.keysKeyVal(this.storeName);
   }
 
-  public async getKeyval(storeName: any, key): Promise<StoreValue<T, any>> {
+  public async getAllVal(storeName: any): Promise<StoreValue<T, any>[]> {
+    return (await this.$dbPromise).getAll(storeName);
+  }
+  public async getKeyVal(storeName: any, key): Promise<StoreValue<T, any>> {
     return (await this.$dbPromise).get(storeName, key);
   }
-  public async putKeyval(storeName: any, key, val): Promise<StoreKey<T, any>> {
+  public async putKeyVal(storeName: any, key, val): Promise<StoreKey<T, any>> {
     return (await this.$dbPromise).put(storeName, val, key);
   }
-  public async removeKeyval(storeName: any, key): Promise<void> {
+  public async removeKeyVal(storeName: any, key): Promise<void> {
     return (await this.$dbPromise).delete(storeName, key);
   }
-  public async clearAllKeyval(storeName: any): Promise<void> {
+  public async clearAllKeyVal(storeName: any): Promise<void> {
     return (await this.$dbPromise).clear(storeName);
   }
-  public async keysKeyval(storeName: any): Promise<StoreKey<T, any>[]> {
+  public async keysKeyVal(storeName: any): Promise<StoreKey<T, any>[]> {
     return (await this.$dbPromise).getAllKeys(storeName);
   }
 

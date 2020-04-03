@@ -1,27 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { NbWindowService } from '@nebular/theme';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { LeafletModel } from '@xaphira/ngxa-common';
+import { PanicService } from '../../services/panic.service';
 
 @Component({
   selector: 'xa-cer-monitoring',
   styleUrls: ['./ngxa-cer-monitoring-page.component.scss'],
   templateUrl: './ngxa-cer-monitoring-page.component.html',
 })
-export class NgxaCerMonitoringPageComponent implements OnInit {
+export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   public showDetail: boolean = false;
   public markers: LeafletModel;
   public markerSelected: LeafletModel = new LeafletModel();
+  private destroy$: Subject<void> = new Subject<void>();
+
+  constructor(private panicService: PanicService) {
+    this.panicService.onCheckPanic()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        console.log('test');
+        this.getAllPanicStorage();
+    });
+  }
 
   ngOnInit(): void {
-    this.markers = {
-      markers: [
-        [ -6.342498, 106.639859 ],
-      ],
-      title: 'Ridla Fadilah',
-      alt: '8e9457c7-cc1d-4c52-a9ac-dd5c5938cc93',
-      className: 'pulse',
-    };
+    this.getAllPanicStorage();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private getAllPanicStorage(): void {
+    this.panicService.getAllPanic().subscribe((values: any[]) => {
+      values.forEach((data: any) => {
+        this.markers = {
+          markers: [
+            [ data['latestLatitude'], data['latestLongitude'] ],
+          ],
+          title: data['name'],
+          alt: data['phoneNumber'],
+          className: 'pulse',
+        };
+      });
+    });
   }
 
   public onMarker(data: LeafletModel): void {

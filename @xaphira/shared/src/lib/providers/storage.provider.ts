@@ -10,3 +10,6 @@ new InjectionToken<IndexedDBFactoryService>('Profile IndexedDB Resource');
 
 export const SETTINGS_INDEXED_DB: InjectionToken<IndexedDBFactoryService> =
 new InjectionToken<IndexedDBFactoryService>('Settings IndexedDB Resource');
+
+export const PANIC_INDEXED_DB: InjectionToken<IndexedDBFactoryService> =
+new InjectionToken<IndexedDBFactoryService>('Panic IndexedDB Resource');

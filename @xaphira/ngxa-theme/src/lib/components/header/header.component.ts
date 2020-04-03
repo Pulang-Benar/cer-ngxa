@@ -9,11 +9,13 @@ import {
   IndexedDBEncFactoryService,
   AUTH_INDEXED_DB,
   PROFILE_INDEXED_DB,
+  PANIC,
   USER_INFO,
   User,
   UserInfo,
   HTTP_SERVICE,
   HttpFactoryService,
+  PanicFactoryService,
   APIModel,
   API,
   ApiBaseResponse,
@@ -66,6 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               @Inject(USER_INFO) private userService: UserInfo,
               @Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBEncFactoryService,
               @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService,
+              @Inject(PANIC) private panicService: PanicFactoryService,
               @Inject(HTTP_SERVICE) private http: HttpFactoryService,
               @Inject(API) private api: APIModel,
               @Inject(OAUTH_INFO) private oauthResource: SecurityResourceModel,
@@ -95,12 +98,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
             });
           }
         });
-        this.swPush.messages.subscribe((message) => {
-          console.log(message);
-          console.log(JSON.parse(message['notification']['data']));
+        this.swPush.messages.subscribe((message: {notification: NotificationOptions}) => {
+          if (message.notification.tag === 'panic') {
+            const data: any = JSON.parse(message.notification.data);
+            this.panicService.notifyPanic(data);
+          }
         });
         this.swPush.notificationClicks.subscribe(({action, notification}) => {
-          console.log("click");
           console.log(action);
           console.log(notification);
         });

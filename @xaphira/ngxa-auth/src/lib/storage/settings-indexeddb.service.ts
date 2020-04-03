@@ -1,5 +1,4 @@
 import { Injectable, Injector } from '@angular/core';
-import { Observable, from } from 'rxjs';
 import { IndexedDBService } from '@xaphira/ngxa-storage';
 import { oauthInfoModels, IndexedDBFactoryService, TypeDataOauth } from '@xaphira/shared';
 import { TranslateService } from '@ngx-translate/core';
