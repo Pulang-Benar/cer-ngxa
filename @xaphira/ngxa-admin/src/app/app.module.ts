@@ -19,6 +19,8 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgxaCerModule } from '@xaphira/ngxa-cer';
 import { CoreModule } from '@xaphira/core';
 import { OAUTH_INFO, SharedModule, ENVIRONMENT, API } from '@xaphira/shared';
 import { UtilsModule } from '@xaphira/utils';
@@ -32,7 +34,6 @@ import { environment } from '../environments/environment';
 import { apiPath } from '../configs/api.config';
 import { oauthResource } from '../configs/security.config';
 import { IndexedDBDistributionService } from './services/indexeddb-dist.service';
-import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,6 +60,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     UtilsModule.forRoot(),
     NgxaStorageModule.forRoot(),
     NgxaAuthModule.forRoot(),
+    NgxaCerModule.forRoot(),
     /**
      * Mock Service & Data To Be Delete
      **/

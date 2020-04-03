@@ -10,7 +10,6 @@ import {
   NgxaSelectModule,
   NgxaMapsModule,
 } from '@xaphira/ngxa-common';
-import { NgxaCerModule } from '../ngxa-cer.module';
 import { NgxaCerDashboardRoutingModule } from './ngxa-cer-dashboard-routing.module';
 import { NgxaCerMonitoringPageComponent } from './monitoring/ngxa-cer-monitoring-page.component';
 import { NgxaCerMonitoringDetailComponent } from './monitoring/detail/ngxa-cer-monitoring-detail.component';
@@ -37,7 +36,6 @@ const modules = [
   NgxaBaseModule,
   NgxaSelectModule,
   NgxaMapsModule,
-  NgxaCerModule.forRoot(),
   NgxaCerDashboardRoutingModule,
 ];
 

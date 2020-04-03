@@ -251,6 +251,7 @@
     "@xaphira/ngxa-storage": "file:dist/@xaphira/ngxa-storage/xaphira-ngxa-storage-0.0.1.tgz",
     "@xaphira/ngxa-sys": "file:dist/@xaphira/ngxa-sys/xaphira-ngxa-sys-0.0.1.tgz",
     "@xaphira/ngxa-theme": "file:dist/@xaphira/ngxa-theme/xaphira-ngxa-theme-0.0.1.tgz",
+    "@xaphira/shared": "file:dist/@xaphira/shared/xaphira-shared-0.0.1.tgz",
     "@xaphira/utils": "file:dist/@xaphira/utils/xaphira-utils-0.0.1.tgz"
   },
   "cordova": {
