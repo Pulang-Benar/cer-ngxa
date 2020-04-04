@@ -179,15 +179,11 @@ export const apiPath: APIModel = {
             path: '/xa/api/notification/push/subscribe/v.1',
         },
     },
-    pacs: {
-        sample: {
-            server: environment.host.pacs,
+    panic: {
+        'get-allpanic': {
+            server: environment.host.notification,
             method: HttpMethod.GET,
-            path: '/RIP-CPU/rip-pacs/master/data/sample.zip',
-            file: {
-                filename : 'sample',
-                extension : '.zip',
-            },
+            path: '/xa/api/panic/vw/auth/panic/v.1',
         },
     },
 };

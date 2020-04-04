@@ -16,6 +16,16 @@ export class PanicService implements PanicFactoryService {
         });
     }
 
+    public putAllPanic(datas: any[]): void {
+        datas.forEach(data => {
+            this.panicIndexedDB.put(data['panicCode'], data).then();
+        });
+    }
+
+    public clearAllPanic(): Promise<void> {
+        return this.panicIndexedDB.clearAll();
+    }
+
     public getPanic(panicCode: string): any {
         return this.panicIndexedDB.getOf(panicCode);
     }
