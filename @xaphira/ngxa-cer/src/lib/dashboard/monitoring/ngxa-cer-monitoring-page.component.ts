@@ -40,7 +40,6 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   private getAllPanicServer(): void {
     this.http.HTTP_AUTH(this.api['panic']['get-allpanic']).subscribe((values: any[]) => {
-      console.log(values);
       values.forEach((data: any) => {
         this.markers = {
           markers: [
