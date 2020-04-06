@@ -8,7 +8,7 @@ export interface PanicFactoryService {
 
   clearAllPanic(): Promise<void>;
 
-  getPanic(panicCode: string): Observable<any>;
+  getPanic(panicCode: string): Promise<any>;
 
   getAllPanic(): Observable<any[]>;
 

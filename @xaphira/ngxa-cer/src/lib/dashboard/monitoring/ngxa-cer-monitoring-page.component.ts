@@ -3,7 +3,6 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LeafletModel } from '@xaphira/ngxa-common';
 import { PANIC, PanicFactoryService, HttpFactoryService, HTTP_SERVICE, API, APIModel } from '@xaphira/shared';
-import { PanicService } from '../../services/panic.service';
 
 @Component({
   selector: 'xa-cer-monitoring',
@@ -14,7 +13,7 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   public showDetail: boolean = false;
   public markers: LeafletModel;
-  public markerSelected: LeafletModel = new LeafletModel();
+  public markerSelected: LeafletModel;
   private destroy$: Subject<void> = new Subject<void>();
   private http: HttpFactoryService;
   private api: APIModel;
@@ -50,11 +49,13 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
           className: 'pulse',
         };
       });
-      if (values.length) {
+      try {
         this.panicService.clearAllPanic().then(() => {
-          this.panicService.putAllPanic(values);
+          if (values.length) {
+            this.panicService.putAllPanic(values);
+          }
         });
-      }
+      } catch (error) {}
     });
   }
 

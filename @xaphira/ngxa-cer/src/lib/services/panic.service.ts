@@ -26,8 +26,8 @@ export class PanicService implements PanicFactoryService {
         return this.panicIndexedDB.clearAll();
     }
 
-    public getPanic(panicCode: string): any {
-        return this.panicIndexedDB.getOf(panicCode);
+    public getPanic(panicCode: string): Promise<any> {
+        return this.panicIndexedDB.get(panicCode);
     }
 
     public getAllPanic(): Observable<any[]> {
