@@ -7,11 +7,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NgxaCerSlideOutComponent {
 
-  @Input() public showDetail: boolean = false;
+  @Input() public showInfo: boolean = false;
   @Output() public onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   toggleDetail() {
-    this.showDetail = !this.showDetail;
-    this.onToggle.emit(this.showDetail);
+    this.showInfo = !this.showInfo;
+    this.onToggle.emit(this.showInfo);
   }
 }

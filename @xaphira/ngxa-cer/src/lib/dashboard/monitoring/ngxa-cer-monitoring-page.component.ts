@@ -11,7 +11,7 @@ import { PANIC, PanicFactoryService, HttpFactoryService, HTTP_SERVICE, API, APIM
 })
 export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
-  public showDetail: boolean = false;
+  public showInfo: boolean = false;
   public markers: LeafletModel;
   public markerSelected: LeafletModel;
   private destroy$: Subject<void> = new Subject<void>();
@@ -76,11 +76,11 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   public onMarker(data: LeafletModel): void {
     this.markerSelected = data;
-    this.showDetail = true;
+    this.showInfo = true;
   }
 
-  public onToggleDetail(showDetail: boolean): void {
-    this.showDetail = showDetail;
+  public onToggleInfo(showInfo: boolean): void {
+    this.showInfo = showInfo;
   }
 
 }

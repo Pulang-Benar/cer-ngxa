@@ -9,16 +9,21 @@ import {
   NgxaBaseModule,
   NgxaSelectModule,
   NgxaMapsModule,
+  NgxaTableModule,
 } from '@xaphira/ngxa-common';
 import { NgxaCerDashboardRoutingModule } from './ngxa-cer-dashboard-routing.module';
 import { NgxaCerMonitoringPageComponent } from './monitoring/ngxa-cer-monitoring-page.component';
 import { NgxaCerMonitoringDetailComponent } from './monitoring/detail/ngxa-cer-monitoring-detail.component';
 import { NgxaCerSlideOutComponent } from './monitoring/slide-out/ngxa-cer-slide-out.component';
+import { NgxaCerMonitoringInfoComponent } from './monitoring/info/ngxa-cer-monitoring-info.component';
+import { NgxaDashboardComponent } from './ngxa-dashboard.component';
 
 const components = [
+  NgxaDashboardComponent,
   NgxaCerMonitoringPageComponent,
-  NgxaCerMonitoringDetailComponent,
+  NgxaCerMonitoringInfoComponent,
   NgxaCerSlideOutComponent,
+  NgxaCerMonitoringDetailComponent,
 ];
 
 const modules = [
@@ -36,6 +41,7 @@ const modules = [
   NgxaBaseModule,
   NgxaSelectModule,
   NgxaMapsModule,
+  NgxaTableModule,
   NgxaCerDashboardRoutingModule,
 ];
 

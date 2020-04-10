@@ -1,0 +1,21 @@
+@import '~@xaphira/ngxa-theme/styles/themes';
+
+@include nb-install-component() {
+
+  .civilians-emergency {
+    width: 100%;
+    z-index: 999;
+  }
+
+  .civilians-body {
+    margin: 2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .details-right {
+    right: 0;
+    position: absolute;
+    margin: 2rem 1rem;
+  }
+
+}
