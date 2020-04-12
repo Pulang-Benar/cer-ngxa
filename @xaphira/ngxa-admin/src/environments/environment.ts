@@ -37,10 +37,7 @@ export const environment = {
       host: 'localhost',
       port: 8085,
     },
-    pacs: {
-      host: 'raw.githubusercontent.com',
-    },
-    sample: {
+    panic: {
       protocol: 'http',
       host: 'localhost',
       port: 8085,

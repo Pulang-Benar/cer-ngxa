@@ -1,0 +1,21 @@
+@import '~@xaphira/ngxa-theme/styles/themes';
+
+@include nb-install-component() {
+
+  .civilians-emergency {
+    padding-bottom: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .civilians-body {
+    font-size: 0.75rem;
+  }
+
+  .label-body {
+    color: #8e9196;
+    font-family: Open Sans, sans-serif;
+    line-height: 1rem;
+    font-weight: 700;
+  }
+
+}

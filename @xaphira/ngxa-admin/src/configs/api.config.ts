@@ -181,9 +181,14 @@ export const apiPath: APIModel = {
     },
     panic: {
         'get-allpanic': {
-            server: environment.host.notification,
+            server: environment.host.panic,
             method: HttpMethod.GET,
             path: '/xa/api/panic/vw/auth/panic/v.1',
+        },
+        'datatable-panic-detail': {
+            server: environment.host.panic,
+            method: HttpMethod.POST,
+            path: '/xa/api/panic/vw/post/datatable/panic-detail/v.1',
         },
     },
 };

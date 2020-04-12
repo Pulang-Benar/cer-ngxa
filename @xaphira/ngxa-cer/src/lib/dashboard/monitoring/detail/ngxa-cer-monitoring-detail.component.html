@@ -1,15 +1,71 @@
 <xa-page-outlet [url]="'/app/dashboard'" [header]="'Emergency Report Detail'">
-    <div class="row">
-      <div class="col-md-12 col-lg-12 col-xxxl-6">
-        <xa-datatable
-          [api]="apiPath"
-          [filters]="filters"
-          [add]="false"
-          [delete]="false"
-          [selectionType]="selectionType"
-          [filterFn]="keyword"
-          [columns]="columns">
-        </xa-datatable>
+  <div class="civilians-emergency">
+    <div class="civilians-body">
+      <div class="form-group row">
+        <div class="col-sm-3 col-md-3 col-sm-3">
+            <span class="label-body">{{'Name' | translate}}</span>
+        </div>
+        <div class="col-sm-9 col-md-9 col-sm-9">
+            <span>{{data.name}}</span>
+        </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-3 col-md-3 col-sm-3">
+              <span class="label-body">{{'ID Number' | translate}}</span>
+          </div>
+          <div class="col-sm-7 col-md-7 col-sm-7">
+              <span>{{data.idNumber}}</span>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-3 col-md-3 col-sm-3">
+              <span class="label-body">{{'Gender' | translate}}</span>
+          </div>
+          <div class="col-sm-7 col-md-7 col-sm-7">
+              <span>{{data.gender}}</span>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-3 col-md-3 col-sm-3">
+              <span class="label-body">{{'Age' | translate}}</span>
+          </div>
+          <div class="col-sm-7 col-md-7 col-sm-7">
+              <span>{{data.age + ' '}}{{'Years' | translate}}</span>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-3 col-md-3 col-sm-3">
+              <span class="label-body">{{'Phone Number' | translate}}</span>
+          </div>
+          <div class="col-sm-7 col-md-7 col-sm-7">
+              <span>{{data.phoneNumber}}</span>
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="col-sm-3 col-md-3 col-sm-3">
+              <span class="label-body">{{'Created Date' | translate}}</span>
+          </div>
+          <div class="col-sm-7 col-md-7 col-sm-7">
+              <span>{{data.createdDate}}</span>
+          </div>
       </div>
     </div>
+    <div class="civilians-footer">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [filters]="filters"
+        [add]="false"
+        [delete]="false"
+        [filter]="false"
+        [selectionType]="selectionType"
+        [filterFn]="keyword"
+        [columns]="columns">
+      </xa-datatable>
+    </div>
+  </div>
 </xa-page-outlet>  
