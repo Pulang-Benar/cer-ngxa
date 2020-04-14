@@ -45,7 +45,7 @@ const providers = [
   LanguageService,
 ];
 
-const entry_components = [
+const entryComponents = [
   DialogFlagComponent,
 ];
 
@@ -60,7 +60,7 @@ const entry_components = [
     ...providers,
   ],
   entryComponents: [
-    ...entry_components,
+    ...entryComponents,
   ],
 })
 export class NgxaLanguageModule { }

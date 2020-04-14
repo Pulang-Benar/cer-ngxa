@@ -16,7 +16,9 @@ export interface Keyword {
 }
 
 export interface DatatableColumn extends TableColumn {
-    type?: 'text' | 'html' | 'icon';
+    type?: 'text' | 'html' | 'icon' | 'button' | 'custom';
+    button?: string;
+    buttonStatus?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
 }
 
 export class DatatableParamModel {

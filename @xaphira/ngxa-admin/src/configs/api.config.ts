@@ -166,6 +166,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/xa/api/file/vw/get/photo-profile/v.1',
         },
+        'evidence': {
+            server: environment.host.file,
+            method: HttpMethod.GET,
+            path: '/xa/api/file/vw/get/evidence/v.1',
+        },
     },
     notification: {
         'send-broadcast': {

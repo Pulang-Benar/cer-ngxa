@@ -2,20 +2,16 @@
 
 @include nb-install-component() {
 
-  .civilians-emergency {
-    padding-bottom: 1rem;
-    margin: 0 0.5rem;
-  }
+    .split-row {
+        border-bottom: 1px solid nb-theme(divider-color);
+        margin-bottom: 1rem;
+    }
 
-  .civilians-body {
-    font-size: 0.75rem;
-  }
-
-  .label-body {
-    color: #8e9196;
-    font-family: Open Sans, sans-serif;
-    line-height: 1rem;
-    font-weight: 700;
-  }
+    .photo-profile {
+        height: 225px;
+        width: 225px;
+        background-size: cover;
+        margin: 20px auto;
+    }
 
 }

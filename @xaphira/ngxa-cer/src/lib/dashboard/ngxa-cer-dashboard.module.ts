@@ -10,6 +10,7 @@ import {
   NgxaSelectModule,
   NgxaMapsModule,
   NgxaTableModule,
+  NgxaLabelModule,
 } from '@xaphira/ngxa-common';
 import { NgxaCerDashboardRoutingModule } from './ngxa-cer-dashboard-routing.module';
 import { NgxaCerMonitoringPageComponent } from './monitoring/ngxa-cer-monitoring-page.component';
@@ -17,13 +18,18 @@ import { NgxaCerMonitoringDetailComponent } from './monitoring/detail/ngxa-cer-m
 import { NgxaCerSlideOutComponent } from './monitoring/slide-out/ngxa-cer-slide-out.component';
 import { NgxaCerMonitoringInfoComponent } from './monitoring/info/ngxa-cer-monitoring-info.component';
 import { NgxaDashboardComponent } from './ngxa-dashboard.component';
+import { NgxaCerDatatableComponent } from './monitoring/detail/datatable/ngxa-cer-datatable.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxaCerMonitoringPreviewComponent } from './monitoring/preview/ngxa-cer-monitoring-preview.component';
 
 const components = [
   NgxaDashboardComponent,
   NgxaCerMonitoringPageComponent,
   NgxaCerMonitoringInfoComponent,
   NgxaCerSlideOutComponent,
+  NgxaCerDatatableComponent,
   NgxaCerMonitoringDetailComponent,
+  NgxaCerMonitoringPreviewComponent,
 ];
 
 const modules = [
@@ -41,7 +47,9 @@ const modules = [
   NgxaBaseModule,
   NgxaSelectModule,
   NgxaMapsModule,
+  NgxDatatableModule,
   NgxaTableModule,
+  NgxaLabelModule,
   NgxaCerDashboardRoutingModule,
 ];
 
@@ -49,6 +57,7 @@ const providers = [
 ];
 
 const entryComponents = [
+  NgxaCerMonitoringPreviewComponent,
 ];
 
 @NgModule({
