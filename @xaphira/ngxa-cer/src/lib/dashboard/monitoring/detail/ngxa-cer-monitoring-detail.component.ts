@@ -1,10 +1,22 @@
 import { Component, Inject, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
+import { EncryptionService } from '@xaphira/utils';
 import { BaseFilterComponent, DatatableColumn, Sort, SelectParamModel } from '@xaphira/ngxa-common';
-import { PANIC, PanicFactoryService, HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
+import {
+  PANIC,
+  PanicFactoryService,
+  HttpBaseModel,
+  ApiBaseResponse,
+  SecurityResourceModel,
+  ResponseCode,
+  OAUTH_INFO,
+} from '@xaphira/shared';
 import { NgxaCerMonitoringPreviewComponent } from '../preview/ngxa-cer-monitoring-preview.component';
+import { NgxaFakeReportPromptComponent } from './prompt/ngxa-fake-report-prompt.component';
 
 @Component({
   selector: 'xa-cer-monitoring-detail',
@@ -35,9 +47,12 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
   };
   public apiSelectParameter: HttpBaseModel;
   public paramSelectStatus: SelectParamModel[];
-  public paramSelectUrgency: SelectParamModel[];
+  public paramSelectEmergency: SelectParamModel[];
+  public disabledFake: boolean;
   private panicCode: string;
   private username: string;
+  private oauthResource: SecurityResourceModel;
+  private enc: EncryptionService;
 
   constructor(public injector: Injector, private router: Router,
     private route: ActivatedRoute, @Inject(PANIC) private panicService: PanicFactoryService,
@@ -45,8 +60,10 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
     super(injector, null,
       {
         'status': [],
-        'urgencyCategory': [],
+        'categoryEmergency': [],
       });
+    this.enc = injector.get(EncryptionService);
+    this.oauthResource = injector.get(OAUTH_INFO);
     this.apiSelectParameter = this.api['master']['select-parameter'];
     if (this.route.snapshot.params['code']) {
       this.panicCode = this.route.snapshot.params['code'];
@@ -67,9 +84,9 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
       key: 'parameterGroupCode',
       value: 'STATUS_EMERGENCY',
     }];
-    this.paramSelectUrgency = [{
+    this.paramSelectEmergency = [{
       key: 'parameterGroupCode',
-      value: 'EMERGENCY',
+      value: 'CATEGORY_EMERGENCY',
     }];
   }
 
@@ -116,6 +133,34 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
   }
 
   onSelectUrgency(select: any): void {
+  }
+
+  onFake(): void {
+    this.dialogService.open(NgxaFakeReportPromptComponent)
+      .onClose.subscribe((password: string) => {
+        if (password) {
+          this.disabledFake = true;
+          const data: any = {
+            password: this.enc.encryptAES(this.oauthResource['aes_key'], password),
+            panicCode: this.panicCode,
+          };
+          (super.onSubmit(data, 'panic', 'fake-report') as Observable<ApiBaseResponse>)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((response: ApiBaseResponse) => {
+              if (response) {
+                if (response.respStatusCode === ResponseCode.OK_SCR011.toString()) {
+                  this.router.navigate(['/app/dashboard']);
+                }
+              }
+            });
+        } else {
+          this.disabledFake = false;
+        }
+      });
+  }
+
+  onProcess(): void {
+
   }
 
 }

@@ -55,12 +55,14 @@
 	"Created Date": "Created Date",
 	"Modified": "Modified",
 	"Modified Date": "Modified Date",
+	"Fake Report": "Fake Report",
 	"message": {
 		"danger-zone": "Danger Zone",
 		"deactivated-account": "Once you deactivated account, there is no going back. Please be certain.",
 		"deactivate-form": "This action cannot be undone. This will permanently disable your account.",
 		"input-password": "Please enter your password to confirm.",
-		"button-deactivate": "I understand the consequences, deactivate account"
+		"button-deactivate": "I understand the consequences, deactivate account",
+		"fake-form": "Please make sure again, the report you are investigating is really invalid."
 	},
 	"error": {
 		"pattern": {

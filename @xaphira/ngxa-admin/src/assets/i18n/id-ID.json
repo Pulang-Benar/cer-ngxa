@@ -55,12 +55,14 @@
 	"Created Date": "Dibuat Tanggal",
 	"Modified": "Diubah",
 	"Modified Date": "Diubah Tanggal",
+	"Fake Report": "Laporan Palsu",
 	"message": {
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
 		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
 		"input-password": "Silakan masukan kata sandi anda untuk konfirmasi.",
-		"button-deactivate": "Saya mengerti konsekuensinya, nonaktifkan akun"
+		"button-deactivate": "Saya mengerti konsekuensinya, nonaktifkan akun",
+		"fake-form": "Mohon dipastikan kembali, laporan yang anda selidiki sungguh tidak valid."
 	},
 	"error": {
 		"pattern": {

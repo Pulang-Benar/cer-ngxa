@@ -21,6 +21,7 @@ import { NgxaDashboardComponent } from './ngxa-dashboard.component';
 import { NgxaCerDatatableComponent } from './monitoring/detail/datatable/ngxa-cer-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxaCerMonitoringPreviewComponent } from './monitoring/preview/ngxa-cer-monitoring-preview.component';
+import { NgxaFakeReportPromptComponent } from './monitoring/detail/prompt/ngxa-fake-report-prompt.component';
 
 const components = [
   NgxaDashboardComponent,
@@ -30,6 +31,7 @@ const components = [
   NgxaCerDatatableComponent,
   NgxaCerMonitoringDetailComponent,
   NgxaCerMonitoringPreviewComponent,
+  NgxaFakeReportPromptComponent,
 ];
 
 const modules = [
@@ -58,6 +60,7 @@ const providers = [
 
 const entryComponents = [
   NgxaCerMonitoringPreviewComponent,
+  NgxaFakeReportPromptComponent,
 ];
 
 @NgModule({

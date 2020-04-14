@@ -157,7 +157,7 @@ export const apiPath: APIModel = {
         'select-parameter': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/xa/api/master/vw/post/select/parameter/v.1',
+            path: '/xa/api/master/vw/post/select/parameter-i18n/v.1',
         },
     },
     file: {
@@ -199,6 +199,11 @@ export const apiPath: APIModel = {
             server: environment.host.panic,
             method: HttpMethod.POST,
             path: '/xa/api/panic/vw/post/datatable/panic-detail/v.1',
+        },
+        'fake-report': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: 'xa/api/panic/trx/auth/fake/v.1',
         },
     },
 };

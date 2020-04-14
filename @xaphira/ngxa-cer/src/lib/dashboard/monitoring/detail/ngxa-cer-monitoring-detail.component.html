@@ -109,30 +109,50 @@
                 <xa-select
                     [name]="'status'"
                     [label]="'Status'"
+                    [colLabel]="4"
+                    [colInput]="8"
                     [required]="true"
                     [api]="apiSelectParameter"
                     [queryParam]="paramSelectStatus"
+                    [searchable]="false"
                     (onSelect)="onSelectStatus($event)"
                     [skeleton]="loadingForm"
                     formControlName="status">
                 </xa-select>
                 <xa-select
-                    [name]="'urgency'"
-                    [label]="'Urgency'"
+                    [name]="'emergency'"
+                    [label]="'Emergency'"
+                    [colLabel]="4"
+                    [colInput]="8"
                     [required]="true"
                     [api]="apiSelectParameter"
-                    [queryParam]="paramSelectUrgency"
-                    (onSelect)="onSelectUrgency($event)"
+                    [queryParam]="paramSelectEmergency"
+                    [searchable]="false"
+                    (onSelect)="onSelectEmergency($event)"
                     [skeleton]="loadingForm"
-                    formControlName="urgencyCategory">
+                    formControlName="categoryEmergency">
                 </xa-select>
-                <xa-button-submit
-                    (onSubmit)="onSubmit()"
-                    [name]="'Process'"
-                    [disabledButton]="disabled"
-                    [formGroupButton]="formGroup"
-                    [skeleton]="loadingForm">
-                </xa-button-submit>
+                <div class="form-group row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button
+                            type="reset"
+                            status="danger"
+                            (click)="onFake()"
+                            class="reset-left"
+                            nbButton>
+                            {{ 'Fake Report' | translate}}
+                        </button>
+                        <button
+                            type="submit"
+                            status="primary"
+                            (click)="onProcess()"
+                            [disabled]="formGroup.invalid || formGroup.pristine || disabled"
+                            class="submit-right"
+                            nbButton>
+                            {{ 'Process' | translate}}
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
