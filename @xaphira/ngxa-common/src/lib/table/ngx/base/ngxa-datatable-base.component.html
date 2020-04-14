@@ -46,6 +46,7 @@
             [frozenRight]="col.frozenRight">
             <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                 <span *ngIf="!col.cellTemplate && !col.type" [title]="sanitizedValue(value)" [innerHTML]="value"></span>
+                <span *ngIf="!col.cellTemplate && col.type === 'prefix'" [title]="sanitizedValue(value)" [innerHTML]="value + ' ' + col.prefix"></span>
                 <span *ngIf="!col.cellTemplate && col.type === 'html'" [title]="sanitizedValue(value)" [innerHTML]="value"></span>
                 <span *ngIf="!col.cellTemplate && col.type === 'icon'" [title]="sanitizedValue(value)"><span class="{{value}}"></span></span>
                 <button

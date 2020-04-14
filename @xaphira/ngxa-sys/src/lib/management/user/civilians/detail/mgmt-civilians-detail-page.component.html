@@ -34,7 +34,7 @@
           [label]="'Place / Date of Birth'"
           [colLabel]="4"
           [colContent]="8"
-          [content]="profile.placeOfBirth + ', ' + profile.dateOfBirth"
+          [content]="profile.placeOfBirth ? (profile.placeOfBirth + ', ' + profile.dateOfBirth) : ''"
           [skeleton]="loadingForm">
         </xa-label-text>
       </div>

@@ -154,6 +154,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/master/vw/post/datatable/locale/v.1',
         },
+        'select-parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/xa/api/master/vw/post/select/parameter/v.1',
+        },
     },
     file: {
         'photo-profile': {

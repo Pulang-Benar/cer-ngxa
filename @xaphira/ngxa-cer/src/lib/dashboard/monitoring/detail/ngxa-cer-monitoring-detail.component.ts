@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NbDialogService } from '@nebular/theme';
-import { BaseFilterComponent, DatatableColumn, Sort } from '@xaphira/ngxa-common';
+import { BaseFilterComponent, DatatableColumn, Sort, SelectParamModel } from '@xaphira/ngxa-common';
 import { PANIC, PanicFactoryService, HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
 import { NgxaCerMonitoringPreviewComponent } from '../preview/ngxa-cer-monitoring-preview.component';
 
@@ -21,6 +21,8 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
   public columns: DatatableColumn[] = [
     { name: 'Evidence', prop: 'fileMetadata', width: 100, frozenLeft: true, type: 'button',
       button: 'Preview', buttonStatus: 'warning' },
+    { name: 'File Size', prop: 'fileMetadata.size', width: 125, frozenLeft: true, type: 'prefix',
+      prefix: 'bytes' },
     { name: 'Latitude', prop: 'location.latitude', width: 125, frozenLeft: true },
     { name: 'Longitude', prop: 'location.longitude', width: 125, frozenLeft: true },
     { name: 'Area', prop: 'location.area', width: 150, frozenLeft: true },
@@ -31,13 +33,21 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
   public sort: Sort = {
     'desc': ['createdDate'],
   };
+  public apiSelectParameter: HttpBaseModel;
+  public paramSelectStatus: SelectParamModel[];
+  public paramSelectUrgency: SelectParamModel[];
   private panicCode: string;
   private username: string;
 
   constructor(public injector: Injector, private router: Router,
     private route: ActivatedRoute, @Inject(PANIC) private panicService: PanicFactoryService,
     private dialogService: NbDialogService) {
-    super(injector);
+    super(injector, null,
+      {
+        'status': [],
+        'urgencyCategory': [],
+      });
+    this.apiSelectParameter = this.api['master']['select-parameter'];
     if (this.route.snapshot.params['code']) {
       this.panicCode = this.route.snapshot.params['code'];
       this.keyword = {
@@ -53,6 +63,14 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
 
   ngOnInit(): void {
     this.onInit('security', 'get-profile-personal');
+    this.paramSelectStatus = [{
+      key: 'parameterGroupCode',
+      value: 'STATUS_EMERGENCY',
+    }];
+    this.paramSelectUrgency = [{
+      key: 'parameterGroupCode',
+      value: 'EMERGENCY',
+    }];
   }
 
   onInit(serviceName: string, apiName: string): void {
@@ -92,6 +110,12 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
         fileType: data['fileType'],
       },
     });
+  }
+
+  onSelectStatus(select: any): void {
+  }
+
+  onSelectUrgency(select: any): void {
   }
 
 }
