@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NbDialogService } from '@nebular/theme';
-import { BaseFilterComponent, DatatableColumn } from '@xaphira/ngxa-common';
+import { BaseFilterComponent, DatatableColumn, Sort } from '@xaphira/ngxa-common';
 import { PANIC, PanicFactoryService, HttpBaseModel, ApiBaseResponse } from '@xaphira/shared';
 import { NgxaCerMonitoringPreviewComponent } from '../preview/ngxa-cer-monitoring-preview.component';
 
@@ -28,6 +28,9 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
     { name: 'Device ID', prop: 'device.deviceID', width: 150 },
     { name: 'Device Name', prop: 'device.deviceName', width: 150 },
   ];
+  public sort: Sort = {
+    'desc': ['createdDate'],
+  };
   private panicCode: string;
   private username: string;
 

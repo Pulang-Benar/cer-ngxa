@@ -48,6 +48,14 @@
                 <span *ngIf="!col.cellTemplate && !col.type" [title]="sanitizedValue(value)" [innerHTML]="value"></span>
                 <span *ngIf="!col.cellTemplate && col.type === 'html'" [title]="sanitizedValue(value)" [innerHTML]="value"></span>
                 <span *ngIf="!col.cellTemplate && col.type === 'icon'" [title]="sanitizedValue(value)"><span class="{{value}}"></span></span>
+                <button
+                    *ngIf="!col.cellTemplate && col.type === 'button'"
+                    [status]="col.buttonStatus ? col.buttonStatus : 'primary'"
+                    (click)="onClickButton(value)"
+                    [size]="'tiny'"
+                    nbButton>
+                    {{ col.button | translate }}
+                </button>
             </ng-template>
         </ngx-datatable-column>
     </div>

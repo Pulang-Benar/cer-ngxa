@@ -49,6 +49,7 @@ export class NgxaDatatableBaseComponent {
   @Output() sort: EventEmitter<any> = new EventEmitter<any>();
   @Output() select: EventEmitter<any> = new EventEmitter<any>();
   @Output() activate: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onButtonCell: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(@Inject(LOCALE_ID) public locale: string,
     public injector: Injector) {
@@ -87,6 +88,10 @@ export class NgxaDatatableBaseComponent {
       return html;
     }
     return html.replace(/<\/?[^>]+(>|$)/g, '');
+  }
+
+  onClickButton(event): void {
+    this.onButtonCell.emit(event);
   }
 
 }

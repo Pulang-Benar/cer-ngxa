@@ -1,7 +1,9 @@
 import { Component, Input, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
 import { LeafletModel } from '@xaphira/ngxa-common';
 import { PANIC, PanicFactoryService } from '@xaphira/shared';
-import { Router } from '@angular/router';
+import { NgxaCerMonitoringPreviewComponent } from '../preview/ngxa-cer-monitoring-preview.component';
 
 @Component({
   selector: 'xa-cer-monitoring-info',
@@ -20,13 +22,24 @@ export class NgxaCerMonitoringInfoComponent implements OnInit {
   public marker: LeafletModel = { markers: []};
   public data: any = {};
 
-  constructor(private router: Router, @Inject(PANIC) private panicService: PanicFactoryService) {}
+  constructor(private router: Router, @Inject(PANIC) private panicService: PanicFactoryService,
+    private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
   }
 
   public onViewDetails(): void {
     this.router.navigate(['/app/dashboard/details', this.data['panicCode']]);
+  }
+
+  onPreview(): void {
+    this.dialogService.open(NgxaCerMonitoringPreviewComponent, {
+      context: {
+        checksum: this.data['fileMetadata']['checksum'],
+        user: this.data['username'],
+        fileType: this.data['fileMetadata']['fileType'],
+      },
+    });
   }
 
 }

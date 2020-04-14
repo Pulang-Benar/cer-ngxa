@@ -60,11 +60,13 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Input() startWithOpenData: boolean = true;
   @Input() filterEvent: boolean = false;
   @Input() formGroupFilter: FormGroup;
+  @Input() sort: Sort;
   @Output() onAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() onSearch: EventEmitter<any> = new EventEmitter<any>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onButtonCell: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
   @Input() set filterFn(keyword: Keyword) {
     this.keywordParam = keyword;
@@ -94,7 +96,6 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   protected http: HttpFactoryService;
   private destroy$: Subject<any> = new Subject<any>();
   private cdref: ChangeDetectorRef;
-  private sort: Sort;
   private pageOffset: number = 0;
 
   protected _search: string;
@@ -229,6 +230,10 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
     } else {
       this.isDelete = false;
     }
+  }
+
+  onClickButton(event): void {
+    this.onButtonCell.emit(event);
   }
 
   private getRequest(): Observable<any[]> {

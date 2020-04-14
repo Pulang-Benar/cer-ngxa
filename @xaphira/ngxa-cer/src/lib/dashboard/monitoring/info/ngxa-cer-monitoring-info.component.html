@@ -50,16 +50,26 @@
             </div>
         </div>
         <div class="form-group row">
-          <div class="offset-sm-12 col-sm-12">
-            <button
-              type="submit"
-              status="primary"
-              (click)="onViewDetails()"
-              class="details-right"
-              nbButton>
-              {{ 'Details' | translate}}
-            </button>
-          </div>
+            <div class="col-sm-8 col-md-8 col-sm-8">
+                <button
+                type="submit"
+                status="warning"
+                class="preview-right"
+                (click)="onPreview()"
+                nbButton>
+                {{ 'Preview' | translate}}
+                </button>
+            </div>
+            <div class="col-sm-4 col-md-4 col-sm-4">
+                <button
+                type="submit"
+                status="primary"
+                class="details-right"
+                (click)="onViewDetails()"
+                nbButton>
+                {{ 'Details' | translate}}
+                </button>
+            </div>
         </div>
     </div>
     <div class="civilians-footer">
