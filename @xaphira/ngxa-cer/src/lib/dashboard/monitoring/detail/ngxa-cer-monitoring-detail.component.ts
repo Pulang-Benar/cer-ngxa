@@ -60,7 +60,7 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
     super(injector, null,
       {
         'status': [],
-        'categoryEmergency': [],
+        'emergencyCategory': [],
       });
     this.enc = injector.get(EncryptionService);
     this.oauthResource = injector.get(OAUTH_INFO);
@@ -119,6 +119,18 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
     });
   }
 
+  valueSelect(prop: string): string {
+    if (this.formGroup.get(prop).value) {
+      if (this.formGroup.get(prop).value.label) {
+        return this.formGroup.get(prop).value.label;
+      } else {
+        return this.formGroup.get(prop).value;
+      }
+    } else {
+      return null;
+    }
+  }
+
   onPreview(data: any): void {
     this.dialogService.open(NgxaCerMonitoringPreviewComponent, {
       context: {
@@ -127,12 +139,6 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
         fileType: data['fileType'],
       },
     });
-  }
-
-  onSelectStatus(select: any): void {
-  }
-
-  onSelectUrgency(select: any): void {
   }
 
   onFake(): void {
@@ -160,6 +166,20 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
   }
 
   onProcess(): void {
+    const data: any = {
+      panicCode: this.panicCode,
+      status: this.valueSelect('status'),
+      emergencyCategory: this.valueSelect('emergencyCategory'),
+    };
+    (super.onSubmit(data, 'panic', 'process-report') as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response: ApiBaseResponse) => {
+        if (response) {
+          if (response.respStatusCode === ResponseCode.OK_UPDATED.toString()) {
+            this.router.navigate(['/app/dashboard']);
+          }
+        }
+      });
 
   }
 

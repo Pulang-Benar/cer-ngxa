@@ -115,7 +115,6 @@
                     [api]="apiSelectParameter"
                     [queryParam]="paramSelectStatus"
                     [searchable]="false"
-                    (onSelect)="onSelectStatus($event)"
                     [skeleton]="loadingForm"
                     formControlName="status">
                 </xa-select>
@@ -128,9 +127,8 @@
                     [api]="apiSelectParameter"
                     [queryParam]="paramSelectEmergency"
                     [searchable]="false"
-                    (onSelect)="onSelectEmergency($event)"
                     [skeleton]="loadingForm"
-                    formControlName="categoryEmergency">
+                    formControlName="emergencyCategory">
                 </xa-select>
                 <div class="form-group row">
                     <div class="offset-sm-4 col-sm-8">

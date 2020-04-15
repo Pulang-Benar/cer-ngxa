@@ -20,6 +20,7 @@ export enum ResponseCode {
     ERR_SCR0008 = 'ERR_SCR0008',
 
     OK_DEFAULT = 'OK_DEFAULT',
+    OK_UPDATED = 'OK_UPDATED',
     OK_SCR001 = 'OK_SCR001',
     OK_SCR002 = 'OK_SCR002',
     OK_SCR003 = 'OK_SCR003',

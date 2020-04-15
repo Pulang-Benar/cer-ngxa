@@ -200,10 +200,15 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/panic/vw/post/datatable/panic-detail/v.1',
         },
+        'process-report': {
+            server: environment.host.panic,
+            method: HttpMethod.POST,
+            path: '/xa/api/panic/trx/auth/process-panic/v.1',
+        },
         'fake-report': {
             server: environment.host.panic,
-            method: HttpMethod.GET,
-            path: 'xa/api/panic/trx/auth/fake/v.1',
+            method: HttpMethod.POST,
+            path: '/xa/api/panic/trx/auth/fake/v.1',
         },
     },
 };
