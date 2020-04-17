@@ -5,31 +5,27 @@ export const environment = {
   host: {
     auth: {
       protocol: 'https',
-      host: 'xa-api.herokuapp.com',
+      host: 'cer-api.herokuapp.com',
     },
     security: {
       protocol: 'https',
-      host: 'xa-api.herokuapp.com',
+      host: 'cer-api.herokuapp.com',
     },
     master: {
       protocol: 'https',
-      host: 'xa-api.herokuapp.com',
+      host: 'cer-api.herokuapp.com',
     },
     file: {
       protocol: 'https',
-      host: 'xa-api.herokuapp.com',
+      host: 'cer-api.herokuapp.com',
     },
     notification: {
       protocol: 'https',
-      host: 'xa-api.herokuapp.com',
+      host: 'cer-api.herokuapp.com',
     },
-    pacs: {
-      host: 'raw.githubusercontent.com',
-    },
-    sample: {
-      protocol: 'http',
-      host: 'localhost',
-      port: 8085,
+    panic: {
+      protocol: 'https',
+      host: 'cer-api.herokuapp.com',
     },
   },
 };
