@@ -121,8 +121,8 @@ export class NgxaCerMonitoringDetailComponent extends BaseFilterComponent<any> i
 
   valueSelect(prop: string): string {
     if (this.formGroup.get(prop).value) {
-      if (this.formGroup.get(prop).value.label) {
-        return this.formGroup.get(prop).value.label;
+      if (this.formGroup.get(prop).value.value) {
+        return this.formGroup.get(prop).value.value;
       } else {
         return this.formGroup.get(prop).value;
       }
