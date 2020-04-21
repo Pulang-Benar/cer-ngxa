@@ -12,7 +12,7 @@ import { PANIC, PanicFactoryService, HttpFactoryService, HTTP_SERVICE, API, APIM
 export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   public showInfo: boolean = false;
-  public markers: LeafletModel;
+  public markers: LeafletModel[];
   public markerSelected: LeafletModel;
   private destroy$: Subject<void> = new Subject<void>();
   private http: HttpFactoryService;
@@ -39,16 +39,18 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   private getAllPanicServer(): void {
     this.http.HTTP_AUTH(this.api['panic']['get-allpanic']).subscribe((values: any[]) => {
+      const temps: any[] = [];
       values.forEach((data: any) => {
-        this.markers = {
-          markers: [
-            [ data['latestLatitude'], data['latestLongitude'] ],
+        temps.push({
+          mark: [
+            data['latestLatitude'], data['latestLongitude'],
           ],
           title: data['name'],
           alt: data['panicCode'],
           className: 'pulse',
-        };
+        });
       });
+      this.markers = temps;
       try {
         this.panicService.clearAllPanic().then(() => {
           if (values.length) {
@@ -61,16 +63,18 @@ export class NgxaCerMonitoringPageComponent implements OnInit, OnDestroy {
 
   private getAllPanicStorage(): void {
     this.panicService.getAllPanic().subscribe((values: any[]) => {
+      const temps: any[] = [];
       values.forEach((data: any) => {
-        this.markers = {
-          markers: [
-            [ data['latestLatitude'], data['latestLongitude'] ],
+        temps.push({
+          mark: [
+            data['latestLatitude'], data['latestLongitude'],
           ],
           title: data['name'],
           alt: data['panicCode'],
           className: 'pulse',
-        };
+        });
       });
+      this.markers = temps;
     });
   }
 

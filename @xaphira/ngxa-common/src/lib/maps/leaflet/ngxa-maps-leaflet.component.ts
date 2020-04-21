@@ -24,21 +24,21 @@ export class NgxaMapsLeafletComponent implements OnInit {
     center: this.defaultLatLng,
   };
   @Input() public layers: any[] = [];
-  @Input() public set markersFn(mark: LeafletModel) {
-    if (mark) {
+  @Input() public set markersFn(markers: LeafletModel[]) {
+    if (markers) {
       this.layers = [];
-      mark.markers.forEach(marker => {
-        this.layers.push(L.marker(marker, {
+      markers.forEach(marker => {
+        this.layers.push(L.marker(marker.mark, {
           icon: L.icon({
             iconUrl: '/assets/map/marker-icon.png',
             shadowUrl: '/assets/map/marker-shadow.png',
             iconSize: [27.5, 40],
             iconAnchor: [20, 40],
             popupAnchor: [0, -40],
-            className: mark.className,
+            className: marker.className,
           }),
-          title: mark.title,
-          alt: mark.alt,
+          title: marker.title,
+          alt: marker.alt,
         }).on('click', this.markerClick.bind(this)));
       });
     }
