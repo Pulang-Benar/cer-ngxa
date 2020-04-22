@@ -8,7 +8,10 @@
             </a>
             {{header | translate}}
         </nav>
-        </nb-card-header>
+        <nb-select *ngIf="dataSelect" [selected]="selected" (selectedChange)="onChangeSelect($event)">
+          <nb-option *ngFor="let data of dataSelect" [value]="data">{{ data }}</nb-option>
+        </nb-select>
+      </nb-card-header>
       <nb-card-body>
         <ng-content #pagecontent></ng-content>        
       </nb-card-body>

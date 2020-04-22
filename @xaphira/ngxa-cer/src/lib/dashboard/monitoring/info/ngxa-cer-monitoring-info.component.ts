@@ -19,7 +19,7 @@ export class NgxaCerMonitoringInfoComponent implements OnInit {
       });
     }
   }
-  public marker: LeafletModel = { markers: []};
+  public marker: LeafletModel = { mark: [0,0]};
   public data: any = {};
 
   constructor(private router: Router, @Inject(PANIC) private panicService: PanicFactoryService,

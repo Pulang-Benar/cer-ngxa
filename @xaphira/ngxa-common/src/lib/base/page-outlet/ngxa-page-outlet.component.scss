@@ -1,4 +1,13 @@
 @import '~@nebular/theme/styles/global/breakpoints';
+@import '~@xaphira/ngxa-theme/styles/themes';
+
+nb-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: nb-theme(card-header-with-select-padding-top);
+    padding-bottom: nb-theme(card-header-with-select-padding-bottom);
+}
 
 .skeleton {
     animation: loading 1.7s infinite linear;

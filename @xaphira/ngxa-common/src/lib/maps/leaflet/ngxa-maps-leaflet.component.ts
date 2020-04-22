@@ -53,7 +53,7 @@ export class NgxaMapsLeafletComponent implements OnInit {
     const title: string = event.target.options.title;
     const alt: string = event.target.options.alt;
     this.onMarkerClick.emit({
-      markers: [ latlng ],
+      mark: latlng ,
       title: title,
       alt: alt,
     });
