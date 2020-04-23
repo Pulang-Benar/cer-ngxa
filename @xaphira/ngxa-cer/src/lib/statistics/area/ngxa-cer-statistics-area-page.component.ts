@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, Injector, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { NbThemeService } from '@nebular/theme';
 import { HttpFactoryService, HTTP_SERVICE, API, APIModel } from '@xaphira/shared';
@@ -8,9 +8,10 @@ import { HttpFactoryService, HTTP_SERVICE, API, APIModel } from '@xaphira/shared
   styleUrls: ['./ngxa-cer-statistics-area-page.component.scss'],
   templateUrl: './ngxa-cer-statistics-area-page.component.html',
 })
-export class NgxaCerStatisticsAreaPageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NgxaCerStatisticsAreaPageComponent implements OnInit, OnDestroy {
 
   public options: any = {};
+  public data: any;
   public dataSelect: any[];
   public selected: any;
   private destroy$: Subject<void> = new Subject<void>();
@@ -21,6 +22,84 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, AfterViewInit
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
     this.api = injector.get(API);
+
+    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+
+      const colors: any = config.variables;
+      const echarts: any = config.variables.echarts;
+
+      this.options = {
+        backgroundColor: echarts.bg,
+        color: [colors.primaryLight],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow',
+          },
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true,
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+              alignWithLabel: true,
+            },
+            axisLine: {
+              lineStyle: {
+                color: echarts.axisLineColor,
+              },
+            },
+            axisLabel: {
+              textStyle: {
+                color: echarts.textColor,
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            axisLine: {
+              lineStyle: {
+                color: echarts.axisLineColor,
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                color: echarts.splitLineColor,
+              },
+            },
+            axisLabel: {
+              textStyle: {
+                color: echarts.textColor,
+              },
+            },
+          },
+        ],
+        series: [
+          {
+            name: 'Score',
+            type: 'bar',
+            barWidth: '60%',
+            data: [
+              this.random(),
+              this.random(),
+              this.random(),
+              this.random(),
+              this.random(),
+              this.random(),
+              this.random(),
+            ],
+          },
+        ],
+      };
+    });
   }
 
   ngOnInit(): void {
@@ -34,69 +113,12 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, AfterViewInit
     this.themeSubscription.unsubscribe();
   }
 
-  ngAfterViewInit() {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
-      const colors = config.variables;
-      const echarts: any = config.variables.echarts;
-
-      this.options = {
-        backgroundColor: echarts.bg,
-        color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: ['USA', 'Germany', 'France', 'Canada', 'Russia'],
-          textStyle: {
-            color: echarts.textColor,
-          },
-        },
-        series: [
-          {
-            name: 'Countries',
-            type: 'pie',
-            radius: '80%',
-            center: ['50%', '50%'],
-            data: [
-              { value: 335, name: 'Germany' },
-              { value: 310, name: 'France' },
-              { value: 234, name: 'Canada' },
-              { value: 135, name: 'Russia' },
-              { value: 1548, name: 'USA' },
-            ],
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: echarts.itemHoverShadowColor,
-              },
-            },
-            label: {
-              normal: {
-                textStyle: {
-                  color: echarts.textColor,
-                },
-              },
-            },
-            labelLine: {
-              normal: {
-                lineStyle: {
-                  color: echarts.axisLineColor,
-                },
-              },
-            },
-          },
-        ],
-      };
-    });
-  }
-
   public onSelectChange(data: any): void {
     console.log(data);
+  }
+
+  private random() {
+    return Math.round(Math.random() * 100);
   }
 
 }

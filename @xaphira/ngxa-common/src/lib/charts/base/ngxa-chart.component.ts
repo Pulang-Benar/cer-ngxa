@@ -1,5 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'xa-chart',
@@ -11,8 +10,7 @@ export class NgxaChartComponent  {
     this.options = options;
   }
   @Input() public options: any = {};
-
-  constructor(private theme: NbThemeService) {
-  }
+  public data: any;
+  public type: 'bar' | 'pie' | 'line' | 'horizontalBar' | 'radar';
 
 }

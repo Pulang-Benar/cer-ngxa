@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, Injector, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { NbThemeService } from '@nebular/theme';
 import { HttpFactoryService, HTTP_SERVICE, API, APIModel } from '@xaphira/shared';
@@ -8,9 +8,10 @@ import { HttpFactoryService, HTTP_SERVICE, API, APIModel } from '@xaphira/shared
   styleUrls: ['./ngxa-cer-statistics-gender-page.component.scss'],
   templateUrl: './ngxa-cer-statistics-gender-page.component.html',
 })
-export class NgxaCerStatisticsGenderPageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
 
   public options: any = {};
+  public data: any;
   public dataSelect: any[];
   public selected: any;
   private destroy$: Subject<void> = new Subject<void>();
@@ -21,20 +22,7 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, AfterViewIn
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
     this.api = injector.get(API);
-  }
 
-  ngOnInit(): void {
-    this.dataSelect = [2017, 2018, 2019];
-    this.selected = 2019;
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-    this.themeSubscription.unsubscribe();
-  }
-
-  ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors = config.variables;
@@ -93,6 +81,17 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, AfterViewIn
         ],
       };
     });
+  }
+
+  ngOnInit(): void {
+    this.dataSelect = [2017, 2018, 2019];
+    this.selected = 2019;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.themeSubscription.unsubscribe();
   }
 
   public onSelectChange(data: any): void {
