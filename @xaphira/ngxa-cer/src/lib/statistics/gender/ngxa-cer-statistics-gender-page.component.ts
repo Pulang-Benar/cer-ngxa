@@ -22,6 +22,11 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
     this.api = injector.get(API);
+  }
+
+  ngOnInit(): void {
+    this.dataSelect = [2017, 2018, 2019];
+    this.selected = 2019;
 
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
@@ -43,6 +48,7 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
             color: echarts.textColor,
           },
         },
+        calculable: true,
         series: [
           {
             name: 'Countries',
@@ -81,11 +87,6 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
         ],
       };
     });
-  }
-
-  ngOnInit(): void {
-    this.dataSelect = [2017, 2018, 2019];
-    this.selected = 2019;
   }
 
   ngOnDestroy(): void {

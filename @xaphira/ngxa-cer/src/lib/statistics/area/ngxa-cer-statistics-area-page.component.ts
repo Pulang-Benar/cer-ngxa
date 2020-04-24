@@ -22,6 +22,11 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, OnDestroy {
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
     this.api = injector.get(API);
+  }
+
+  ngOnInit(): void {
+    this.dataSelect = [2017, 2018, 2019];
+    this.selected = 2019;
 
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
@@ -37,22 +42,29 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, OnDestroy {
             type: 'shadow',
           },
         },
+        legend: {
+          data: ['Score'],
+          textStyle: {
+            color: echarts.textColor,
+          },
+        },
         grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
+          left: '2%',
+          right: '3%',
+          bottom: '5%',
           containLabel: true,
         },
         xAxis: [
           {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisTick: {
-              alignWithLabel: true,
-            },
+            type: 'value',
             axisLine: {
               lineStyle: {
                 color: echarts.axisLineColor,
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                color: echarts.splitLineColor,
               },
             },
             axisLabel: {
@@ -64,15 +76,14 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, OnDestroy {
         ],
         yAxis: [
           {
-            type: 'value',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+              alignWithLabel: true,
+            },
             axisLine: {
               lineStyle: {
                 color: echarts.axisLineColor,
-              },
-            },
-            splitLine: {
-              lineStyle: {
-                color: echarts.splitLineColor,
               },
             },
             axisLabel: {
@@ -100,11 +111,6 @@ export class NgxaCerStatisticsAreaPageComponent implements OnInit, OnDestroy {
         ],
       };
     });
-  }
-
-  ngOnInit(): void {
-    this.dataSelect = [2017, 2018, 2019];
-    this.selected = 2019;
   }
 
   ngOnDestroy(): void {
