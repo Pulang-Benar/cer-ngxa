@@ -20,6 +20,7 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
   private themeSubscription: Subscription;
   private legend: any[];
   private series: any[];
+  private echarts: any;
 
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
@@ -70,20 +71,20 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: echarts.itemHoverShadowColor,
+                shadowColor: this.echarts.itemHoverShadowColor,
               },
             },
             label: {
               normal: {
                 textStyle: {
-                  color: echarts.textColor,
+                  color: this.echarts.textColor,
                 },
               },
             },
             labelLine: {
               normal: {
                 lineStyle: {
-                  color: echarts.axisLineColor,
+                  color: this.echarts.axisLineColor,
                 },
               },
             },
@@ -97,10 +98,10 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors = config.variables;
-      const echarts: any = config.variables.echarts;
+      this.echarts = config.variables.echarts;
 
       this.options = {
-        backgroundColor: echarts.bg,
+        backgroundColor: this.echarts.bg,
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -110,7 +111,7 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
           left: 'left',
           data: this.legend,
           textStyle: {
-            color: echarts.textColor,
+            color: this.echarts.textColor,
           },
         },
         calculable: true,
