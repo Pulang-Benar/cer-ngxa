@@ -65,7 +65,7 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
      * Mock Service & Data To Be Delete
      **/
     MockCoreModule.forRoot(),
-    ServiceWorkerModule.register('/ngxa-sw.js'),
+    ServiceWorkerModule.register(environment.basePath + 'ngxa-sw.js'),
     // ServiceWorkerModule.register('/ngxa-sw.js', {enabled: environment.production && location.protocol !== 'http:'}),
   ],
   bootstrap: [AppComponent],
