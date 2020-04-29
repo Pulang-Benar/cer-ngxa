@@ -37,7 +37,7 @@
     "build:ngxa-sys": "ng build @xaphira/ngxa-sys",
     "build:ngxa-cer": "ng build @xaphira/ngxa-cer",
     "build:ngxa-admin:prod": "ng build @xaphira/ngxa-admin --prod --progress=false --base-href=/",
-    "build:ngxa-admin:github": "ng build @xaphira/ngxa-admin --configuration=github --progress=false --base-href=/cer-ngxa/ --outputPath=dist",
+    "build:ngxa-admin:github": "ng build @xaphira/ngxa-admin --configuration=github --progress=false --base-href=/cer-ngxa/ --outputPath=dist --deleteOutputPath=false",
     "build:ionxa-admin": "ng build @xaphira/ionxa-admin",
     "copy:ngxa-theme": "node_modules/.bin/cpx \"./@xaphira/ngxa-theme/src/styles/**/*\" \"./dist/@xaphira/ngxa-theme/styles\"",
     "copy:ngxa-common-assets": "node_modules/.bin/cpx \"./@xaphira/ngxa-common/src/assets/**/*\" \"./dist/@xaphira/ngxa-common/assets/\"",
