@@ -200,6 +200,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/xa/api/panic/vw/post/datatable/panic-detail/v.1',
         },
+        'datatable-panic-reports': {
+            server: environment.host.panic,
+            method: HttpMethod.POST,
+            path: '/xa/api/panic/vw/post/datatable/panic-reports/v.1',
+        },
+        'datatable-fake-reports': {
+            server: environment.host.panic,
+            method: HttpMethod.POST,
+            path: '/xa/api/panic/vw/post/datatable/fake-reports/v.1',
+        },
         'process-report': {
             server: environment.host.panic,
             method: HttpMethod.POST,
@@ -209,6 +219,21 @@ export const apiPath: APIModel = {
             server: environment.host.panic,
             method: HttpMethod.POST,
             path: '/xa/api/panic/trx/auth/fake/v.1',
+        },
+        'statistics-area': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-area/v.1',
+        },
+        'statistics-gender': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-gender/v.1',
+        },
+        'statistics-periode': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-periode/v.1',
         },
     },
 };

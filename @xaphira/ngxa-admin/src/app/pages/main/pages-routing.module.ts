@@ -23,7 +23,7 @@ const routes: Routes = [{
         .then(m => m.CerStatisticsWrapperModule),
     },
     {
-      path: 'report',
+      path: 'reports',
       loadChildren: () => import('../cer/cer-reports-wrapper.module')
         .then(m => m.CerReportsWrapperModule),
     },

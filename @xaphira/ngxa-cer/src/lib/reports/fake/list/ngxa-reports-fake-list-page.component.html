@@ -1,0 +1,34 @@
+<xa-page-outlet [header]="'Fake Reports'">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <xa-datatable
+        [api]="apiPath"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        [add]="false"
+        [delete]="false"
+        [selectionType]="selectionType"
+        (onFilter)="doFilterAdvanced($event)"
+        [filterFn]="keyword"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <xa-input-text
+            [name]="'fullname'"
+            [label]="'Name'"
+            formControlName="fullname">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'phoneNumber'"
+            [label]="'Phone Number'"
+            formControlName="phoneNumber">
+          </xa-input-text>
+          <xa-input-text
+            [name]="'latestFormattedAddress'"
+            [label]="'Address'"
+            formControlName="latestFormattedAddress">
+          </xa-input-text>
+        </form>
+      </xa-datatable>
+    </div>
+  </div>
+</xa-page-outlet>

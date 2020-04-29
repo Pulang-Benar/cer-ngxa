@@ -18,6 +18,9 @@ export class NgxaCerStatisticsPeriodePageComponent implements OnInit, OnDestroy 
   private http: HttpFactoryService;
   private api: APIModel;
   private themeSubscription: Subscription;
+  private axis: any[];
+  private legend: any[];
+  private series: any[];
 
   constructor(injector: Injector, private theme: NbThemeService) {
     this.http = injector.get(HTTP_SERVICE);
@@ -25,9 +28,49 @@ export class NgxaCerStatisticsPeriodePageComponent implements OnInit, OnDestroy 
   }
 
   ngOnInit(): void {
-    this.dataSelect = [2017, 2018, 2019];
-    this.selected = 2019;
+    const year: number = new Date().getFullYear();
+    const tempData: number[] = [];
+    for (let i: number = 3; i >= 0; i--) {
+      tempData.push(year - i);
+    }
+    this.dataSelect = tempData;
+    this.selected = year;
+    this.getStatistics();
+  }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.themeSubscription.unsubscribe();
+  }
+
+  private getStatistics(): void {
+    this.http.HTTP_AUTH(
+      this.api['panic']['statistics-periode'],
+      null,
+      null,
+      null,
+      [this.selected]).subscribe((values: any) => {
+        this.axis = values['axis']['data'];
+        this.legend = values['legend']['data'];
+        this.series = [];
+        values['series'].forEach((series: any) => {
+          const dataSeries: any[] = [];
+          values['axis']['data'].forEach((axis: any) => {
+            dataSeries.push(series['data'][axis]);
+          });
+          this.series.push({
+            name: series['name'],
+            type: 'line',
+            smooth: true,
+            data: dataSeries,
+          });
+        });
+        this.buildChart();
+    });
+  }
+
+  private buildChart(): void {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
@@ -42,7 +85,7 @@ export class NgxaCerStatisticsPeriodePageComponent implements OnInit, OnDestroy 
           },
         },
         legend: {
-          data: ['2015 Precipitation', '2016 Precipitation'],
+          data: this.legend,
           textStyle: {
             color: echarts.textColor,
           },
@@ -56,20 +99,7 @@ export class NgxaCerStatisticsPeriodePageComponent implements OnInit, OnDestroy 
         xAxis: [
           {
             type: 'category',
-            data: [
-              'January',
-              'February',
-              'March',
-              'April',
-              'May',
-              'June',
-              'July',
-              'August',
-              'September',
-              'October',
-              'November',
-              'Desember',
-            ],
+            data: this.axis,
             axisTick: {
               alignWithLabel: true,
             },
@@ -105,32 +135,14 @@ export class NgxaCerStatisticsPeriodePageComponent implements OnInit, OnDestroy 
             },
           },
         ],
-        series: [
-          {
-            name: '2015 Precipitation',
-            type: 'line',
-            smooth: true,
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-          },
-          {
-            name: '2016 Precipitation',
-            type: 'line',
-            smooth: true,
-            data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7],
-          },
-        ],
+        series: this.series,
       };
     });
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-    this.themeSubscription.unsubscribe();
-  }
-
   public onSelectChange(data: any): void {
-    console.log(data);
+    this.selected = data;
+    this.getStatistics();
   }
 
   private random() {
