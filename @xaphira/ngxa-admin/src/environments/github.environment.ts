@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   locale: 'en-US',
-  basePath: '/xaphira/@xaphira/ngxa-admin/',
+  basePath: '/cer-ngxa/',
   host: {
     auth: {
       protocol: 'https',
