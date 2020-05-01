@@ -494,13 +494,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
+                  "maximumWarning": "10mb",
                   "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "15mb"
                 }
               ],
               "serviceWorker": true,
@@ -518,14 +518,14 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": true,
-              "aot": true,
+              "aot": false,
               "extractLicenses": true,
               "vendorChunk": true,
-              "buildOptimizer": true,
+              "buildOptimizer": false,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
+                  "maximumWarning": "10mb",
                   "maximumError": "15mb"
                 },
                 {
@@ -649,190 +649,6 @@
             },
             "heroku": {
               "devServerTarget": "@xaphira/ngxa-admin:serve:heroku"
-            }
-          }
-        }
-      }
-    },
-    "@xaphira/ionxa-admin": {
-      "projectType": "application",
-      "cli": {
-        "defaultCollection": "@ionic/angular-toolkit"
-      },
-      "schematics": {
-        "@ionic/angular-toolkit:component": {
-          "styleext": "scss"
-        },
-        "@ionic/angular-toolkit:page": {
-          "styleext": "scss"
-        }
-      },
-      "root": "@xaphira/ionxa-admin",
-      "sourceRoot": "@xaphira/ionxa-admin/src",
-      "prefix": "xa",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/@xaphira/ionxa-admin",
-            "index": "@xaphira/ionxa-admin/src/index.html",
-            "main": "@xaphira/ionxa-admin/src/main.ts",
-            "polyfills": "@xaphira/ionxa-admin/src/polyfills.ts",
-            "tsConfig": "@xaphira/ionxa-admin/tsconfig.app.json",
-            "aot": false,
-            "assets": [
-              "@xaphira/ionxa-admin/src/favicon.ico",
-              "@xaphira/ionxa-admin/src/manifest.json",
-              {
-                "glob": "**/*",
-                "input": "@xaphira/ionxa-admin/src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "./node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
-            ],
-            "styles": [
-              {
-                "input": "@xaphira/ionxa-admin/src/theme/variables.scss"
-              },
-              {
-                "input": "@xaphira/ionxa-admin/src/global.scss"
-              }
-            ],
-            "scripts": [],
-            "es5BrowserSupport": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "@xaphira/ionxa-admin/src/environments/environment.ts",
-                  "with": "@xaphira/ionxa-admin/src/environments/prod.environment.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "@xaphira/ionxa-admin:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "@xaphira/ionxa-admin:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "@xaphira/ionxa-admin:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "@xaphira/ionxa-admin/src/test.ts",
-            "polyfills": "@xaphira/ionxa-admin/src/polyfills.ts",
-            "tsConfig": "@xaphira/ionxa-admin/tsconfig.spec.json",
-            "karmaConfig": "@xaphira/ionxa-admin/karma.conf.js",
-            "styles": [
-              {
-                "input": "@xaphira/ionxa-admin/src/theme/variables.scss"
-              },
-              {
-                "input": "@xaphira/ionxa-admin/src/global.scss"
-              }
-            ],
-            "scripts": [],
-            "assets": [
-              {
-                "glob": "favicon.ico",
-                "input": "@xaphira/ionxa-admin/src/",
-                "output": "/"
-              },
-              {
-                "glob": "**/*",
-                "input": "@xaphira/ionxa-admin/src/assets",
-                "output": "/assets"
-              },
-              "@xaphira/ionxa-admin/src/manifest.json"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "@xaphira/ionxa-admin/tsconfig.app.json",
-              "@xaphira/ionxa-admin/tsconfig.spec.json",
-              "@xaphira/ionxa-admin/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "**/dist/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "@xaphira/ionxa-admin/e2e/protractor.conf.js",
-            "devServerTarget": "@xaphira/ionxa-admin:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "@xaphira/ionxa-admin:serve:production"
-            }
-          }
-        },
-        "ionic-cordova-build": {
-          "builder": "@ionic/angular-toolkit:cordova-build",
-          "options": {
-            "browserTarget": "@xaphira/ionxa-admin:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "@xaphira/ionxa-admin:build:production"
-            }
-          }
-        },
-        "ionic-cordova-serve": {
-          "builder": "@ionic/angular-toolkit:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "@xaphira/ionxa-admin:ionic-cordova-build",
-            "devServerTarget": "@xaphira/ionxa-admin:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "@xaphira/ionxa-admin:ionic-cordova-build:production",
-              "devServerTarget": "@xaphira/ionxa-admin:serve:production"
             }
           }
         }

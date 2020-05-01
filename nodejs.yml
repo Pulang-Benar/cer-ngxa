@@ -24,4 +24,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: dist
-        BUILD_SCRIPT: npm install --no-progress && npm run install:all-mock --no-progress && npm run build:ngxa-admin:github --no-progress
+        BUILD_SCRIPT: npm install --no-progress && npm run install:all-lib --no-progress && npm run build:ngxa-admin:github --no-progress
