@@ -28,24 +28,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.analytics.trackPageViews();
-    this.indexedDBDistribution.createIDBStore().then(() => {;
-      this.defaultTheme();
-      let localeCode: string = this.locale;
-      this.settingsIndexedDB.get('locale').then((loc: string) => {
-          if (loc) {
-            if (loc.match(new RegExp(Pattern.LOCALE, 'g'))) {
-              localeCode = loc;
-            } else {
-              this.settingsIndexedDB.put('locale', localeCode).then();
-            }
+    this.defaultTheme();
+    let localeCode: string = this.locale;
+    this.settingsIndexedDB.get('locale').then((loc: string) => {
+        if (loc) {
+          if (loc.match(new RegExp(Pattern.LOCALE, 'g'))) {
+            localeCode = loc;
           } else {
             this.settingsIndexedDB.put('locale', localeCode).then();
           }
-          this.translate.addLangs(['en-US', 'id-ID']);
-          this.translate.setDefaultLang(localeCode);
-          this.translate.use(localeCode);
-          this.locale = this.translate.currentLang;
-      });
+        } else {
+          this.settingsIndexedDB.put('locale', localeCode).then();
+        }
+        this.translate.addLangs(['en-US', 'id-ID']);
+        this.translate.setDefaultLang(localeCode);
+        this.translate.use(localeCode);
+        this.locale = this.translate.currentLang;
     });
   }
 
