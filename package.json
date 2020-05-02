@@ -8,7 +8,7 @@
     "ng": "ng",
     "ionic": "ionic",
     "start": "ng serve",
-    "start:ngxa-admin": "ng serve @xaphira/ngxa-admin --port 4422 --base-href=/ --prod",
+    "start:ngxa-admin": "ng serve @xaphira/ngxa-admin --port 4422 --base-href=/",
     "start:ngxa-admin:heroku": "ng serve @xaphira/ngxa-admin --port 4422 --base-href=/ --configuration=heroku",
     "start:ionxa-admin": "ionic serve @xaphira/ionxa-admin --port 8100",
     "clean:core": "node_modules/.bin/rimraf dist/@xaphira/core",

@@ -5,6 +5,7 @@
  */
 import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { NbThemeService } from '@nebular/theme';
 import { AnalyticsService } from '@xaphira/ngxa-theme';
 import { Pattern } from '@xaphira/utils';
 import { SettingsIndexedDBService } from '@xaphira/ngxa-auth';
@@ -19,12 +20,13 @@ export class AppComponent implements OnInit {
   constructor(
     private analytics: AnalyticsService,
     private translate: TranslateService,
-    private indexedDBDistribution: IndexedDBDistributionService,
+    private themeService: NbThemeService,
     private settingsIndexedDB: SettingsIndexedDBService,
     @Inject(LOCALE_ID) public locale: string) {
   }
 
   ngOnInit(): void {
+    this.defaultTheme();
     this.analytics.trackPageViews();
     let localeCode: string = this.locale;
     this.settingsIndexedDB.get('locale').then((loc: string) => {
@@ -41,6 +43,13 @@ export class AppComponent implements OnInit {
         this.translate.setDefaultLang(localeCode);
         this.translate.use(localeCode);
         this.locale = this.translate.currentLang;
+    });
+  }
+
+  defaultTheme() {
+    this.settingsIndexedDB.get('theme').then((value: any) => {
+      const theme: string = (value === 'dark') ? 'dark' : 'default';
+      this.themeService.changeTheme(theme);
     });
   }
 }

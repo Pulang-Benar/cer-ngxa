@@ -91,13 +91,7 @@ export class NgxaThemeModule {
         ...PROVIDERS,
         ...NbThemeModule.forRoot(
           {
-            name: localStorage.getItem('theme') ?
-                  (
-                    localStorage.getItem('theme').match(new RegExp('^dark$|^default$', 'g')) ?
-                        localStorage.getItem('theme') :
-                        'default'
-                  ) :
-                  'default',
+            name: 'default',
           },
           [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
         ).providers,
