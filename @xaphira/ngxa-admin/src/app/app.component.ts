@@ -21,12 +21,12 @@ export class AppComponent implements OnInit {
     private analytics: AnalyticsService,
     private translate: TranslateService,
     private themeService: NbThemeService,
+    private indexedDBDistribution: IndexedDBDistributionService,
     private settingsIndexedDB: SettingsIndexedDBService,
     @Inject(LOCALE_ID) public locale: string) {
   }
 
   ngOnInit(): void {
-    this.defaultTheme();
     this.analytics.trackPageViews();
     let localeCode: string = this.locale;
     this.settingsIndexedDB.get('locale').then((loc: string) => {
