@@ -6,8 +6,8 @@ import { ApiBaseResponse, HttpBaseModel, IndexedDBFactoryService, PROFILE_INDEXE
 import {
   ResponseCode,
   USER_INFO,
-  User,
-  UserInfo, } from '@xaphira/shared';
+  UserInfo,
+} from '@xaphira/shared';
 import { Pattern } from '@xaphira/utils';
 import { BaseFormComponent, SelectParamModel } from '@xaphira/ngxa-common';
 import { HttpErrorResponse } from '@angular/common/http';
