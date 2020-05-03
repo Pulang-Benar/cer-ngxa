@@ -1,6 +1,4 @@
-import { Component, Input, ViewEncapsulation, Optional, Self, Inject, LOCALE_ID } from '@angular/core';
-import { NgControl } from '@angular/forms';
-import { DateFormat } from '@xaphira/utils';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'xa-label-text',
@@ -12,18 +10,13 @@ export class NgxaLabelTextComponent {
 
     @Input() colLabel: number = 3;
     @Input() colContent: number = 9;
-    @Input() format: string = DateFormat.DATE;
     @Input() skeleton: boolean = false;
     @Input() name: string;
-    @Input() pattern: string;
     @Input() content: string = '';
     @Input() label: string = '';
     @Input() nolabel: boolean = false;
-    @Input() disabled: boolean = false;
     @Input() required: boolean = false;
     @Input() paramError: any;
 
-    constructor(@Optional() @Self() ngControl: NgControl,
-      @Inject(LOCALE_ID) public locale: string) {
-    }
+    constructor() {}
 }
