@@ -30,8 +30,8 @@ export class NgxaMapsLeafletComponent implements OnInit {
       markers.forEach(marker => {
         this.layers.push(L.marker(marker.mark, {
           icon: L.icon({
-            iconUrl: '/assets/map/marker-icon.png',
-            shadowUrl: '/assets/map/marker-shadow.png',
+            iconUrl: `${document.getElementsByTagName('base')[0].href}assets/map/marker-icon.png`,
+            shadowUrl: `${document.getElementsByTagName('base')[0].href}assets/map/marker-shadow.png`,
             iconSize: [27.5, 40],
             iconAnchor: [20, 40],
             popupAnchor: [0, -40],
