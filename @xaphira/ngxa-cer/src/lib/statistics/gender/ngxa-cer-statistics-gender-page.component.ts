@@ -45,53 +45,7 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
   }
 
   private getStatistics(): void {
-    this.http.HTTP_AUTH(
-      this.api['panic']['statistics-gender'],
-      null,
-      null,
-      null,
-      [this.selected]).subscribe((values: any) => {
-        this.legend = values['legend']['data'];
-        this.series = [];
-        values['series'].forEach((series: any) => {
-          const dataSeries: any[] = [];
-          values['axis']['data'].forEach((axis: any) => {
-            dataSeries.push({
-              value: series['data'][axis],
-              name: axis,
-            });
-          });
-          this.series.push({
-            name: series['name'],
-            type: 'pie',
-            radius: '80%',
-            center: ['50%', '50%'],
-            data: dataSeries,
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: this.echarts.itemHoverShadowColor,
-              },
-            },
-            label: {
-              normal: {
-                textStyle: {
-                  color: this.echarts.textColor,
-                },
-              },
-            },
-            labelLine: {
-              normal: {
-                lineStyle: {
-                  color: this.echarts.axisLineColor,
-                },
-              },
-            },
-          });
-        });
-        this.buildChart();
-    });
+    this.buildChart();
   }
 
   private buildChart(): void {
@@ -99,24 +53,72 @@ export class NgxaCerStatisticsGenderPageComponent implements OnInit, OnDestroy {
 
       const colors = config.variables;
       this.echarts = config.variables.echarts;
+      
+      this.http.HTTP_AUTH(
+        this.api['panic']['statistics-gender'],
+        null,
+        null,
+        null,
+        [this.selected]).subscribe((values: any) => {
+          this.legend = values['legend']['data'];
+          this.series = [];
+          console.log(values['series']);
+          values['series'].forEach((series: any) => {
+            const dataSeries: any[] = [];
+            values['axis']['data'].forEach((axis: any) => {
+              dataSeries.push({
+                value: series['data'][axis],
+                name: axis,
+              });
+            });
+            this.series.push({
+              name: series['name'],
+              type: 'pie',
+              radius: '80%',
+              center: ['50%', '50%'],
+              data: dataSeries,
+              itemStyle: {
+                emphasis: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: this.echarts.itemHoverShadowColor,
+                },
+              },
+              label: {
+                normal: {
+                  textStyle: {
+                    color: this.echarts.textColor,
+                  },
+                },
+              },
+              labelLine: {
+                normal: {
+                  lineStyle: {
+                    color: this.echarts.axisLineColor,
+                  },
+                },
+              },
+            });
 
-      this.options = {
-        backgroundColor: this.echarts.bg,
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'left',
-          data: this.legend,
-          textStyle: {
-            color: this.echarts.textColor,
-          },
-        },
-        calculable: true,
-        series: this.series,
-      };
+            this.options = {
+              backgroundColor: this.echarts.bg,
+              tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)',
+              },
+              legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: this.legend,
+                textStyle: {
+                  color: this.echarts.textColor,
+                },
+              },
+              calculable: true,
+              series: this.series,
+            };
+          });
+      });
     });
   }
 
