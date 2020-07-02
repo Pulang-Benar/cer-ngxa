@@ -1,0 +1,14 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/*
+ * Public API Surface of ngxa-sys
+ */
+export {} from './lib/parameter/ngxa-parameter.module';
+export { NgxaParameterModule } from './lib/parameter/ngxa-parameter.module';
+export {} from './lib/language/ngxa-language.module';
+export { NgxaLanguageModule } from './lib/language/ngxa-language.module';
+export {} from './lib/management/user/ngxa-mgmt-user.module';
+export { NgxaMgmtUserModule } from './lib/management/user/ngxa-mgmt-user.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AeGFwaGlyYS9uZ3hhLXN5cy8iLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFJQSxlQUFjLHVDQUF1QyxDQUFDO0FBQ3RELE9BQU8sRUFBRSxtQkFBbUIsRUFBRSxNQUFNLHVDQUF1QyxDQUFDO0FBQzVFLGVBQWMscUNBQXFDLENBQUM7QUFDcEQsT0FBTyxFQUFFLGtCQUFrQixFQUFFLE1BQU0scUNBQXFDLENBQUM7QUFDekUsZUFBYyw2Q0FBNkMsQ0FBQztBQUM1RCxPQUFPLEVBQUUsa0JBQWtCLEVBQUUsTUFBTSw2Q0FBNkMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2Ygbmd4YS1zeXNcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9wYXJhbWV0ZXIvbmd4YS1wYXJhbWV0ZXIubW9kdWxlJztcbmV4cG9ydCB7IE5neGFQYXJhbWV0ZXJNb2R1bGUgfSBmcm9tICcuL2xpYi9wYXJhbWV0ZXIvbmd4YS1wYXJhbWV0ZXIubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2xhbmd1YWdlL25neGEtbGFuZ3VhZ2UubW9kdWxlJztcbmV4cG9ydCB7IE5neGFMYW5ndWFnZU1vZHVsZSB9IGZyb20gJy4vbGliL2xhbmd1YWdlL25neGEtbGFuZ3VhZ2UubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL21hbmFnZW1lbnQvdXNlci9uZ3hhLW1nbXQtdXNlci5tb2R1bGUnO1xuZXhwb3J0IHsgTmd4YU1nbXRVc2VyTW9kdWxlIH0gZnJvbSAnLi9saWIvbWFuYWdlbWVudC91c2VyL25neGEtbWdtdC11c2VyLm1vZHVsZSc7XG4iXX0=

@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/shared",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-shared.umd.js",
+  "module": "fesm5/xaphira-shared.js",
+  "es2015": "fesm2015/xaphira-shared.js",
+  "esm5": "esm5/xaphira-shared.js",
+  "esm2015": "esm2015/xaphira-shared.js",
+  "fesm5": "fesm5/xaphira-shared.js",
+  "fesm2015": "fesm2015/xaphira-shared.js",
+  "typings": "xaphira-shared.d.ts",
+  "metadata": "xaphira-shared.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

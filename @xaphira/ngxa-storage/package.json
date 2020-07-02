@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/ngxa-storage",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-ngxa-storage.umd.js",
+  "module": "fesm5/xaphira-ngxa-storage.js",
+  "es2015": "fesm2015/xaphira-ngxa-storage.js",
+  "esm5": "esm5/xaphira-ngxa-storage.js",
+  "esm2015": "esm2015/xaphira-ngxa-storage.js",
+  "fesm5": "fesm5/xaphira-ngxa-storage.js",
+  "fesm2015": "fesm2015/xaphira-ngxa-storage.js",
+  "typings": "xaphira-ngxa-storage.d.ts",
+  "metadata": "xaphira-ngxa-storage.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

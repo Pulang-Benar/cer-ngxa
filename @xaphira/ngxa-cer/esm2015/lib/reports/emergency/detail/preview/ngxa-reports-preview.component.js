@@ -1,0 +1,97 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { Component, Input, Inject } from '@angular/core';
+import { API, HTTP_SERVICE } from '@xaphira/shared';
+import { tap } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+export class NgxaReportsPreviewComponent {
+    /**
+     * @param {?} apiPath
+     * @param {?} httpBaseService
+     * @param {?} sanitizer
+     */
+    constructor(apiPath, httpBaseService, sanitizer) {
+        this.apiPath = apiPath;
+        this.httpBaseService = httpBaseService;
+        this.sanitizer = sanitizer;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.getEvidence(this.checksum, this.user, this.fileType);
+    }
+    /**
+     * @private
+     * @param {?} checksum
+     * @param {?} user
+     * @param {?} fileType
+     * @return {?}
+     */
+    getEvidence(checksum, user, fileType) {
+        this.httpBaseService.HTTP_AUTH(this.apiPath['file']['evidence'], null, null, null, [checksum, user], 'arraybuffer')
+            .pipe(tap((/**
+         * @param {?} response
+         * @return {?}
+         */
+        (response) => {
+            /** @type {?} */
+            const fileBlob = new Blob([response], {
+                type: fileType,
+            });
+            /** @type {?} */
+            const reader = new FileReader();
+            reader.readAsDataURL(fileBlob);
+            reader.onloadend = (/**
+             * @return {?}
+             */
+            () => {
+                this.url = this.sanitizer.bypassSecurityTrustUrl(reader.result.toString());
+            });
+        }))).subscribe();
+    }
+}
+NgxaReportsPreviewComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'xa-reports-preview',
+                template: "<nb-card *ngIf=\"url && fileType.includes('image')\">\n    <nb-card-body>\n        <img [src]=\"url\" height=\"500\">\n    </nb-card-body>\n</nb-card>\n<video *ngIf=\"url && fileType.includes('video')\" [src]=\"url\" height=\"500\" controls></video>\n<audio *ngIf=\"url && fileType.includes('audio')\" controls>\n    <source [src]=\"url\" [type]=\"fileType\">\n</audio>",
+                styles: [""]
+            }] }
+];
+/** @nocollapse */
+NgxaReportsPreviewComponent.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: Inject, args: [API,] }] },
+    { type: undefined, decorators: [{ type: Inject, args: [HTTP_SERVICE,] }] },
+    { type: DomSanitizer }
+];
+NgxaReportsPreviewComponent.propDecorators = {
+    url: [{ type: Input }],
+    checksum: [{ type: Input }],
+    user: [{ type: Input }],
+    fileType: [{ type: Input }]
+};
+if (false) {
+    /** @type {?} */
+    NgxaReportsPreviewComponent.prototype.url;
+    /** @type {?} */
+    NgxaReportsPreviewComponent.prototype.checksum;
+    /** @type {?} */
+    NgxaReportsPreviewComponent.prototype.user;
+    /** @type {?} */
+    NgxaReportsPreviewComponent.prototype.fileType;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgxaReportsPreviewComponent.prototype.apiPath;
+    /**
+     * @type {?}
+     * @private
+     */
+    NgxaReportsPreviewComponent.prototype.httpBaseService;
+    /** @type {?} */
+    NgxaReportsPreviewComponent.prototype.sanitizer;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmd4YS1yZXBvcnRzLXByZXZpZXcuY29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHhhcGhpcmEvbmd4YS1jZXIvIiwic291cmNlcyI6WyJsaWIvcmVwb3J0cy9lbWVyZ2VuY3kvZGV0YWlsL3ByZXZpZXcvbmd4YS1yZXBvcnRzLXByZXZpZXcuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsU0FBUyxFQUFVLEtBQUssRUFBRSxNQUFNLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDakUsT0FBTyxFQUFZLEdBQUcsRUFBRSxZQUFZLEVBQXNCLE1BQU0saUJBQWlCLENBQUM7QUFDbEYsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBQ3JDLE9BQU8sRUFBRSxZQUFZLEVBQUUsTUFBTSwyQkFBMkIsQ0FBQztBQU96RCxNQUFNLE9BQU8sMkJBQTJCOzs7Ozs7SUFPdEMsWUFDc0IsT0FBaUIsRUFDUixlQUFtQyxFQUN6RCxTQUF1QjtRQUZWLFlBQU8sR0FBUCxPQUFPLENBQVU7UUFDUixvQkFBZSxHQUFmLGVBQWUsQ0FBb0I7UUFDekQsY0FBUyxHQUFULFNBQVMsQ0FBYztJQUFHLENBQUM7Ozs7SUFFcEMsUUFBUTtRQUNOLElBQUksQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxJQUFJLENBQUMsSUFBSSxFQUFFLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQztJQUM1RCxDQUFDOzs7Ozs7OztJQUVPLFdBQVcsQ0FBQyxRQUFhLEVBQUUsSUFBWSxFQUFFLFFBQWdCO1FBQy9ELElBQUksQ0FBQyxlQUFlLENBQUMsU0FBUyxDQUM5QixJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxDQUFDLFVBQVUsQ0FBQyxFQUFFLElBQUksRUFBRSxJQUFJLEVBQUUsSUFBSSxFQUNsRCxDQUFDLFFBQVEsRUFBRSxJQUFJLENBQUMsRUFBRSxhQUFhLENBQUM7YUFDL0IsSUFBSSxDQUFDLEdBQUc7Ozs7UUFBQyxDQUFDLFFBQWEsRUFBRSxFQUFFOztrQkFDbEIsUUFBUSxHQUFTLElBQUksSUFBSSxDQUFDLENBQUMsUUFBUSxDQUFDLEVBQUU7Z0JBQzFDLElBQUksRUFBRSxRQUFRO2FBQ2YsQ0FBQzs7a0JBQ0ksTUFBTSxHQUFlLElBQUksVUFBVSxFQUFFO1lBQzNDLE1BQU0sQ0FBQyxhQUFhLENBQUMsUUFBUSxDQUFDLENBQUM7WUFDL0IsTUFBTSxDQUFDLFNBQVM7OztZQUFHLEdBQUcsRUFBRTtnQkFDdEIsSUFBSSxDQUFDLEdBQUcsR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLHNCQUFzQixDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQztZQUM3RSxDQUFDLENBQUEsQ0FBQztRQUNOLENBQUMsRUFBQyxDQUFDLENBQUMsU0FBUyxFQUFFLENBQUM7SUFDbEIsQ0FBQzs7O1lBbkNGLFNBQVMsU0FBQztnQkFDVCxRQUFRLEVBQUUsb0JBQW9CO2dCQUM5Qiw2WEFBb0Q7O2FBRXJEOzs7OzRDQVNJLE1BQU0sU0FBQyxHQUFHOzRDQUNWLE1BQU0sU0FBQyxZQUFZO1lBaEJmLFlBQVk7OztrQkFTbEIsS0FBSzt1QkFDTCxLQUFLO21CQUNMLEtBQUs7dUJBQ0wsS0FBSzs7OztJQUhOLDBDQUF5Qjs7SUFDekIsK0NBQThCOztJQUM5QiwyQ0FBMEI7O0lBQzFCLCtDQUE4Qjs7Ozs7SUFHNUIsOENBQXFDOzs7OztJQUNyQyxzREFBZ0U7O0lBQ2hFLGdEQUE4QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0LCBJbnB1dCwgSW5qZWN0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBBUElNb2RlbCwgQVBJLCBIVFRQX1NFUlZJQ0UsIEh0dHBGYWN0b3J5U2VydmljZSB9IGZyb20gJ0B4YXBoaXJhL3NoYXJlZCc7XG5pbXBvcnQgeyB0YXAgfSBmcm9tICdyeGpzL29wZXJhdG9ycyc7XG5pbXBvcnQgeyBEb21TYW5pdGl6ZXIgfSBmcm9tICdAYW5ndWxhci9wbGF0Zm9ybS1icm93c2VyJztcblxuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAneGEtcmVwb3J0cy1wcmV2aWV3JyxcbiAgdGVtcGxhdGVVcmw6ICcuL25neGEtcmVwb3J0cy1wcmV2aWV3LmNvbXBvbmVudC5odG1sJyxcbiAgc3R5bGVVcmxzOiBbJ25neGEtcmVwb3J0cy1wcmV2aWV3LmNvbXBvbmVudC5zY3NzJ10sXG59KVxuZXhwb3J0IGNsYXNzIE5neGFSZXBvcnRzUHJldmlld0NvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG5cbiAgQElucHV0KCkgcHVibGljIHVybDogYW55O1xuICBASW5wdXQoKSBwdWJsaWMgY2hlY2tzdW06IGFueTtcbiAgQElucHV0KCkgcHVibGljIHVzZXI6IGFueTtcbiAgQElucHV0KCkgcHVibGljIGZpbGVUeXBlOiBhbnk7XG5cbiAgY29uc3RydWN0b3IoXG4gICAgQEluamVjdChBUEkpcHJpdmF0ZSBhcGlQYXRoOiBBUElNb2RlbCxcbiAgICBASW5qZWN0KEhUVFBfU0VSVklDRSlwcml2YXRlIGh0dHBCYXNlU2VydmljZTogSHR0cEZhY3RvcnlTZXJ2aWNlLFxuICAgIHB1YmxpYyBzYW5pdGl6ZXI6IERvbVNhbml0aXplcikge31cblxuICBuZ09uSW5pdCgpOiB2b2lkIHtcbiAgICB0aGlzLmdldEV2aWRlbmNlKHRoaXMuY2hlY2tzdW0sIHRoaXMudXNlciwgdGhpcy5maWxlVHlwZSk7XG4gIH1cblxuICBwcml2YXRlIGdldEV2aWRlbmNlKGNoZWNrc3VtOiBhbnksIHVzZXI6IHN0cmluZywgZmlsZVR5cGU6IHN0cmluZykge1xuICAgIHRoaXMuaHR0cEJhc2VTZXJ2aWNlLkhUVFBfQVVUSChcbiAgICB0aGlzLmFwaVBhdGhbJ2ZpbGUnXVsnZXZpZGVuY2UnXSwgbnVsbCwgbnVsbCwgbnVsbCxcbiAgICBbY2hlY2tzdW0sIHVzZXJdLCAnYXJyYXlidWZmZXInKVxuICAgIC5waXBlKHRhcCgocmVzcG9uc2U6IGFueSkgPT4ge1xuICAgICAgICBjb25zdCBmaWxlQmxvYjogQmxvYiA9IG5ldyBCbG9iKFtyZXNwb25zZV0sIHtcbiAgICAgICAgICB0eXBlOiBmaWxlVHlwZSxcbiAgICAgICAgfSk7XG4gICAgICAgIGNvbnN0IHJlYWRlcjogRmlsZVJlYWRlciA9IG5ldyBGaWxlUmVhZGVyKCk7XG4gICAgICAgIHJlYWRlci5yZWFkQXNEYXRhVVJMKGZpbGVCbG9iKTtcbiAgICAgICAgcmVhZGVyLm9ubG9hZGVuZCA9ICgpID0+IHtcbiAgICAgICAgICB0aGlzLnVybCA9IHRoaXMuc2FuaXRpemVyLmJ5cGFzc1NlY3VyaXR5VHJ1c3RVcmwocmVhZGVyLnJlc3VsdC50b1N0cmluZygpKTtcbiAgICAgICAgfTtcbiAgICB9KSkuc3Vic2NyaWJlKCk7XG4gIH1cblxufVxuIl19

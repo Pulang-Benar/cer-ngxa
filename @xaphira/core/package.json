@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/core",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-core.umd.js",
+  "module": "fesm5/xaphira-core.js",
+  "es2015": "fesm2015/xaphira-core.js",
+  "esm5": "esm5/xaphira-core.js",
+  "esm2015": "esm2015/xaphira-core.js",
+  "fesm5": "fesm5/xaphira-core.js",
+  "fesm2015": "fesm2015/xaphira-core.js",
+  "typings": "xaphira-core.d.ts",
+  "metadata": "xaphira-core.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

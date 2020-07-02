@@ -1,0 +1,11 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/*
+ * Public API Surface of ngxa-storage
+ */
+export { STORAGE_PROVIDERS, NgxaStorageModule } from './lib/ngxa-storage.module';
+export { IndexedDBService } from './lib/services/indexed-db.service';
+export { STORAGE_SERVICE } from './lib/providers/storage.provider';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AeGFwaGlyYS9uZ3hhLXN0b3JhZ2UvIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBSUEscURBQWMsMkJBQTJCLENBQUM7QUFDMUMsT0FBTyxFQUFFLGdCQUFnQixFQUFFLE1BQU0sbUNBQW1DLENBQUM7QUFFckUsT0FBTyxFQUFFLGVBQWUsRUFBRSxNQUFNLGtDQUFrQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiBuZ3hhLXN0b3JhZ2VcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9uZ3hhLXN0b3JhZ2UubW9kdWxlJztcbmV4cG9ydCB7IEluZGV4ZWREQlNlcnZpY2UgfSBmcm9tICcuL2xpYi9zZXJ2aWNlcy9pbmRleGVkLWRiLnNlcnZpY2UnO1xuZXhwb3J0IHsgU3RvcmFnZUZhY3RvcnlTZXJ2aWNlIH0gZnJvbSAnLi9saWIvc2VydmljZXMvc3RvcmFnZS1mYWN0b3J5LnNlcnZpY2UnO1xuZXhwb3J0IHsgU1RPUkFHRV9TRVJWSUNFIH0gZnJvbSAnLi9saWIvcHJvdmlkZXJzL3N0b3JhZ2UucHJvdmlkZXInO1xuIl19

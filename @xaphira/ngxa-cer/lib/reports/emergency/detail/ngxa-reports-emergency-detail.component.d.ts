@@ -1,0 +1,35 @@
+import { OnInit, OnDestroy, Injector } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
+import { BaseFilterComponent, DatatableColumn, Sort, SelectParamModel } from '@xaphira/ngxa-common';
+import { HttpBaseModel } from '@xaphira/shared';
+import { ReportsPanicService } from '../../services/reports-panic.service';
+export declare class NgxaReportsEmergencyDetailComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+    injector: Injector;
+    private router;
+    private route;
+    private dialogService;
+    private reportService;
+    profile: any;
+    image: string;
+    imageDefault: string;
+    apiPath: HttpBaseModel;
+    columns: DatatableColumn[];
+    sort: Sort;
+    apiSelectParameter: HttpBaseModel;
+    paramSelectStatus: SelectParamModel[];
+    paramSelectEmergency: SelectParamModel[];
+    disabledFake: boolean;
+    private username;
+    private oauthResource;
+    private enc;
+    private dataReport;
+    constructor(injector: Injector, router: Router, route: ActivatedRoute, dialogService: NbDialogService, reportService: ReportsPanicService);
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+    onInit(serviceName: string, apiName: string): void;
+    valueSelect(prop: string): string;
+    onPreview(data: any): void;
+    onFake(): void;
+    onProcess(): void;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/utils",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-utils.umd.js",
+  "module": "fesm5/xaphira-utils.js",
+  "es2015": "fesm2015/xaphira-utils.js",
+  "esm5": "esm5/xaphira-utils.js",
+  "esm2015": "esm2015/xaphira-utils.js",
+  "fesm5": "fesm5/xaphira-utils.js",
+  "fesm2015": "fesm2015/xaphira-utils.js",
+  "typings": "xaphira-utils.d.ts",
+  "metadata": "xaphira-utils.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

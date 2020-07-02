@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { NgxaThemeModule, HeaderComponent, FooterComponent, SearchInputComponent, CapitalizePipe, PluralPipe, RoundPipe, TimingPipe, NumberWithCommasPipe, OneColumnLayoutComponent, TwoColumnsLayoutComponent, ThreeColumnsLayoutComponent, DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME, ErrorHandlerService, CustomPreloadingStrategy, AnalyticsService, LayoutService, StateService } from './index';
+export { COMPONENTS as ɵc, NB_MODULES as ɵb, PIPES as ɵd, PROVIDERS as ɵa } from './lib/ngxa-theme.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoieGFwaGlyYS1uZ3hhLXRoZW1lLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHhhcGhpcmEvbmd4YS10aGVtZS8iLCJzb3VyY2VzIjpbInhhcGhpcmEtbmd4YS10aGVtZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBSUEsMllBQWMsU0FBUyxDQUFDO0FBRXhCLE9BQU8sRUFBQyxVQUFVLElBQUksRUFBRSxFQUFDLFVBQVUsSUFBSSxFQUFFLEVBQUMsS0FBSyxJQUFJLEVBQUUsRUFBQyxTQUFTLElBQUksRUFBRSxFQUFDLE1BQU0seUJBQXlCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEdlbmVyYXRlZCBidW5kbGUgaW5kZXguIERvIG5vdCBlZGl0LlxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vaW5kZXgnO1xuXG5leHBvcnQge0NPTVBPTkVOVFMgYXMgybVjLE5CX01PRFVMRVMgYXMgybViLFBJUEVTIGFzIMm1ZCxQUk9WSURFUlMgYXMgybVhfSBmcm9tICcuL2xpYi9uZ3hhLXRoZW1lLm1vZHVsZSc7Il19

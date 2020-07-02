@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { IndexedDBService, STORAGE_SERVICE, STORAGE_PROVIDERS, NgxaStorageModule } from './index';
+export { StorageMaskService as ɵa } from './lib/services/storage-mask.service';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoieGFwaGlyYS1uZ3hhLXN0b3JhZ2UuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AeGFwaGlyYS9uZ3hhLXN0b3JhZ2UvIiwic291cmNlcyI6WyJ4YXBoaXJhLW5neGEtc3RvcmFnZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBSUEsd0ZBQWMsU0FBUyxDQUFDO0FBRXhCLE9BQU8sRUFBQyxrQkFBa0IsSUFBSSxFQUFFLEVBQUMsTUFBTSxxQ0FBcUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2VuZXJhdGVkIGJ1bmRsZSBpbmRleC4gRG8gbm90IGVkaXQuXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9pbmRleCc7XG5cbmV4cG9ydCB7U3RvcmFnZU1hc2tTZXJ2aWNlIGFzIMm1YX0gZnJvbSAnLi9saWIvc2VydmljZXMvc3RvcmFnZS1tYXNrLnNlcnZpY2UnOyJdfQ==

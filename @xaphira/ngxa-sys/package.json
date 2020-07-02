@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/ngxa-sys",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-ngxa-sys.umd.js",
+  "module": "fesm5/xaphira-ngxa-sys.js",
+  "es2015": "fesm2015/xaphira-ngxa-sys.js",
+  "esm5": "esm5/xaphira-ngxa-sys.js",
+  "esm2015": "esm2015/xaphira-ngxa-sys.js",
+  "fesm5": "fesm5/xaphira-ngxa-sys.js",
+  "fesm2015": "fesm2015/xaphira-ngxa-sys.js",
+  "typings": "xaphira-ngxa-sys.d.ts",
+  "metadata": "xaphira-ngxa-sys.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

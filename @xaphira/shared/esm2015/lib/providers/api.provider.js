@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { InjectionToken } from '@angular/core';
+/** @type {?} */
+export const API = new InjectionToken('API');
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBpLnByb3ZpZGVyLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQHhhcGhpcmEvc2hhcmVkLyIsInNvdXJjZXMiOlsibGliL3Byb3ZpZGVycy9hcGkucHJvdmlkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFBRSxjQUFjLEVBQUUsTUFBTSxlQUFlLENBQUM7O0FBRy9DLE1BQU0sT0FBTyxHQUFHLEdBQ2hCLElBQUksY0FBYyxDQUFXLEtBQUssQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGlvblRva2VuIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBBUElNb2RlbCB9IGZyb20gJy4uL21vZGVscyc7XG5cbmV4cG9ydCBjb25zdCBBUEk6IEluamVjdGlvblRva2VuPEFQSU1vZGVsPiA9XG5uZXcgSW5qZWN0aW9uVG9rZW48QVBJTW9kZWw+KCdBUEknKTtcbiJdfQ==

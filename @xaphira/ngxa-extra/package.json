@@ -1,0 +1,21 @@
+{
+  "name": "@xaphira/ngxa-extra",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "~8.2.8",
+    "@angular/core": "~8.2.8"
+  },
+  "main": "bundles/xaphira-ngxa-extra.umd.js",
+  "module": "fesm5/xaphira-ngxa-extra.js",
+  "es2015": "fesm2015/xaphira-ngxa-extra.js",
+  "esm5": "esm5/xaphira-ngxa-extra.js",
+  "esm2015": "esm2015/xaphira-ngxa-extra.js",
+  "fesm5": "fesm5/xaphira-ngxa-extra.js",
+  "fesm2015": "fesm2015/xaphira-ngxa-extra.js",
+  "typings": "xaphira-ngxa-extra.d.ts",
+  "metadata": "xaphira-ngxa-extra.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
