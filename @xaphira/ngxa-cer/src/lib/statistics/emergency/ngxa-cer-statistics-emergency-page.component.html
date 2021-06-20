@@ -1,0 +1,7 @@
+<xa-page-outlet
+    [header]="'Statistics of Emergency Category'"
+    [dataSelect]="dataSelect"
+    [selected]="selected"
+    (selectChange)="onSelectChange($event)">
+    <xa-chart [options]="options"></xa-chart>
+</xa-page-outlet>

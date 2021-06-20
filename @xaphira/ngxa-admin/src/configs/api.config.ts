@@ -235,5 +235,20 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/xa/api/panic/vw/auth/statistics-periode/v.1',
         },
+        'statistics-emergency': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-emergency/v.1',
+        },
+        'statistics-device': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-device/v.1',
+        },
+        'statistics-age': {
+            server: environment.host.panic,
+            method: HttpMethod.GET,
+            path: '/xa/api/panic/vw/auth/statistics-age/v.1',
+        },
     },
 };

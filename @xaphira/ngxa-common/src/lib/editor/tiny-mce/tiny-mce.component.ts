@@ -33,7 +33,7 @@ export class TinyMCEComponent extends NgxaValueAccessor<string> {
   editorChange(element: Element) {
     if (!element) {
       element = this.element.nativeElement;
-      element = element.getElementsByClassName('mce-edit-area').item(0);
+      element = element.getElementsByClassName('tox tox-tinymce').item(0);
     }
     if (this.ngControl.invalid) {
       if (!element.getAttribute('class').endsWith('status-danger'))
