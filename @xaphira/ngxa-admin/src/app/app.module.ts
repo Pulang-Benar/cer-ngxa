@@ -27,13 +27,13 @@ import { NgxaStorageModule } from '@xaphira/ngxa-storage';
 import { NgxaAuthModule } from '@xaphira/ngxa-auth';
 import { NgxaThemeModule } from '@xaphira/ngxa-theme';
 import { NgxaCerModule } from '@xaphira/ngxa-cer';
-import { MockCoreModule } from '@xaphira/ngxa-mock';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { apiPath } from '../configs/api.config';
 import { oauthResource } from '../configs/security.config';
 import { IndexedDBDistributionService } from './services/indexeddb-dist.service';
+import { MockCoreModule } from '@xaphira/ngxa-mock';
 
 @NgModule({
   declarations: [AppComponent],
@@ -65,8 +65,10 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
      * Mock Service & Data To Be Delete
      **/
     MockCoreModule.forRoot(),
-    ServiceWorkerModule.register(environment.basePath + 'ngxa-sw.js'),
-    // ServiceWorkerModule.register('/ngxa-sw.js', {enabled: environment.production && location.protocol !== 'http:'}),
+    // ServiceWorkerModule.register(environment.basePath + 'ngxa-sw.js'),
+    ServiceWorkerModule.register(environment.basePath + 'ngxa-sw.js', {
+      enabled: environment.production && location.protocol !== 'http:',
+    }),
   ],
   bootstrap: [AppComponent],
   providers: [

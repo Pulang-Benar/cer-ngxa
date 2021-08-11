@@ -13,6 +13,13 @@
             (click)="doDelete()">
         </nb-icon>
     </div>
+    <div class="header-action" *ngIf="export">
+        <nb-icon
+            class="action-add"
+            icon="file-text"
+            (click)="doExport()">
+        </nb-icon>
+    </div>
     <div class="header-filter" *ngIf="filter">
         <xa-input-base-icon
             [name]="'_filter.datatable'"

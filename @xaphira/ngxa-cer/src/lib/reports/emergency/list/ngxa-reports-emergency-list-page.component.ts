@@ -52,4 +52,7 @@ export class NgxaReportsEmergencyListPageComponent extends BaseFilterComponent<a
     this.router.navigate(['/app/reports/emergency/detail']);
   }
 
+  doExport(event): void {
+  }
+
 }

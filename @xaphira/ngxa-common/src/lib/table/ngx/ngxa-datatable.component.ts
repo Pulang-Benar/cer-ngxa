@@ -56,6 +56,7 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Input() edit: boolean = true;
   @Input() delete: boolean = true;
   @Input() filter: boolean = true;
+  @Input() export: boolean = false;
   @Input() api: HttpBaseModel;
   @Input() startWithOpenData: boolean = true;
   @Input() filterEvent: boolean = false;
@@ -66,6 +67,7 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() onSearch: EventEmitter<any> = new EventEmitter<any>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onExport: EventEmitter<any> = new EventEmitter<any>();
   @Output() onButtonCell: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
   @Input() set filterFn(keyword: Keyword) {
@@ -176,6 +178,10 @@ export class NgxaDatatableComponent implements OnInit, OnDestroy {
 
   doEdit(row: any): void {
     this.onEdit.emit(row);
+  }
+
+  doExport(): void {
+    this.onExport.emit(this.rows);
   }
 
   doDelete(): void {

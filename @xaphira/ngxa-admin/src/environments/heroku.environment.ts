@@ -11,6 +11,10 @@ export const environment = {
       protocol: 'https',
       host: 'cer-api.herokuapp.com',
     },
+    profile: {
+      protocol: 'https',
+      host: 'cer-api.herokuapp.com',
+    },
     master: {
       protocol: 'https',
       host: 'cer-api.herokuapp.com',

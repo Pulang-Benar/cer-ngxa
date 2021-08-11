@@ -1,12 +1,14 @@
 <xa-datatable-header
     [header]="header"
     [add]="add"
+    [export]="export"
     [delete]="isDelete"
     [filter]="filter"
     [formGroupFilter]="formGroupFilter"
     (onSearch)="doSearch($event)"
     (onFilter)="doFilter($event)"
     (onAdd)="doAdd($event)"
+    (onExport)="doExport()"
     (onDelete)="doDelete()">
     <ng-content></ng-content>
 </xa-datatable-header>

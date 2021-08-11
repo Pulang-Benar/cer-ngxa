@@ -56,6 +56,7 @@ export class NgxaReportsEmergencyDetailComponent extends BaseFilterComponent<any
   private oauthResource: SecurityResourceModel;
   private enc: EncryptionService;
   private dataReport: any;
+  public caseClosed: boolean = false;
 
   constructor(public injector: Injector, private router: Router,
     private route: ActivatedRoute,
@@ -79,6 +80,13 @@ export class NgxaReportsEmergencyDetailComponent extends BaseFilterComponent<any
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
+    this.formGroup.get('status').setValue(this.dataReport['status']);
+    this.formGroup.get('emergencyCategory').setValue(this.dataReport['emergencyCategory']);
+    if (this.dataReport['statusCode'] === 'STATUS_EMERGENCY.CASE_CLOSED') {
+      this.caseClosed = true;
+      this.formGroup.get('status').disable();
+      this.formGroup.get('emergencyCategory').disable();
+    }
     this.onInit('security', 'get-profile-personal');
     this.paramSelectStatus = [{
       key: 'parameterGroupCode',
@@ -121,7 +129,7 @@ export class NgxaReportsEmergencyDetailComponent extends BaseFilterComponent<any
       if (this.formGroup.get(prop).value.value) {
         return this.formGroup.get(prop).value.value;
       } else {
-        return this.formGroup.get(prop).value;
+        return null;
       }
     } else {
       return null;
@@ -165,8 +173,10 @@ export class NgxaReportsEmergencyDetailComponent extends BaseFilterComponent<any
   onProcess(): void {
     const data: any = {
       panicCode: this.dataReport['panicCode'],
-      status: this.valueSelect('status'),
-      emergencyCategory: this.valueSelect('emergencyCategory'),
+      status: this.valueSelect('status') ?
+      this.valueSelect('status') : this.dataReport['statusCode'],
+      emergencyCategory: this.valueSelect('emergencyCategory') ?
+      this.valueSelect('emergencyCategory') : this.dataReport['emergencyCategoryCode'],
     };
     (super.onSubmit(data, 'panic', 'process-report') as Observable<ApiBaseResponse>)
       .pipe(takeUntil(this.destroy$))

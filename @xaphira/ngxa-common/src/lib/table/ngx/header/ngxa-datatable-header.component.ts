@@ -23,11 +23,13 @@ export class NgxaDatatableHeaderComponent implements OnDestroy {
   @Input() edit: boolean = true;
   @Input() delete: boolean = false;
   @Input() filter: boolean = true;
+  @Input() export: boolean = false;
   @Input() formGroupFilter: FormGroup;
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onExport: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('collapse', {static: false}) collapse: NgxaDatatableCollapseComponent;
 
   public _search: string;
@@ -64,6 +66,10 @@ export class NgxaDatatableHeaderComponent implements OnDestroy {
 
   doDelete(): void {
     this.onDelete.emit(true);
+  }
+
+  doExport(): void {
+    this.onExport.emit(true);
   }
 
   onKeyDown(event: KeyboardEvent) {

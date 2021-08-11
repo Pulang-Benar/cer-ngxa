@@ -22,6 +22,7 @@ import {
   NgxaReportsEmergencyDetailComponent,
 } from './emergency/detail/ngxa-reports-emergency-detail.component';
 import { NgxaReportsFakeListPageComponent } from './fake/list/ngxa-reports-fake-list-page.component';
+import { ExportEmergencyComponent } from './emergency/export/export-emergency.component';
 
 const components = [
   NgxaCerReportsComponent,
@@ -30,6 +31,7 @@ const components = [
   NgxaFakePromptComponent,
   NgxaReportsPreviewComponent,
   NgxaReportsFakeListPageComponent,
+  ExportEmergencyComponent,
 ];
 
 const modules = [
@@ -59,6 +61,7 @@ const providers = [
 const entry_components = [
   NgxaFakePromptComponent,
   NgxaReportsPreviewComponent,
+  ExportEmergencyComponent,
 ];
 
 @NgModule({
